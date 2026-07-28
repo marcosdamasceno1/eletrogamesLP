@@ -1,7 +1,7 @@
 import { whatsappLink, whatsappMessages } from '@/lib/site';
 import { IconWhatsApp } from './Icons';
 
-/** Botão flutuante discreto, presente em todas as páginas. */
+/** Botão flutuante. Discreto no desktop, polegar-friendly no celular. */
 export default function WhatsAppButton() {
   return (
     <a
@@ -9,9 +9,10 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar com a Eletrogames no WhatsApp"
-      className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-brand text-ink-950 shadow-xl shadow-black/40 transition-transform duration-200 hover:scale-105 sm:h-14 sm:w-auto sm:gap-2 sm:rounded-full sm:px-5"
+      data-magnetic="0.25"
+      className="group fixed bottom-5 right-5 z-40 flex h-14 min-h-[56px] w-14 items-center justify-center rounded-full bg-diag text-void shadow-xl shadow-black/50 transition-colors hover:bg-diag-soft sm:w-auto sm:gap-2.5 sm:px-5"
     >
-      <IconWhatsApp className="h-7 w-7 sm:h-5 sm:w-5" />
+      <IconWhatsApp className="h-7 w-7 transition-transform duration-300 group-hover:scale-110 sm:h-5 sm:w-5" />
       <span className="hidden text-sm font-bold sm:inline">WhatsApp</span>
     </a>
   );

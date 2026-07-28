@@ -33,7 +33,7 @@ export default function HomePage() {
       <FAQ
         items={homeFaq}
         title="Dúvidas frequentes"
-        description="As perguntas que mais recebemos sobre a loja e a assistência técnica."
+        description="O que mais nos perguntam sobre a loja e sobre a assistência técnica."
       />
       <CTA />
       <JsonLd data={faqSchema(homeFaq)} />

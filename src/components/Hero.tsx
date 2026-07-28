@@ -1,87 +1,145 @@
 import Button from './Button';
-import { IconCheck, IconGamepad, IconWrench } from './Icons';
-import { safeHref, siteConfig } from '@/lib/site';
+import Counter from './fx/Counter';
+import SplitText from './fx/SplitText';
+import { IconGamepad, IconWhatsApp, IconWrench } from './Icons';
+import { safeHref, siteConfig, whatsappLink, whatsappMessages } from '@/lib/site';
 
-const trustItems = [
-  { icon: IconCheck, label: '+28 anos de experiência' },
-  { icon: IconGamepad, label: 'Especialistas em videogames' },
-  { icon: IconWrench, label: 'Venda e assistência técnica' },
+const proof = [
+  { value: '+28', label: 'anos de mercado' },
+  { value: 'Videogame', label: 'é o que fazemos' },
+  { value: 'Loja + bancada', label: 'no mesmo lugar' },
 ];
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28" aria-labelledby="hero-title">
-      {/* Fundo: grafite + grid técnico + halo suave. Sem excesso de neon. */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink-950">
-        <div className="absolute inset-0 grid-texture opacity-60" />
-        <div className="absolute left-1/2 top-[-10%] h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-brand/10 blur-[120px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] h-[420px] w-[520px] rounded-full bg-accent/10 blur-[120px]" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-ink-950" />
+    <section className="relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-24" aria-labelledby="hero-title">
+      <div aria-hidden="true" className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-void" />
+        <div className="aperture absolute inset-0 opacity-70" />
+        <div className="absolute left-1/2 top-[-14%] h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-phosphor/[0.09] blur-[140px]" />
+        <div className="absolute bottom-[-25%] right-[-12%] h-[420px] w-[560px] rounded-full bg-diag/[0.07] blur-[130px]" />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-void" />
       </div>
 
-      <div className="container-site grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="animate-fade-up">
-          <p className="eyebrow">Loja de videogames e assistência técnica</p>
+      <div className="container-site grid items-center gap-16 lg:grid-cols-[1.08fr_0.92fr]">
+        <div>
+          <p className="label" data-reveal>
+            Loja de videogames · Assistência técnica
+          </p>
 
           <h1
             id="hero-title"
-            className="mt-5 font-display text-4xl font-black leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl"
+            className="mt-6 text-[2.6rem] font-black leading-[1.02] text-ink sm:text-[3.5rem] lg:text-[4.25rem]"
           >
-            Mais de 28 anos vivendo o universo dos{' '}
-            <span className="text-brand">videogames</span>.
+            <SplitText text="Mais de 28 anos" as="span" className="block" />
+            <SplitText text="vivendo o universo dos" as="span" className="block" delay={3} />
+            <SplitText
+              text="videogames."
+              as="span"
+              className="block text-phosphor text-glow"
+              delay={7}
+            />
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
-            Consoles, acessórios, periféricos e assistência técnica especializada para quem
-            leva videogame a sério.
+          <p
+            className="mt-7 max-w-xl text-lg leading-relaxed text-ink-muted"
+            data-reveal
+            style={{ ['--d' as string]: '250ms' }}
+          >
+            Consoles, acessórios, periféricos e assistência técnica especializada para quem leva
+            videogame a sério.
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button href={safeHref(siteConfig.storeUrl)} variant="store" size="lg" external>
+          <div
+            className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+            data-reveal
+            style={{ ['--d' as string]: '340ms' }}
+          >
+            <Button
+              href={safeHref(siteConfig.storeUrl)}
+              variant="store"
+              external
+              cursorLabel="Ver loja"
+            >
               Conheça nossa loja
             </Button>
-            <Button href="/assistencia-tecnica" variant="support" size="lg">
+            <Button href="/assistencia-tecnica" variant="support" cursorLabel="Assistência">
+              <IconWrench className="h-5 w-5" />
               Preciso de assistência técnica
             </Button>
           </div>
 
-          <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
-            {trustItems.map(({ icon: Icon, label }) => (
-              <li key={label} className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                <Icon className="h-5 w-5 shrink-0 text-brand-light" />
-                {label}
-              </li>
+          <dl
+            className="mt-12 grid max-w-lg grid-cols-3 gap-4 border-t border-white/[0.08] pt-6"
+            data-reveal
+            style={{ ['--d' as string]: '440ms' }}
+          >
+            {proof.map((item) => (
+              <div key={item.label}>
+                <dt className="font-display text-lg font-bold leading-none text-ink">
+                  {item.value}
+                </dt>
+                <dd className="mt-2 text-[13px] leading-snug text-ink-faint">{item.label}</dd>
+              </div>
             ))}
-          </ul>
+          </dl>
         </div>
 
-        {/* Painel visual: referência a consoles e controles sem infantilizar o layout. */}
-        <div className="relative hidden lg:block" aria-hidden="true">
-          <div className="surface relative overflow-hidden p-8">
-            <div className="absolute inset-0 grid-texture opacity-40" />
-            <div className="relative flex flex-col gap-6">
-              <div className="flex items-center gap-4 rounded-xl border border-white/10 bg-ink-900/80 p-5">
-                <IconGamepad className="h-10 w-10 text-brand" />
-                <div>
-                  <p className="font-display text-base font-bold text-white">Consoles e controles</p>
-                  <p className="text-sm text-slate-400">Diferentes gerações, no mesmo lugar.</p>
+        {/* O painel é a tela: liga, aquece e mostra os dois caminhos do negócio. */}
+        <div className="relative hidden lg:block" data-reveal style={{ ['--d' as string]: '200ms' }}>
+          <div
+            className="relative overflow-hidden rounded-[20px] border border-white/[0.1] bg-panel/80 animate-flicker"
+            data-tilt
+          >
+            <div aria-hidden="true" className="scanlines pointer-events-none absolute inset-0 opacity-40" />
+
+            <div className="flex items-center justify-between border-b border-white/[0.08] px-6 py-3">
+              <span className="label text-ink-faint">eletrogames · desde sempre</span>
+              <span className="flex gap-1.5" aria-hidden="true">
+                <span className="h-2 w-2 rounded-full bg-phosphor" />
+                <span className="h-2 w-2 rounded-full bg-white/15" />
+                <span className="h-2 w-2 rounded-full bg-white/15" />
+              </span>
+            </div>
+
+            <div className="p-7">
+              <p className="font-display text-[5.5rem] font-black leading-none text-ink text-glow">
+                <Counter to={28} />
+                <span className="text-phosphor">+</span>
+              </p>
+              <p className="mt-2 max-w-[16rem] text-sm leading-snug text-ink-muted">
+                anos acompanhando cada troca de geração dos consoles
+              </p>
+
+              <div className="mt-8 grid gap-3">
+                <div className="flex items-center gap-4 rounded-xl border border-phosphor/25 bg-phosphor/[0.06] p-4">
+                  <IconGamepad className="h-7 w-7 shrink-0 text-phosphor" />
+                  <div>
+                    <p className="text-sm font-semibold text-ink">Consoles e controles</p>
+                    <p className="text-[13px] text-ink-faint">Gerações diferentes, mesma loja.</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-center gap-4 rounded-xl border border-white/10 bg-ink-900/80 p-5">
-                <IconWrench className="h-10 w-10 text-accent-light" />
-                <div>
-                  <p className="font-display text-base font-bold text-white">Assistência técnica</p>
-                  <p className="text-sm text-slate-400">Diagnóstico, manutenção e reparo.</p>
+                <div className="flex items-center gap-4 rounded-xl border border-diag/25 bg-diag/[0.06] p-4">
+                  <IconWrench className="h-7 w-7 shrink-0 text-diag" />
+                  <div>
+                    <p className="text-sm font-semibold text-ink">Assistência técnica</p>
+                    <p className="text-[13px] text-ink-faint">Diagnóstico, manutenção e reparo.</p>
+                  </div>
                 </div>
-              </div>
-              <div className="rounded-xl border border-brand/25 bg-brand/10 p-5">
-                <p className="font-display text-4xl font-black text-white">+28</p>
-                <p className="mt-1 text-sm font-medium text-brand-light">
-                  anos acompanhando a evolução dos videogames
-                </p>
               </div>
             </div>
           </div>
+
+          <a
+            href={whatsappLink(whatsappMessages.support)}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-magnetic="0.3"
+            className="absolute -bottom-6 -left-7 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-panel-high px-4 py-3 text-sm font-semibold text-ink shadow-2xl shadow-black/50 transition-colors hover:border-diag/50 hover:text-diag"
+          >
+            <IconWhatsApp className="h-4 w-4 text-diag" />
+            Meu console parou. E agora?
+          </a>
         </div>
       </div>
     </section>

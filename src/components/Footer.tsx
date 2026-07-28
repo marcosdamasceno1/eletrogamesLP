@@ -12,40 +12,58 @@ const footerLinks = [
   { label: 'Política de Privacidade', href: '/politica-de-privacidade' },
 ];
 
+const contact = [
+  { icon: IconPhone, label: 'Telefone', value: siteConfig.phone, href: undefined },
+  {
+    icon: IconWhatsApp,
+    label: 'WhatsApp',
+    value: siteConfig.whatsappDisplay,
+    href: whatsappLink(whatsappMessages.general),
+  },
+  {
+    icon: IconInstagram,
+    label: 'Instagram',
+    value: siteConfig.instagram,
+    href: safeHref(siteConfig.instagramUrl),
+  },
+  { icon: IconClock, label: 'Horário', value: siteConfig.openingHours, href: undefined },
+];
+
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-ink-900" aria-labelledby="footer-title">
+    <footer className="relative border-t border-white/[0.08] bg-panel/50" aria-labelledby="footer-title">
       <h2 id="footer-title" className="sr-only">
         Informações da Eletrogames
       </h2>
 
-      <div className="container-site grid gap-12 py-16 lg:grid-cols-[1.2fr_0.8fr_1fr]">
+      <div className="container-site grid gap-14 py-16 lg:grid-cols-[1.2fr_0.7fr_1.1fr]">
         <div>
           <Logo />
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-slate-400">
-            Mais de 28 anos de experiência no universo dos videogames. Venda de consoles,
-            controles, periféricos e acessórios, além de assistência técnica especializada.
+          <p className="mt-6 max-w-sm text-sm leading-relaxed text-ink-faint">
+            Mais de 28 anos de experiência no universo dos videogames. Venda de consoles, controles,
+            periféricos e acessórios, com assistência técnica especializada.
           </p>
           <a
             href={safeHref(siteConfig.storeUrl)}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex min-h-[48px] items-center rounded-xl bg-brand px-5 text-sm font-bold uppercase tracking-wide text-ink-950 transition-colors hover:bg-brand-light"
+            data-magnetic="0.22"
+            data-cursor="Ver loja"
+            className="mt-7 inline-flex min-h-[48px] items-center rounded-xl bg-phosphor px-5 text-sm font-bold uppercase tracking-wide text-void transition-colors hover:bg-phosphor-soft"
           >
             Loja Online
           </a>
         </div>
 
         <nav aria-label="Links do rodapé">
-          <h3 className="font-display text-sm font-bold uppercase tracking-wider text-white">
-            Navegação
-          </h3>
-          <ul className="mt-5 space-y-3">
+          <h3 className="label text-ink-faint">Navegação</h3>
+          {/* py generoso: no celular cada link precisa de alvo de toque de 44px */}
+          <ul className="mt-4">
             {footerLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm text-slate-400 transition-colors hover:text-white"
+                  className="link-underline inline-flex min-h-[44px] items-center text-sm text-ink-muted transition-colors hover:text-ink"
                 >
                   {link.label}
                 </Link>
@@ -55,55 +73,40 @@ export default function Footer() {
         </nav>
 
         <div>
-          <h3 className="font-display text-sm font-bold uppercase tracking-wider text-white">
-            Contato
-          </h3>
-          <ul className="mt-5 space-y-4 text-sm text-slate-400">
-            <li className="flex gap-3">
-              <IconPin className="h-5 w-5 shrink-0 text-brand" />
-              <span>
+          <h3 className="label text-ink-faint">Contato</h3>
+          <ul className="mt-6 space-y-4 text-sm">
+            <li className="flex gap-3.5">
+              <IconPin className="h-5 w-5 shrink-0 text-phosphor" />
+              <span className="text-ink-muted">
                 {siteConfig.address.street}
                 <br />
                 {siteConfig.address.city} — {siteConfig.address.state}
               </span>
             </li>
-            <li className="flex gap-3">
-              <IconPhone className="h-5 w-5 shrink-0 text-brand" />
-              <span>{siteConfig.phone}</span>
-            </li>
-            <li className="flex gap-3">
-              <IconWhatsApp className="h-5 w-5 shrink-0 text-brand" />
-              <a
-                href={whatsappLink(whatsappMessages.general)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-white"
-              >
-                {siteConfig.whatsappDisplay}
-              </a>
-            </li>
-            <li className="flex gap-3">
-              <IconInstagram className="h-5 w-5 shrink-0 text-brand" />
-              <a
-                href={safeHref(siteConfig.instagramUrl)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-white"
-              >
-                {siteConfig.instagram}
-              </a>
-            </li>
-            <li className="flex gap-3">
-              <IconClock className="h-5 w-5 shrink-0 text-brand" />
-              <span>{siteConfig.openingHours}</span>
-            </li>
+            {contact.map(({ icon: Icon, label, value, href }) => (
+              <li key={label} className="flex gap-3.5">
+                <Icon className="h-5 w-5 shrink-0 text-phosphor" />
+                {href && href !== '#' ? (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline inline-flex min-h-[32px] items-center text-ink-muted transition-colors hover:text-ink"
+                  >
+                    {value}
+                  </a>
+                ) : (
+                  <span className="text-ink-muted">{value}</span>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
 
-      <div className="hairline">
+      <div className="border-t border-white/[0.06]">
         <div className="container-site py-6">
-          <p className="text-xs text-slate-500">
+          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-faint">
             © {new Date().getFullYear()} Eletrogames. Todos os direitos reservados.
           </p>
         </div>

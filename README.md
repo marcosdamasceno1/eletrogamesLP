@@ -9,7 +9,44 @@ e acessórios, além de assistência técnica de consoles e controles/manetes.
 - **Next.js 15** (App Router) + **React 19**
 - **TypeScript**
 - **Tailwind CSS 3**
-- Zero dependências de UI de terceiros — ícones em SVG inline, acordeão em `<details>` nativo
+- Zero dependências de UI, animação ou 3D. Ícones em SVG inline, acordeão em `<details>`
+  nativo, e todos os efeitos escritos à mão em CSS + um único observer.
+
+## Direção de arte
+
+A paleta vem do próprio assunto: o grafite azulado de um aparelho desligado, o âmbar
+de fósforo de um tubo de imagem e o ciano de instrumento de bancada.
+
+Os dois acentos carregam significado e nunca se misturam:
+
+- **âmbar** (`phosphor`) = comprar. Loja online, produtos, CTAs de venda.
+- **ciano** (`diag`) = consertar. Assistência técnica, avaliação, diagnóstico.
+
+Tipografia: **Archivo** nos títulos (grotesca industrial pesada), **IBM Plex Sans** no
+texto e **IBM Plex Mono** nos rótulos. A família Plex nasceu de documentação de
+engenharia, que é o registro de quem trabalha em bancada.
+
+O elemento de assinatura é a **partida de tubo**: o site abre com um filete de fósforo
+riscando a tela, que se abre na vertical e sobe como cortina para dentro do hero. A
+grade de abertura e o grão de fósforo continuam presentes, bem discretos, no resto da
+página. Roda uma vez por sessão e não roda para quem pediu movimento reduzido.
+
+## Efeitos e onde eles moram
+
+Quase tudo está em `src/components/fx/Interactions.tsx`, um único componente cliente
+com um observer, um listener de ponteiro e um de rolagem para a página inteira. Os
+efeitos são delegados por atributo, então conteúdo renderizado no servidor participa
+sem virar componente cliente:
+
+- `data-reveal` — sobe e revela ao entrar na tela (`--d` controla o atraso)
+- `data-tilt` — cartão inclina sob o ponteiro
+- `data-magnetic="0.22"` — o elemento persegue o ponteiro (o número é a força)
+- `data-cursor="Ver loja"` — o cursor vira um disco com esse rótulo;
+  `data-cursor-tone="diag"` pinta o disco de ciano
+
+Cursor, ímã e inclinação só entram em ponteiros finos. Nada disso roda no toque nem
+para quem pediu movimento reduzido, e o conteúdo nunca fica escondido esperando
+animação: sem JavaScript, o `<noscript>` deixa tudo visível.
 
 ## Como rodar
 
@@ -51,7 +88,7 @@ Schema.org omite o campo em vez de publicar dado falso.
   base e precisa de revisão jurídica antes da publicação.
 - **Logotipo e cores** — `src/components/Logo.tsx` traz uma marca provisória em texto.
   Ao receber o logotipo oficial, substitua por `<Image />` e ajuste as cores da marca
-  em `tailwind.config.ts` (`brand` e `accent`).
+  em `tailwind.config.ts` (`phosphor` e `diag`). Todo o site deriva desses dois grupos.
 
 ## Estrutura
 
@@ -69,6 +106,7 @@ src/
 │                                    # ServiceCard, Benefits, History, FAQ, CTA,
 │                                    # Footer, WhatsAppButton, TrustBar, Steps,
 │                                    # Testimonials, ContactInfo, PageHero, Icons…
+│  └─ fx/                            # Interactions, Preloader, SplitText, Counter
 └─ lib/
    ├─ site.ts                        # dados da empresa, navegação, mensagens de WhatsApp
    └─ schema.ts                      # Schema.org (Store, Service, FAQPage)
@@ -76,8 +114,8 @@ src/
 
 ## Decisões de conversão
 
-- **CTA de loja e CTA de assistência são sempre visualmente distintos**: verde sólido
-  para a loja, azul para o serviço técnico. O usuário nunca confunde os dois caminhos.
+- **CTA de loja e CTA de assistência são sempre visualmente distintos**: âmbar para a
+  loja, ciano para o serviço técnico. O usuário nunca confunde os dois caminhos.
 - Os links de WhatsApp já saem com mensagem pré-preenchida por contexto
   (`whatsappMessages` em `src/lib/site.ts`): geral, assistência, console, controle.
 - `/assistencia-tecnica` funciona como landing independente, pronta para receber
@@ -96,7 +134,9 @@ src/
 ## Acessibilidade e performance
 
 - Contraste alto sobre fundo escuro, foco visível em todos os elementos interativos
-- Skip link, aria-labels no menu e no botão de WhatsApp, alvos de toque ≥ 44px
-- Acordeão do FAQ em `<details>/<summary>` — funciona sem JavaScript
-- Todas as rotas são estáticas; JS compartilhado ~105 kB; `prefers-reduced-motion`
-  desativa as animações
+- Skip link, aria-labels no menu e no botão de WhatsApp
+- Acordeão do FAQ em `<details>/<summary>`, funciona sem JavaScript
+- Alvos de toque de 44px ou mais no celular, sem overflow horizontal de 320px a 1440px
+- Todas as rotas são estáticas. 110 kB de JS na home, dentro do orçamento de 150 kB
+  que essa página precisa manter para receber tráfego pago no celular
+- `prefers-reduced-motion` remove o movimento e mantém a estética

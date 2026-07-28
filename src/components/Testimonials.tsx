@@ -1,11 +1,11 @@
 import SectionTitle from './SectionTitle';
 
 /**
- * Estrutura pronta para depoimentos REAIS.
+ * Componente pronto para avaliações REAIS.
  *
- * Nenhuma avaliação foi inventada. Para publicar, substitua os placeholders
- * abaixo pelos depoimentos reais — ou troque este array pela resposta de uma
- * integração (Google Business Profile, por exemplo), mantendo o mesmo formato.
+ * Nenhum depoimento foi escrito por nós. Para publicar, troque os
+ * placeholders pelas avaliações reais, ou substitua este array pela resposta
+ * de uma integração (Google Business Profile, por exemplo) mantendo o formato.
  */
 type Testimonial = { quote: string; author: string; context?: string };
 
@@ -17,24 +17,35 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials() {
   return (
-    <section id="depoimentos" className="relative py-20 sm:py-28" aria-labelledby="depoimentos-title">
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink-900" />
+    <section id="depoimentos" className="relative py-24 sm:py-32" aria-labelledby="depoimentos-title">
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-panel/40" />
 
       <div className="container-site">
         <SectionTitle
           eyebrow="Depoimentos"
-          title={<span id="depoimentos-title">Quem conhece, recomenda.</span>}
+          id="depoimentos-title"
+          title="Quem conhece, recomenda."
+          highlight="recomenda."
           description="Espaço reservado para as avaliações reais de clientes da Eletrogames."
         />
 
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <li key={index} className="surface flex h-full flex-col justify-between gap-6 border-dashed p-6">
-              <p className="text-base leading-relaxed text-slate-300">“{testimonial.quote}”</p>
-              <div className="hairline pt-4">
-                <p className="text-sm font-semibold text-white">{testimonial.author}</p>
+            <li
+              key={index}
+              className="flex h-full flex-col justify-between gap-6 rounded-[var(--radius)] border border-dashed border-white/12 p-6"
+              data-reveal
+              style={{ ['--d' as string]: `${index * 90}ms` }}
+            >
+              <p className="font-mono text-sm leading-relaxed text-ink-faint">
+                {testimonial.quote}
+              </p>
+              <div className="border-t border-white/[0.07] pt-4">
+                <p className="font-mono text-xs uppercase tracking-[0.16em] text-ink-faint">
+                  {testimonial.author}
+                </p>
                 {testimonial.context ? (
-                  <p className="text-xs text-slate-500">{testimonial.context}</p>
+                  <p className="mt-1 text-xs text-ink-faint/70">{testimonial.context}</p>
                 ) : null}
               </div>
             </li>

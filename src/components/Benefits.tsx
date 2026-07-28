@@ -16,7 +16,7 @@ const reasons = [
   },
   {
     icon: IconStore,
-    title: 'Venda + Assistência',
+    title: 'Venda e assistência',
     text: 'O cliente encontra produtos e suporte técnico especializado em um mesmo lugar.',
   },
   {
@@ -28,38 +28,41 @@ const reasons = [
 
 export default function Benefits() {
   return (
-    <section
-      id="por-que-escolher"
-      className="relative py-20 sm:py-28"
-      aria-labelledby="por-que-title"
-    >
+    <section id="por-que-escolher" className="relative py-24 sm:py-32" aria-labelledby="por-que-title">
       <div className="container-site">
         <SectionTitle
-          eyebrow="Por que escolher a Eletrogames"
-          title={<span id="por-que-title">Experiência não se improvisa.</span>}
-          description="Videogame não é uma linha de produto que a Eletrogames resolveu adicionar. É o que fazemos há mais de 28 anos, todos os dias, na venda e na bancada."
+          eyebrow="Por que a Eletrogames"
+          id="por-que-title"
+          title="Experiência não se improvisa."
+          highlight="improvisa."
+          description="Videogame é o único assunto da Eletrogames há mais de 28 anos. Todo dia, no balcão e na bancada."
         />
 
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2">
-          {reasons.map(({ icon: Icon, title, text }) => (
-            <li key={title} className="surface flex gap-5 p-6">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-brand-light">
-                <Icon className="h-6 w-6" />
+        <ul className="mt-14 grid gap-5 sm:grid-cols-2">
+          {reasons.map(({ icon: Icon, title, text }, index) => (
+            <li
+              key={title}
+              className="surface group flex gap-5 p-6 transition-colors duration-300 hover:border-phosphor/30"
+              data-reveal
+              style={{ ['--d' as string]: `${index * 80}ms` }}
+            >
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 text-phosphor transition-colors duration-300 group-hover:border-phosphor/40">
+                <Icon className="h-5 w-5" />
               </span>
               <div>
-                <h3 className="font-display text-lg font-bold text-white">{title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-slate-400">{text}</p>
+                <h3 className="text-[17px] font-bold text-ink">{title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-faint">{text}</p>
               </div>
             </li>
           ))}
         </ul>
 
-        <div className="mt-10">
+        <div className="mt-10" data-reveal>
           <Button
             href={whatsappLink(whatsappMessages.general)}
             variant="support"
-            size="lg"
             external
+            cursorLabel="Falar"
             className="w-full sm:w-auto"
           >
             <IconWhatsApp className="h-5 w-5" />

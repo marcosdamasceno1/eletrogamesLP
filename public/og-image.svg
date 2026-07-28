@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Eletrogames — mais de 28 anos vivendo o universo dos videogames">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0B0D12"/>
-      <stop offset="100%" stop-color="#07080B"/>
+      <stop offset="0%" stop-color="#101219"/>
+      <stop offset="100%" stop-color="#08090D"/>
     </linearGradient>
     <radialGradient id="halo" cx="50%" cy="0%" r="70%">
-      <stop offset="0%" stop-color="#12B76A" stop-opacity="0.28"/>
-      <stop offset="100%" stop-color="#12B76A" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#FFA92E" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#FFA92E" stop-opacity="0"/>
     </radialGradient>
     <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
       <path d="M56 0H0V56" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
@@ -17,15 +17,15 @@
   <rect width="1200" height="630" fill="url(#grid)"/>
   <rect width="1200" height="630" fill="url(#halo)"/>
 
-  <rect x="80" y="88" width="72" height="72" rx="18" fill="#12B76A"/>
-  <text x="116" y="140" font-family="Verdana, sans-serif" font-size="40" font-weight="bold" fill="#07080B" text-anchor="middle">E</text>
-  <text x="176" y="127" font-family="Verdana, sans-serif" font-size="30" font-weight="bold" fill="#FFFFFF">ELETRO<tspan fill="#12B76A">GAMES</tspan></text>
+  <rect x="80" y="88" width="72" height="72" rx="18" fill="#FFA92E"/>
+  <text x="116" y="141" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="40" font-weight="bold" fill="#08090D" text-anchor="middle">E</text>
+  <text x="176" y="127" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="30" font-weight="bold" fill="#FFFFFF">ELETRO<tspan fill="#FFA92E">GAMES</tspan></text>
 
-  <text x="80" y="300" font-family="Verdana, sans-serif" font-size="60" font-weight="bold" fill="#FFFFFF">Mais de 28 anos vivendo</text>
-  <text x="80" y="376" font-family="Verdana, sans-serif" font-size="60" font-weight="bold" fill="#FFFFFF">o universo dos <tspan fill="#12B76A">videogames</tspan>.</text>
+  <text x="80" y="300" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="60" font-weight="bold" fill="#FFFFFF">Mais de 28 anos vivendo</text>
+  <text x="80" y="376" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="60" font-weight="bold" fill="#FFFFFF">o universo dos <tspan fill="#FFA92E">videogames</tspan>.</text>
 
-  <text x="80" y="452" font-family="Verdana, sans-serif" font-size="26" fill="#94A3B8">Consoles • Controles • Periféricos • Acessórios</text>
-  <text x="80" y="494" font-family="Verdana, sans-serif" font-size="26" fill="#94A3B8">Assistência técnica especializada em videogames</text>
+  <text x="80" y="452" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="26" fill="#99A0B2">Consoles • Controles • Periféricos • Acessórios</text>
+  <text x="80" y="494" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="26" fill="#99A0B2">Assistência técnica especializada em videogames</text>
 
-  <rect x="80" y="540" width="360" height="8" rx="4" fill="#12B76A"/>
+  <rect x="80" y="540" width="360" height="8" rx="4" fill="#FFA92E"/>
 </svg>

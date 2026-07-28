@@ -1,24 +1,39 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Sora } from 'next/font/google';
+import { Archivo, IBM_Plex_Mono, IBM_Plex_Sans } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import JsonLd from '@/components/JsonLd';
+import Interactions from '@/components/fx/Interactions';
+import Preloader from '@/components/fx/Preloader';
 import { storeSchema } from '@/lib/schema';
 import { isPlaceholder, siteConfig } from '@/lib/site';
 
-const inter = Inter({
+/**
+ * Archivo para os títulos (grotesca industrial, pesada sem ficar decorativa),
+ * IBM Plex para o texto e os rótulos: a família nasceu de documentação de
+ * engenharia, que é exatamente o registro de quem trabalha em bancada.
+ */
+const archivo = Archivo({
   subsets: ['latin'],
   display: 'swap',
+  weight: ['700', '800', '900'],
+  variable: '--font-display',
+});
+
+const plexSans = IBM_Plex_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '600'],
   variable: '--font-sans',
 });
 
-const sora = Sora({
+const plexMono = IBM_Plex_Mono({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['600', '700', '800'],
-  variable: '--font-display',
+  weight: ['500'],
+  variable: '--font-mono',
 });
 
 const siteUrl = isPlaceholder(siteConfig.url) ? undefined : siteConfig.url;
@@ -26,8 +41,7 @@ const siteUrl = isPlaceholder(siteConfig.url) ? undefined : siteConfig.url;
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
   title: {
-    default:
-      'Eletrogames | Loja de videogames e assistência técnica há mais de 28 anos',
+    default: 'Eletrogames | Loja de videogames e assistência técnica há mais de 28 anos',
     template: '%s | Eletrogames',
   },
   description:
@@ -65,25 +79,39 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#07080B',
+  themeColor: '#08090D',
   width: 'device-width',
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="pt-BR" className={`${archivo.variable} ${plexSans.variable} ${plexMono.variable}`}>
       <body className="font-sans">
+        {/* Sem JavaScript o site continua legível: nada fica esperando animação. */}
+        <noscript>
+          <style
+            dangerouslySetInnerHTML={{
+              __html:
+                '[data-reveal]{opacity:1!important;transform:none!important}.split-word>span{transform:none!important}',
+            }}
+          />
+        </noscript>
+
+        <Preloader />
+
         <a
           href="#conteudo"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-brand focus:px-4 focus:py-3 focus:font-semibold focus:text-ink-950"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-phosphor focus:px-4 focus:py-3 focus:font-semibold focus:text-void"
         >
           Ir para o conteúdo principal
         </a>
+
         <Header />
         <main id="conteudo">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <Interactions />
         <JsonLd data={storeSchema()} />
       </body>
     </html>

@@ -36,9 +36,9 @@ export const metadata: Metadata = {
 };
 
 const consoleTopics = [
-  'Avaliação de consoles que não ligam ou desligam inesperadamente',
-  'Análise de falhas de funcionamento apresentadas durante o uso',
-  'Verificação de problemas de conexão do equipamento',
+  'Consoles que não ligam ou desligam sozinhos',
+  'Falhas de funcionamento que aparecem durante o uso',
+  'Problemas de conexão do aparelho',
   'Diagnóstico técnico antes de qualquer serviço',
 ];
 
@@ -46,7 +46,7 @@ const controllerTopics = [
   'Controles e manetes que não respondem corretamente',
   'Botões e analógicos com problemas de funcionamento',
   'Falhas de conexão entre controle e console',
-  'Avaliação técnica de controles de diferentes gerações',
+  'Avaliação de controles de diferentes gerações',
 ];
 
 const differentials = [
@@ -57,18 +57,18 @@ const differentials = [
   },
   {
     icon: IconWrench,
-    title: 'Foco em videogames',
-    text: 'Não somos uma assistência genérica: consoles e controles são o nosso dia a dia.',
+    title: 'Videogame o dia inteiro',
+    text: 'Não somos uma assistência genérica. Console e controle são o nosso trabalho diário.',
   },
   {
     icon: IconShield,
     title: 'Diagnóstico antes do serviço',
-    text: 'A avaliação técnica vem primeiro. O serviço só acontece após a sua aprovação.',
+    text: 'A avaliação vem primeiro. O serviço acontece depois da sua aprovação.',
   },
   {
     icon: IconStore,
-    title: 'Venda e assistência juntas',
-    text: 'Produtos e suporte técnico especializado no mesmo lugar.',
+    title: 'Loja e bancada juntas',
+    text: 'Produtos e suporte técnico especializado no mesmo endereço.',
   },
 ];
 
@@ -76,8 +76,10 @@ export default function AssistenciaTecnicaPage() {
   return (
     <>
       <PageHero
-        eyebrow="Assistência Técnica"
+        eyebrow="Assistência técnica"
+        tone="diag"
         title="Assistência técnica especializada em videogames"
+        highlight="especializada"
         description="Seu console ou controle apresentou problema? Fale com quem possui mais de 28 anos de experiência no universo dos videogames."
         trust={[
           '+28 anos de experiência',
@@ -88,59 +90,66 @@ export default function AssistenciaTecnicaPage() {
         <Button
           href={whatsappLink(whatsappMessages.support)}
           variant="support"
-          size="lg"
           external
+          cursorLabel="Avaliação"
         >
           <IconWhatsApp className="h-5 w-5" />
           Solicitar avaliação técnica
         </Button>
-        <Button href="#como-funciona" variant="ghost" size="lg">
+        <Button href="#como-funciona" variant="ghost" cursorLabel="Ver">
           Como funciona a avaliação
         </Button>
       </PageHero>
 
       <TrustBar />
 
-      {/* 3. Problemas atendidos */}
-      <section className="py-20 sm:py-28" aria-labelledby="problemas-title">
+      {/* Problemas atendidos */}
+      <section className="py-24 sm:py-32" aria-labelledby="problemas-title">
         <div className="container-site">
           <SectionTitle
             eyebrow="Problemas atendidos"
-            title={<span id="problemas-title">Seu videogame está apresentando algum destes sinais?</span>}
+            id="problemas-title"
+            tone="diag"
+            title="Seu videogame está apresentando algum destes sinais?"
+            highlight="sinais?"
             description="Se o seu equipamento se encaixa em alguma dessas situações, ele pode passar por uma avaliação técnica na Eletrogames."
           />
-          <div className="mt-12">
+          <div className="mt-14">
             <CommonProblems />
           </div>
         </div>
       </section>
 
-      {/* 4 e 5. Manutenção de consoles e de controles */}
-      <section className="relative py-20 sm:py-28" aria-labelledby="manutencao-title">
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink-900" />
+      {/* Manutenção de consoles e de controles */}
+      <section className="relative py-24 sm:py-32" aria-labelledby="manutencao-title">
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-panel/40" />
         <div className="container-site">
           <SectionTitle
             eyebrow="Nossos serviços"
-            title={<span id="manutencao-title">Manutenção de consoles e de controles</span>}
-            description="A Eletrogames é especializada em diagnóstico, manutenção e reparo dos dois lados do equipamento: o console e o que você tem nas mãos."
+            id="manutencao-title"
+            tone="diag"
+            title="Manutenção de consoles e de controles"
+            highlight="controles"
+            description="A Eletrogames trabalha com os dois lados do equipamento: o aparelho que fica na estante e o que você segura na mão."
           />
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            <article className="rounded-2xl border border-accent/20 bg-ink-800/60 p-8">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent-light">
+          <div className="mt-14 grid gap-6 lg:grid-cols-2">
+            <article
+              className="rounded-[var(--radius)] border border-diag/20 bg-panel-raised/50 p-8"
+              data-reveal
+            >
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-diag/30 bg-diag/[0.08] text-diag">
                 <IconWrench className="h-6 w-6" />
               </span>
-              <h3 className="mt-5 font-display text-2xl font-bold text-white">
-                Manutenção de consoles
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-400">
+              <h3 className="mt-6 text-2xl font-bold text-ink">Manutenção de consoles</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-ink-faint">
                 Diagnóstico e manutenção especializada para diferentes tipos de problemas
                 apresentados por consoles, com análise técnica antes de qualquer serviço.
               </p>
-              <ul className="mt-6 space-y-3">
+              <ul className="mt-7 space-y-3">
                 {consoleTopics.map((topic) => (
-                  <li key={topic} className="flex gap-3 text-sm text-slate-300">
-                    <IconCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand-light" />
+                  <li key={topic} className="flex gap-3 text-[15px] text-ink-muted">
+                    <IconCheck className="mt-0.5 h-5 w-5 shrink-0 text-diag" />
                     {topic}
                   </li>
                 ))}
@@ -148,29 +157,33 @@ export default function AssistenciaTecnicaPage() {
               <Button
                 href={whatsappLink(whatsappMessages.console)}
                 variant="support"
-                className="mt-7 w-full sm:w-auto"
+                size="md"
                 external
+                cursorLabel="Falar"
+                className="mt-8 w-full sm:w-auto"
               >
                 <IconWhatsApp className="h-5 w-5" />
                 Falar sobre meu console
               </Button>
             </article>
 
-            <article className="rounded-2xl border border-accent/20 bg-ink-800/60 p-8">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent-light">
+            <article
+              className="rounded-[var(--radius)] border border-diag/20 bg-panel-raised/50 p-8"
+              data-reveal
+              style={{ ['--d' as string]: '110ms' }}
+            >
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-diag/30 bg-diag/[0.08] text-diag">
                 <IconGamepad className="h-6 w-6" />
               </span>
-              <h3 className="mt-5 font-display text-2xl font-bold text-white">
-                Manutenção de controles
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-400">
+              <h3 className="mt-6 text-2xl font-bold text-ink">Manutenção de controles</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-ink-faint">
                 Avaliação e reparo de controles e manetes, com atenção às queixas mais comuns de
                 quem joga com frequência.
               </p>
-              <ul className="mt-6 space-y-3">
+              <ul className="mt-7 space-y-3">
                 {controllerTopics.map((topic) => (
-                  <li key={topic} className="flex gap-3 text-sm text-slate-300">
-                    <IconCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand-light" />
+                  <li key={topic} className="flex gap-3 text-[15px] text-ink-muted">
+                    <IconCheck className="mt-0.5 h-5 w-5 shrink-0 text-diag" />
                     {topic}
                   </li>
                 ))}
@@ -178,8 +191,10 @@ export default function AssistenciaTecnicaPage() {
               <Button
                 href={whatsappLink(whatsappMessages.controller)}
                 variant="support"
-                className="mt-7 w-full sm:w-auto"
+                size="md"
                 external
+                cursorLabel="Falar"
+                className="mt-8 w-full sm:w-auto"
               >
                 <IconWhatsApp className="h-5 w-5" />
                 Falar sobre meu controle
@@ -187,34 +202,40 @@ export default function AssistenciaTecnicaPage() {
             </article>
           </div>
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {supportServices.map((service) => (
-              <ServiceCard key={service.title} {...service} />
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {supportServices.map((service, index) => (
+              <ServiceCard key={service.title} index={index} {...service} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* 6. Como funciona a avaliação */}
       <Steps />
 
-      {/* 7. Diferenciais */}
-      <section className="py-20 sm:py-28" aria-labelledby="diferenciais-title">
+      {/* Diferenciais */}
+      <section className="py-24 sm:py-32" aria-labelledby="diferenciais-title">
         <div className="container-site">
           <SectionTitle
             eyebrow="Diferenciais"
-            title={<span id="diferenciais-title">Por que trazer seu equipamento para a Eletrogames</span>}
-            description="Experiência não se improvisa. São mais de 28 anos convivendo com consoles e controles, na venda e na parte técnica."
+            id="diferenciais-title"
+            title="Por que trazer seu equipamento para a Eletrogames"
+            highlight="Eletrogames"
+            description="Experiência não se improvisa. São mais de 28 anos convivendo com consoles e controles, no balcão e na bancada."
           />
-          <ul className="mt-12 grid gap-5 sm:grid-cols-2">
-            {differentials.map(({ icon: Icon, title, text }) => (
-              <li key={title} className="surface flex gap-5 p-6">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-brand-light">
-                  <Icon className="h-6 w-6" />
+          <ul className="mt-14 grid gap-5 sm:grid-cols-2">
+            {differentials.map(({ icon: Icon, title, text }, index) => (
+              <li
+                key={title}
+                className="surface flex gap-5 p-6"
+                data-reveal
+                style={{ ['--d' as string]: `${index * 80}ms` }}
+              >
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 text-diag">
+                  <Icon className="h-5 w-5" />
                 </span>
                 <div>
-                  <h3 className="font-display text-lg font-bold text-white">{title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate-400">{text}</p>
+                  <h3 className="text-[17px] font-bold text-ink">{title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink-faint">{text}</p>
                 </div>
               </li>
             ))}
@@ -222,24 +243,22 @@ export default function AssistenciaTecnicaPage() {
         </div>
       </section>
 
-      {/* 8. FAQ */}
       <FAQ
         items={supportFaq}
+        tone="diag"
         title="Dúvidas sobre a assistência técnica"
         description="O que mais nos perguntam antes de trazer um console ou controle para avaliação."
       />
 
-      {/* 9. CTA WhatsApp */}
       <CTA
-        title="Antes de substituir seu equipamento, fale com nossos especialistas."
-        text="Descreva o que está acontecendo com seu console ou controle e solicite uma avaliação técnica com quem trabalha com videogames há mais de 28 anos."
+        title="Antes de trocar de aparelho, vale uma avaliação."
+        text="Descreva o que está acontecendo com seu console ou controle e fale com quem trabalha com videogame há mais de 28 anos."
         whatsappMessage={whatsappMessages.support}
         primaryLabel="Acessar a Loja"
         secondaryLabel="Solicitar avaliação técnica"
       />
 
-      {/* 10. Localização e contato */}
-      <ContactInfo description="Traga seu equipamento ou fale com a equipe antes de vir — o que for mais prático para você." />
+      <ContactInfo description="Traga seu equipamento ou fale com a equipe antes de vir, o que for mais prático para você." />
 
       <JsonLd data={serviceSchema()} />
       <JsonLd data={faqSchema(supportFaq)} />

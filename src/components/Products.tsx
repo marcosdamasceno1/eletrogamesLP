@@ -12,7 +12,7 @@ const categories = [
   },
   {
     icon: IconGamepad,
-    title: 'Controles e Manetes',
+    title: 'Controles e manetes',
     description: 'Controles, acessórios e soluções para diferentes consoles.',
   },
   {
@@ -30,31 +30,36 @@ const categories = [
 
 export default function Products() {
   return (
-    <section id="produtos" className="relative py-20 sm:py-28" aria-labelledby="produtos-title">
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink-900" />
+    <section id="produtos" className="relative py-24 sm:py-32" aria-labelledby="produtos-title">
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-panel/40" />
 
       <div className="container-site">
         <SectionTitle
           eyebrow="Produtos"
-          title={<span id="produtos-title">O que você encontra na Eletrogames</span>}
-          description="Da geração que você jogou na infância ao console que acabou de chegar: trabalhamos com produtos para quem está montando o primeiro setup e para quem já sabe exatamente o que procura."
+          id="produtos-title"
+          title="O que você encontra na Eletrogames"
+          highlight="encontra"
+          description="Tem quem chegue com o modelo decidido e quem chegue sem saber por onde começar. Nos dois casos, alguém aqui já mexeu nesse aparelho antes."
         />
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {categories.map((category) => (
-            <ProductCard key={category.title} {...category} />
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {categories.map((category, index) => (
+            <ProductCard key={category.title} index={index} {...category} />
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-start gap-6 rounded-2xl border border-brand/20 bg-brand/5 p-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-display text-xl font-bold leading-snug text-white sm:text-2xl">
+        <div
+          className="mt-14 flex flex-col items-start gap-7 rounded-[var(--radius)] border border-phosphor/20 bg-phosphor/[0.05] p-8 sm:flex-row sm:items-center sm:justify-between"
+          data-reveal
+        >
+          <p className="font-display text-xl font-bold leading-snug text-ink sm:text-2xl">
             Encontre tudo para o seu videogame em um só lugar.
           </p>
           <Button
             href={safeHref(siteConfig.storeUrl)}
             variant="store"
-            size="lg"
             external
+            cursorLabel="Ver loja"
             className="w-full shrink-0 sm:w-auto"
           >
             Ver produtos na loja

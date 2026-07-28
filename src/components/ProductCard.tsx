@@ -4,16 +4,27 @@ type Props = {
   icon: ComponentType<SVGProps<SVGSVGElement>>;
   title: string;
   description: string;
+  index?: number;
 };
 
-export default function ProductCard({ icon: Icon, title, description }: Props) {
+export default function ProductCard({ icon: Icon, title, description, index = 0 }: Props) {
   return (
-    <article className="surface group flex h-full flex-col gap-4 p-6 transition-colors duration-200 hover:border-brand/40 hover:bg-ink-700/70">
-      <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-brand/25 bg-brand/10 text-brand-light">
+    <article
+      data-tilt
+      data-reveal
+      style={{ ['--d' as string]: `${index * 80}ms` }}
+      className="group relative h-full overflow-hidden rounded-[var(--radius)] border border-white/[0.08] bg-panel-raised/60 p-6 transition-colors duration-300 hover:border-phosphor/40"
+    >
+      {/* halo âmbar que acende no hover */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-phosphor/[0.12] opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+      />
+      <span className="relative flex h-12 w-12 items-center justify-center rounded-xl border border-phosphor/25 bg-phosphor/[0.08] text-phosphor">
         <Icon className="h-6 w-6" />
       </span>
-      <h3 className="font-display text-lg font-bold text-white">{title}</h3>
-      <p className="text-sm leading-relaxed text-slate-400">{description}</p>
+      <h3 className="relative mt-5 text-lg font-bold text-ink">{title}</h3>
+      <p className="relative mt-2.5 text-sm leading-relaxed text-ink-faint">{description}</p>
     </article>
   );
 }

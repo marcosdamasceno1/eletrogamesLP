@@ -4,110 +4,127 @@ import { IconClock, IconUsers, IconWrench, IconSparkle } from './Icons';
 const pillars = [
   {
     icon: IconClock,
-    title: 'Experiência acumulada',
-    text: 'Mais de 28 anos convivendo com o mercado de videogames, de geração em geração.',
+    title: 'Tempo de bancada',
+    text: 'Mais de 28 anos no mesmo segmento, atravessando cada troca de geração.',
   },
   {
     icon: IconWrench,
     title: 'Conhecimento técnico',
-    text: 'Quem trabalha há décadas com consoles aprende a olhar cada equipamento com critério.',
+    text: 'Quem abre console há décadas aprende a olhar cada aparelho com critério.',
   },
   {
     icon: IconUsers,
     title: 'Relacionamento',
-    text: 'Clientes que voltam, indicam e trazem a próxima geração da família até a loja.',
+    text: 'Clientes que voltam e indicam. É o que sustenta uma loja por tanto tempo.',
   },
   {
     icon: IconSparkle,
-    title: 'Evolução constante',
-    text: 'Novos consoles, novos acessórios, novas formas de jogar — e a Eletrogames acompanhando.',
+    title: 'Atualização',
+    text: 'Console novo, acessório novo, jeito novo de jogar. A gente acompanha.',
   },
 ];
 
 export default function History() {
   return (
-    <section id="nossa-historia" className="relative py-20 sm:py-28" aria-labelledby="historia-title">
+    <section id="nossa-historia" className="relative py-24 sm:py-32" aria-labelledby="historia-title">
       <div className="container-site">
         <SectionTitle
-          eyebrow="Nossa História"
-          title={
-            <span id="historia-title">
-              Uma história construída entre gerações de jogadores.
-            </span>
-          }
+          eyebrow="Nossa história"
+          id="historia-title"
+          title="Uma história construída entre gerações de jogadores."
+          highlight="gerações"
         />
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="space-y-5 text-base leading-relaxed text-slate-300 sm:text-lg">
-            <p>
-              A Eletrogames nasceu de algo simples e difícil de copiar: gostar de videogame de
-              verdade. São mais de 28 anos dentro do mesmo segmento, atendendo quem entra na loja
-              procurando o primeiro console e também quem chega com um equipamento que já faz parte
-              da própria história.
+        <div className="mt-14 grid gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-5 text-[17px] leading-relaxed text-ink-muted">
+            <p data-reveal>
+              A Eletrogames faz uma coisa só há mais de 28 anos: videogame.
             </p>
-            <p>
-              Nesse tempo, vimos o mercado mudar várias vezes. Mudaram as mídias, os controles, os
-              acessórios, a forma de conectar, a forma de jogar. Cada geração de console trouxe uma
-              tecnologia diferente — e, com ela, uma nova curva de aprendizado. A Eletrogames
-              atravessou todas elas trabalhando, testando, vendendo e consertando.
+            <p data-reveal style={{ ['--d' as string]: '80ms' }}>
+              Nesse tempo o setor virou do avesso várias vezes. Mudou a mídia, mudou o controle,
+              mudou o jeito de conectar. Cada geração chegou com uma tecnologia nova e uma curva de
+              aprendizado junto. Atravessamos todas trabalhando: vendendo, testando, abrindo
+              aparelho, consertando.
             </p>
-            <p>
-              É esse acúmulo que sustenta o nosso atendimento hoje. Não é entusiasmo de quem acabou
-              de chegar: é repertório de quem já viu o equipamento funcionando, viu o equipamento
-              falhando e sabe onde procurar. Do lado da venda, ajuda a indicar o que realmente faz
-              sentido para cada perfil. Do lado técnico, ajuda a avaliar com calma antes de propor
-              qualquer serviço.
+            <p data-reveal style={{ ['--d' as string]: '160ms' }}>
+              Isso muda o atendimento. Quem já viu o mesmo equipamento funcionando e falhando sabe
+              onde procurar. No balcão, ajuda a dizer o que faz sentido para o seu caso. Na bancada,
+              ajuda a avaliar com calma antes de propor qualquer serviço.
             </p>
-            <p>
-              A confiança que nos trouxe até aqui foi construída devagar, cliente a cliente, ao
-              longo de décadas. E continua sendo construída do mesmo jeito.
+            <p data-reveal style={{ ['--d' as string]: '240ms' }}>
+              Confiança de décadas não tem atalho. Veio cliente por cliente, e continua vindo assim.
             </p>
 
-            <blockquote className="mt-8 border-l-2 border-brand pl-6">
-              <p className="font-display text-xl font-bold leading-snug text-white sm:text-2xl">
-                “Há mais de 28 anos, games são mais do que produtos para nós. São parte da nossa
-                história.”
+            <blockquote
+              className="!mt-10 border-l-2 border-phosphor pl-7"
+              data-reveal
+              style={{ ['--d' as string]: '320ms' }}
+            >
+              <p className="font-display text-xl font-bold leading-snug text-ink sm:text-[1.6rem]">
+                "Há mais de 28 anos, games são mais do que produtos para nós. São parte da nossa
+                história."
               </p>
             </blockquote>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-5">
             <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-              {pillars.map(({ icon: Icon, title, text }) => (
-                <li key={title} className="surface flex gap-4 p-5">
-                  <Icon className="h-6 w-6 shrink-0 text-brand-light" />
+              {pillars.map(({ icon: Icon, title, text }, index) => (
+                <li
+                  key={title}
+                  className="surface flex gap-4 p-5"
+                  data-reveal
+                  style={{ ['--d' as string]: `${index * 80}ms` }}
+                >
+                  <Icon className="h-5 w-5 shrink-0 text-phosphor" />
                   <div>
-                    <h3 className="font-display text-base font-bold text-white">{title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-slate-400">{text}</p>
+                    <h3 className="text-[15px] font-bold text-ink">{title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-ink-faint">{text}</p>
                   </div>
                 </li>
               ))}
             </ul>
 
             {/*
-              Espaço reservado para o acervo histórico da loja.
-              Substitua por <Image /> com as fotografias antigas quando forem enviadas.
+              Acervo da loja. Substitua por <Image /> quando as fotografias
+              antigas forem digitalizadas.
             */}
-            <div className="surface flex flex-col items-center justify-center gap-2 border-dashed p-8 text-center">
-              <p className="text-sm font-semibold text-slate-300">[FOTOS ANTIGAS DA LOJA]</p>
-              <p className="text-xs text-slate-500">
-                Área preparada para a galeria histórica e a linha do tempo da Eletrogames.
+            <div
+              className="flex flex-col items-center justify-center gap-2 rounded-[var(--radius)] border border-dashed border-white/12 p-8 text-center"
+              data-reveal
+            >
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
+                [FOTOS ANTIGAS DA LOJA]
+              </p>
+              <p className="text-xs text-ink-faint/70">
+                Espaço reservado para o acervo histórico da Eletrogames.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Linha do tempo — estrutura pronta, a ser preenchida com marcos reais. */}
+        {/* A ordem aqui é real (uma linha do tempo), então a numeração informa algo. */}
         <div className="mt-16">
-          <h3 className="font-display text-lg font-bold text-white">Linha do tempo</h3>
-          <p className="mt-2 text-sm text-slate-400">
-            Estrutura preparada para receber os marcos reais da história da Eletrogames.
+          <h3 className="font-display text-lg font-bold text-ink">Linha do tempo</h3>
+          <p className="mt-2 max-w-xl text-sm text-ink-faint">
+            Estrutura pronta para os marcos reais da Eletrogames. Nenhuma data foi preenchida sem
+            confirmação da empresa.
           </p>
-          <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {[1, 2, 3, 4].map((index) => (
-              <li key={index} className="surface border-dashed p-5">
-                <span className="eyebrow">[ANO]</span>
-                <p className="mt-2 text-sm text-slate-400">[MARCO DA HISTÓRIA DA ELETROGAMES]</p>
+          <ol className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[0, 1, 2, 3].map((index) => (
+              <li
+                key={index}
+                className="relative rounded-[var(--radius)] border border-dashed border-white/12 p-5"
+                data-reveal
+                style={{ ['--d' as string]: `${index * 70}ms` }}
+              >
+                <span className="font-mono text-[11px] tracking-[0.2em] text-phosphor/60">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <p className="mt-3 font-mono text-xs uppercase tracking-[0.18em] text-ink-faint">
+                  [ANO]
+                </p>
+                <p className="mt-2 text-sm text-ink-faint/80">[MARCO DA HISTÓRIA]</p>
               </li>
             ))}
           </ol>

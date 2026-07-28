@@ -2,7 +2,6 @@ import Button from './Button';
 import SectionTitle from './SectionTitle';
 import ServiceCard from './ServiceCard';
 import {
-  IconAlert,
   IconGamepad,
   IconStethoscope,
   IconUsers,
@@ -14,24 +13,23 @@ import { whatsappLink, whatsappMessages } from '@/lib/site';
 export const supportServices = [
   {
     icon: IconWrench,
-    title: 'Manutenção de Consoles',
+    title: 'Manutenção de consoles',
     description:
       'Diagnóstico e manutenção especializada para diferentes tipos de problemas apresentados por consoles.',
   },
   {
     icon: IconGamepad,
-    title: 'Manutenção de Controles',
+    title: 'Manutenção de controles',
     description: 'Avaliação e reparo de controles e manetes.',
   },
   {
     icon: IconStethoscope,
-    title: 'Diagnóstico Técnico',
-    description:
-      'Identificação da possível origem do problema antes da realização do serviço.',
+    title: 'Diagnóstico técnico',
+    description: 'Identificação da possível origem do problema antes da realização do serviço.',
   },
   {
     icon: IconUsers,
-    title: 'Atendimento Especializado',
+    title: 'Atendimento especializado',
     description: 'Equipe com ampla experiência no segmento de videogames.',
   },
 ];
@@ -46,31 +44,42 @@ export const commonProblems = [
   'Necessidade de avaliação técnica',
 ];
 
-/** Bloco de problemas comuns — reutilizado na home e na landing de assistência. */
+/** Lista de sintomas. Aparece na home e na landing de assistência. */
 export function CommonProblems() {
   return (
-    <div className="rounded-2xl border border-white/10 bg-ink-800/60 p-8">
-      <h3 className="font-display text-xl font-bold text-white sm:text-2xl">
-        Seu videogame está apresentando algum destes sinais?
-      </h3>
-      <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-        {commonProblems.map((problem) => (
-          <li key={problem} className="flex items-start gap-3 text-sm text-slate-300">
-            <IconAlert className="mt-0.5 h-5 w-5 shrink-0 text-accent-light" />
+    <div className="overflow-hidden rounded-[var(--radius)] border border-diag/20 bg-panel-raised/50">
+      <div className="border-b border-white/[0.07] px-7 py-5 sm:px-9">
+        <h3 className="font-display text-xl font-bold text-ink sm:text-2xl">
+          Seu videogame está apresentando algum destes sinais?
+        </h3>
+      </div>
+
+      <ul className="grid sm:grid-cols-2">
+        {commonProblems.map((problem, index) => (
+          <li
+            key={problem}
+            className="flex items-center gap-3.5 border-b border-white/[0.05] px-7 py-4 text-[15px] text-ink-muted sm:px-9 sm:odd:border-r sm:odd:border-white/[0.05]"
+            data-reveal
+            style={{ ['--d' as string]: `${index * 45}ms` }}
+          >
+            <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-diag" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" aria-hidden="true">
+              <path d="m9 6 6 6-6 6" />
+            </svg>
             {problem}
           </li>
         ))}
       </ul>
-      <p className="mt-7 text-base font-semibold text-white">
-        Antes de substituir seu equipamento, fale com nossos especialistas.
-      </p>
-      <div className="mt-6">
+
+      <div className="flex flex-col gap-6 px-7 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-9">
+        <p className="max-w-md text-[15px] font-semibold text-ink">
+          Antes de substituir seu equipamento, fale com nossos especialistas.
+        </p>
         <Button
           href={whatsappLink(whatsappMessages.support)}
           variant="support"
-          size="lg"
           external
-          className="w-full sm:w-auto"
+          cursorLabel="Avaliação"
+          className="w-full shrink-0 sm:w-auto"
         >
           <IconWhatsApp className="h-5 w-5" />
           Solicitar avaliação técnica
@@ -84,49 +93,51 @@ export default function TechSupport() {
   return (
     <section
       id="assistencia-tecnica"
-      className="relative py-20 sm:py-28"
+      className="relative py-24 sm:py-32"
       aria-labelledby="assistencia-title"
     >
-      {/* Seção visualmente diferenciada: base azulada separa venda de serviço técnico. */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink-950">
-        <div className="absolute inset-0 grid-texture opacity-50" />
-        <div className="absolute left-[-10%] top-1/4 h-[420px] w-[560px] rounded-full bg-accent/10 blur-[130px]" />
+      {/* O lado técnico tem luz própria: ciano, nunca âmbar. */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-void">
+        <div className="aperture absolute inset-0 opacity-50" />
+        <div className="absolute left-[-8%] top-1/4 h-[460px] w-[600px] rounded-full bg-diag/[0.08] blur-[140px]" />
       </div>
 
       <div className="container-site">
         <SectionTitle
-          eyebrow="Assistência Técnica"
-          title={
-            <span id="assistencia-title">Assistência técnica especializada em videogames.</span>
-          }
+          eyebrow="Assistência técnica"
+          id="assistencia-title"
+          tone="diag"
+          title="Assistência técnica especializada em videogames."
+          highlight="especializada"
           description="Seu console ou controle apresentou problema? Conte com quem trabalha com videogames há mais de 28 anos."
         />
 
-        <div className="mt-8 max-w-3xl space-y-4 text-base leading-relaxed text-slate-300">
-          <p>
-            A Eletrogames é especializada em diagnóstico, manutenção e reparo de consoles e de
-            controles/manetes. Antes de qualquer serviço, o equipamento passa por uma avaliação
-            técnica — é ela que indica o que está acontecendo e quais são os caminhos possíveis.
+        <div className="mt-9 max-w-2xl space-y-4 text-[17px] leading-relaxed text-ink-muted">
+          <p data-reveal>
+            Parou de ligar no meio da partida, desliga sozinho ou o analógico anda por conta
+            própria. A primeira reação costuma ser abrir o site de uma loja e ver quanto custa um
+            aparelho novo.
           </p>
-          <p>
-            Essa é a diferença de levar seu videogame para quem trabalha exclusivamente com esse
-            tipo de equipamento há mais de 28 anos: a análise vem antes da conclusão, e você recebe
-            a orientação necessária para decidir com clareza.
+          <p data-reveal style={{ ['--d' as string]: '80ms' }}>
+            O equipamento chega, passa por avaliação técnica e identificamos a possível origem do
+            problema. Só depois falamos de serviço, e só com a sua aprovação. Trabalhar com
+            videogame há mais de 28 anos ajuda exatamente aqui: dificilmente é o primeiro aparelho
+            desse tipo que abrimos.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {supportServices.map((service) => (
-            <ServiceCard key={service.title} {...service} />
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {supportServices.map((service, index) => (
+            <ServiceCard key={service.title} index={index} {...service} />
           ))}
         </div>
 
-        <div className="mt-12">
+        <div className="mt-14">
           <CommonProblems />
         </div>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button href="/assistencia-tecnica" variant="ghost" size="lg">
+        <div className="mt-8" data-reveal>
+          <Button href="/assistencia-tecnica" variant="ghost" cursorLabel="Abrir">
             Ver a página completa de assistência técnica
           </Button>
         </div>
