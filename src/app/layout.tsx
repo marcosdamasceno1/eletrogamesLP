@@ -6,7 +6,6 @@ import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import JsonLd from '@/components/JsonLd';
 import Interactions from '@/components/fx/Interactions';
-import Preloader from '@/components/fx/Preloader';
 import { storeSchema } from '@/lib/schema';
 import { isPlaceholder, siteConfig } from '@/lib/site';
 
@@ -79,7 +78,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#08090D',
+  themeColor: '#FFFFFF',
   width: 'device-width',
   initialScale: 1,
 };
@@ -98,11 +97,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         </noscript>
 
-        <Preloader />
-
         <a
           href="#conteudo"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-phosphor focus:px-4 focus:py-3 focus:font-semibold focus:text-void"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-blue focus:px-4 focus:py-3 focus:font-semibold focus:text-paper"
         >
           Ir para o conteúdo principal
         </a>

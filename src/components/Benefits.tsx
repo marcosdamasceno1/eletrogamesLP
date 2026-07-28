@@ -28,7 +28,7 @@ const reasons = [
 
 export default function Benefits() {
   return (
-    <section id="por-que-escolher" className="relative py-24 sm:py-32" aria-labelledby="por-que-title">
+    <section id="por-que-escolher" className="bg-mist py-24 sm:py-32" aria-labelledby="por-que-title">
       <div className="container-site">
         <SectionTitle
           eyebrow="Por que a Eletrogames"
@@ -42,16 +42,16 @@ export default function Benefits() {
           {reasons.map(({ icon: Icon, title, text }, index) => (
             <li
               key={title}
-              className="surface group flex gap-5 p-6 transition-colors duration-300 hover:border-phosphor/30"
+              className="surface flex gap-5 p-6 shadow-card transition-colors duration-300 hover:border-blue/40"
               data-reveal
               style={{ ['--d' as string]: `${index * 80}ms` }}
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 text-phosphor transition-colors duration-300 group-hover:border-phosphor/40">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px] bg-sky text-blue">
                 <Icon className="h-5 w-5" />
               </span>
               <div>
-                <h3 className="text-[17px] font-bold text-ink">{title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-ink-faint">{text}</p>
+                <h3 className="text-[17px] font-bold text-navy">{title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-slate">{text}</p>
               </div>
             </li>
           ))}
@@ -60,7 +60,7 @@ export default function Benefits() {
         <div className="mt-10" data-reveal>
           <Button
             href={whatsappLink(whatsappMessages.general)}
-            variant="support"
+            variant="solid"
             external
             cursorLabel="Falar"
             className="w-full sm:w-auto"

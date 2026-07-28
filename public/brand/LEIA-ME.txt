@@ -1,0 +1,9 @@
+Coloque aqui os arquivos da logomarca da Eletrogames:
+
+  logo.svg          logotipo completo, para o cabecalho (fundo branco)
+  logo-branco.svg   mesmo logotipo em branco, para o rodape (fundo azul)
+  simbolo.svg       apenas o simbolo, sem o nome escrito
+
+Depois de copiar os arquivos, abra src/lib/brand.ts e informe o caminho de cada um.
+
+O passo a passo completo esta em docs/LOGOMARCA.md.

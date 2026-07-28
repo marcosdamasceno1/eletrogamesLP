@@ -13,33 +13,27 @@ const footerLinks = [
 ];
 
 const contact = [
-  { icon: IconPhone, label: 'Telefone', value: siteConfig.phone, href: undefined },
+  { icon: IconPhone, value: siteConfig.phone, href: undefined },
   {
     icon: IconWhatsApp,
-    label: 'WhatsApp',
     value: siteConfig.whatsappDisplay,
     href: whatsappLink(whatsappMessages.general),
   },
-  {
-    icon: IconInstagram,
-    label: 'Instagram',
-    value: siteConfig.instagram,
-    href: safeHref(siteConfig.instagramUrl),
-  },
-  { icon: IconClock, label: 'Horário', value: siteConfig.openingHours, href: undefined },
+  { icon: IconInstagram, value: siteConfig.instagram, href: safeHref(siteConfig.instagramUrl) },
+  { icon: IconClock, value: siteConfig.openingHours, href: undefined },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/[0.08] bg-panel/50" aria-labelledby="footer-title">
+    <footer className="on-navy border-t border-navy-soft bg-navy" aria-labelledby="footer-title">
       <h2 id="footer-title" className="sr-only">
         Informações da Eletrogames
       </h2>
 
-      <div className="container-site grid gap-14 py-16 lg:grid-cols-[1.2fr_0.7fr_1.1fr]">
+      <div className="container-site grid gap-12 py-16 lg:grid-cols-[1.2fr_0.7fr_1.1fr]">
         <div>
-          <Logo />
-          <p className="mt-6 max-w-sm text-sm leading-relaxed text-ink-faint">
+          <Logo variant="inverse" />
+          <p className="mt-6 max-w-sm text-sm leading-relaxed text-sky/70">
             Mais de 28 anos de experiência no universo dos videogames. Venda de consoles, controles,
             periféricos e acessórios, com assistência técnica especializada.
           </p>
@@ -47,23 +41,23 @@ export default function Footer() {
             href={safeHref(siteConfig.storeUrl)}
             target="_blank"
             rel="noopener noreferrer"
-            data-magnetic="0.22"
+            data-magnetic="0.2"
             data-cursor="Ver loja"
-            className="mt-7 inline-flex min-h-[48px] items-center rounded-xl bg-phosphor px-5 text-sm font-bold uppercase tracking-wide text-void transition-colors hover:bg-phosphor-soft"
+            className="mt-7 inline-flex min-h-[48px] items-center rounded-[10px] bg-paper px-5 text-sm font-bold text-navy transition-colors hover:bg-sky"
           >
             Loja Online
           </a>
         </div>
 
         <nav aria-label="Links do rodapé">
-          <h3 className="label text-ink-faint">Navegação</h3>
-          {/* py generoso: no celular cada link precisa de alvo de toque de 44px */}
-          <ul className="mt-4">
+          <h3 className="label-invert">Navegação</h3>
+          {/* Alvo de toque de 44px em cada link, para o celular. */}
+          <ul className="mt-3">
             {footerLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="link-underline inline-flex min-h-[44px] items-center text-sm text-ink-muted transition-colors hover:text-ink"
+                  className="link-underline inline-flex min-h-[44px] items-center text-sm text-sky/70 transition-colors hover:text-paper"
                 >
                   {link.label}
                 </Link>
@@ -73,30 +67,30 @@ export default function Footer() {
         </nav>
 
         <div>
-          <h3 className="label text-ink-faint">Contato</h3>
+          <h3 className="label-invert">Contato</h3>
           <ul className="mt-6 space-y-4 text-sm">
             <li className="flex gap-3.5">
-              <IconPin className="h-5 w-5 shrink-0 text-phosphor" />
-              <span className="text-ink-muted">
+              <IconPin className="h-5 w-5 shrink-0 text-blue-soft" />
+              <span className="text-sky/70">
                 {siteConfig.address.street}
                 <br />
-                {siteConfig.address.city} — {siteConfig.address.state}
+                {siteConfig.address.city} / {siteConfig.address.state}
               </span>
             </li>
-            {contact.map(({ icon: Icon, label, value, href }) => (
-              <li key={label} className="flex gap-3.5">
-                <Icon className="h-5 w-5 shrink-0 text-phosphor" />
+            {contact.map(({ icon: Icon, value, href }) => (
+              <li key={value} className="flex gap-3.5">
+                <Icon className="h-5 w-5 shrink-0 text-blue-soft" />
                 {href && href !== '#' ? (
                   <a
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-underline inline-flex min-h-[32px] items-center text-ink-muted transition-colors hover:text-ink"
+                    className="link-underline inline-flex min-h-[32px] items-center text-sky/70 transition-colors hover:text-paper"
                   >
                     {value}
                   </a>
                 ) : (
-                  <span className="text-ink-muted">{value}</span>
+                  <span className="text-sky/70">{value}</span>
                 )}
               </li>
             ))}
@@ -104,9 +98,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/[0.06]">
+      <div className="border-t border-navy-soft">
         <div className="container-site py-6">
-          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-faint">
+          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-sky/70">
             © {new Date().getFullYear()} Eletrogames. Todos os direitos reservados.
           </p>
         </div>

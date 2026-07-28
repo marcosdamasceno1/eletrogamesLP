@@ -1,6 +1,9 @@
 import type { MetadataRoute } from 'next';
 import { isPlaceholder, siteConfig } from '@/lib/site';
 
+// Exigido pela exportação estática: o arquivo é gerado no build, não sob demanda.
+export const dynamic = 'force-static';
+
 const routes = [
   { path: '/', priority: 1 },
   { path: '/assistencia-tecnica', priority: 0.9 },

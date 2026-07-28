@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
-    --radius: 14px;
+    color-scheme: light;
+    --radius: 12px;
   }
 
   html {
@@ -14,28 +14,26 @@
   }
 
   body {
-    @apply bg-void text-ink antialiased;
+    @apply bg-paper text-navy antialiased;
   }
 
   ::selection {
-    background: theme('colors.phosphor.DEFAULT');
-    color: theme('colors.void');
+    @apply bg-blue text-paper;
   }
 
-  /* Barra de rolagem em tom de bancada, não a cinza padrão do sistema. */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 12px;
   }
   ::-webkit-scrollbar-track {
-    background: theme('colors.void');
+    @apply bg-mist;
   }
   ::-webkit-scrollbar-thumb {
-    background: theme('colors.panel.high');
+    @apply bg-line;
     border-radius: 99px;
-    border: 2px solid theme('colors.void');
+    border: 3px solid #f3f7fd;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: theme('colors.phosphor.deep');
+    @apply bg-blue-soft;
   }
 
   a:focus-visible,
@@ -44,9 +42,18 @@
   [tabindex]:focus-visible {
     @apply outline-none;
     box-shadow:
-      0 0 0 2px theme('colors.void'),
-      0 0 0 4px theme('colors.phosphor.DEFAULT');
-    border-radius: 12px;
+      0 0 0 2px theme('colors.paper'),
+      0 0 0 4px theme('colors.blue.DEFAULT');
+    border-radius: 10px;
+  }
+
+  /* Em fundo navy o anel de foco inverte para não sumir. */
+  .on-navy a:focus-visible,
+  .on-navy button:focus-visible,
+  .on-navy summary:focus-visible {
+    box-shadow:
+      0 0 0 2px theme('colors.navy.DEFAULT'),
+      0 0 0 4px theme('colors.paper');
   }
 
   h1,
@@ -67,37 +74,37 @@
   }
 
   .surface {
-    @apply rounded-[var(--radius)] border border-white/[0.08] bg-panel-raised/70;
+    @apply rounded-[var(--radius)] border border-line bg-paper;
   }
 
-  /* Rótulo utilitário: mono, caixa alta, tratado como código de peça. */
+  /* Rótulo utilitário, no registro da legenda de prancha técnica. */
   .label {
-    @apply font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-phosphor;
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-blue;
   }
-  .label-diag {
-    @apply font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-diag;
-  }
-
-  /* Grade de abertura do tubo: listras verticais quase imperceptíveis. */
-  .aperture {
-    background-image: repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.035) 0 1px,
-      transparent 1px 3px
-    );
+  .label-invert {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-blue-soft;
   }
 
-  .scanlines {
-    background-image: repeating-linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.05) 0 1px,
-      transparent 1px 4px
-    );
+  /*
+    Malha de planta técnica. É o fio condutor visual do site: aparece atrás do
+    hero, do bloco de assistência e do CTA final, sempre bem apagada.
+  */
+  .blueprint {
+    background-image:
+      linear-gradient(to right, rgba(21, 96, 224, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(21, 96, 224, 0.07) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+  .blueprint-invert {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 26px 26px;
   }
 
-  /* Régua fina que separa seções sem virar <hr> genérico. */
-  .rule {
-    @apply h-px w-full border-0 bg-gradient-to-r from-white/[0.14] via-white/[0.05] to-transparent;
+  /* Marcas de cota: a régua fina que separa blocos de conteúdo. */
+  .tick-rule {
+    @apply h-px w-full bg-line;
   }
 
   .link-underline {
@@ -114,14 +121,11 @@
 }
 
 @layer utilities {
-  .glow-phosphor {
-    box-shadow: 0 0 40px -12px theme('colors.phosphor.DEFAULT');
+  .shadow-card {
+    box-shadow: 0 1px 2px rgba(7, 43, 79, 0.04), 0 8px 24px -12px rgba(7, 43, 79, 0.12);
   }
-  .glow-diag {
-    box-shadow: 0 0 40px -12px theme('colors.diag.DEFAULT');
-  }
-  .text-glow {
-    text-shadow: 0 0 28px rgba(255, 169, 46, 0.28);
+  .shadow-lift {
+    box-shadow: 0 2px 4px rgba(7, 43, 79, 0.05), 0 18px 40px -18px rgba(7, 43, 79, 0.25);
   }
 }
 
@@ -131,17 +135,17 @@
    --------------------------------------------------------------- */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(14px);
   transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--d, 0ms);
 }
 [data-reveal].is-in {
   opacity: 1;
   transform: none;
 }
-.no-js [data-reveal] {
+[data-reveal='split'] {
   opacity: 1;
   transform: none;
 }
@@ -157,18 +161,26 @@
 .split-word > span {
   display: inline-block;
   transform: translateY(105%);
-  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: calc(var(--i, 0) * 55ms);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 50ms);
 }
-.is-in .split-word > span,
-.no-js .split-word > span {
+.is-in .split-word > span {
   transform: none;
 }
 
-/* Cartões que inclinam sob o ponteiro. */
+/* Traço da planta técnica que se desenha ao entrar na tela. */
+.draw-path {
+  stroke-dasharray: var(--len, 1200);
+  stroke-dashoffset: var(--len, 1200);
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.33, 1, 0.68, 1);
+  transition-delay: var(--d, 0ms);
+}
+.is-in .draw-path {
+  stroke-dashoffset: 0;
+}
+
 [data-tilt] {
-  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))
-    translateZ(0);
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
@@ -184,7 +196,7 @@
   transition: transform 0.12s linear;
 }
 
-/* Cursor de fósforo. Só entra em ponteiros finos, nunca em toque. */
+/* Cursor: um ponto e um anel finos, no azul da marca. */
 .cursor-dot,
 .cursor-ring {
   position: fixed;
@@ -197,18 +209,18 @@
   transition: opacity 0.3s ease;
 }
 .cursor-dot {
-  width: 6px;
-  height: 6px;
-  margin: -3px 0 0 -3px;
-  background: theme('colors.phosphor.DEFAULT');
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  @apply bg-blue;
 }
 .cursor-ring {
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
-  margin: -19px 0 0 -19px;
-  border: 1px solid rgba(255, 169, 46, 0.55);
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1px solid rgba(21, 96, 224, 0.5);
   transition:
     opacity 0.3s ease,
     width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
@@ -224,59 +236,34 @@
 .cursor-ring .cursor-label {
   font-family: var(--font-mono), monospace;
   font-size: 10px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: theme('colors.void');
+  color: #fff;
   opacity: 0;
-  transform: scale(0.8);
+  transform: scale(0.85);
   transition:
     opacity 0.2s ease,
     transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
 }
 .cursor-ring.is-labelled {
-  width: 88px;
-  height: 88px;
-  margin: -44px 0 0 -44px;
-  background: theme('colors.phosphor.DEFAULT');
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
   border-color: transparent;
+  @apply bg-blue;
 }
 .cursor-ring.is-labelled .cursor-label {
   opacity: 1;
   transform: none;
 }
-.cursor-ring.is-labelled-diag {
-  background: theme('colors.diag.DEFAULT');
-}
 .cursor-on .cursor-dot.is-hidden {
   opacity: 0;
 }
 
-/* Grão de fósforo por cima de tudo, sem capturar cliques. */
-.grain {
-  position: fixed;
-  inset: -50%;
-  z-index: 9997;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grain-shift 700ms steps(2) infinite;
-}
-@keyframes grain-shift {
-  0% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-3%, 2%);
-  }
-  100% {
-    transform: translate(2%, -1%);
-  }
-}
-
 /* --------------------------------------------------------------
-   Movimento reduzido: a estética continua, o movimento sai.
-   Nada de conteúdo escondido esperando animação que não vem.
+   Movimento reduzido: a estética fica, o movimento sai. Nada de
+   conteúdo escondido esperando animação que não vem.
    -------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -294,17 +281,11 @@
     opacity: 1;
     transform: none;
   }
-  .grain {
-    animation: none;
+  .draw-path {
+    stroke-dashoffset: 0;
   }
   .cursor-dot,
   .cursor-ring {
     display: none;
   }
-}
-
-/* Títulos partidos por palavra pedem o observer, mas não a subida do bloco. */
-[data-reveal='split'] {
-  opacity: 1;
-  transform: none;
 }

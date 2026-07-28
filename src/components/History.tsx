@@ -26,7 +26,7 @@ const pillars = [
 
 export default function History() {
   return (
-    <section id="nossa-historia" className="relative py-24 sm:py-32" aria-labelledby="historia-title">
+    <section id="nossa-historia" className="py-24 sm:py-32" aria-labelledby="historia-title">
       <div className="container-site">
         <SectionTitle
           eyebrow="Nossa história"
@@ -36,10 +36,8 @@ export default function History() {
         />
 
         <div className="mt-14 grid gap-14 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="space-y-5 text-[17px] leading-relaxed text-ink-muted">
-            <p data-reveal>
-              A Eletrogames faz uma coisa só há mais de 28 anos: videogame.
-            </p>
+          <div className="space-y-5 text-[17px] leading-relaxed text-slate">
+            <p data-reveal>A Eletrogames faz uma coisa só há mais de 28 anos: videogame.</p>
             <p data-reveal style={{ ['--d' as string]: '80ms' }}>
               Nesse tempo o setor virou do avesso várias vezes. Mudou a mídia, mudou o controle,
               mudou o jeito de conectar. Cada geração chegou com uma tecnologia nova e uma curva de
@@ -56,11 +54,11 @@ export default function History() {
             </p>
 
             <blockquote
-              className="!mt-10 border-l-2 border-phosphor pl-7"
+              className="!mt-10 border-l-2 border-blue pl-7"
               data-reveal
               style={{ ['--d' as string]: '320ms' }}
             >
-              <p className="font-display text-xl font-bold leading-snug text-ink sm:text-[1.6rem]">
+              <p className="font-display text-xl font-bold leading-snug text-navy sm:text-[1.55rem]">
                 "Há mais de 28 anos, games são mais do que produtos para nós. São parte da nossa
                 história."
               </p>
@@ -72,31 +70,28 @@ export default function History() {
               {pillars.map(({ icon: Icon, title, text }, index) => (
                 <li
                   key={title}
-                  className="surface flex gap-4 p-5"
+                  className="surface flex gap-4 p-5 shadow-card"
                   data-reveal
                   style={{ ['--d' as string]: `${index * 80}ms` }}
                 >
-                  <Icon className="h-5 w-5 shrink-0 text-phosphor" />
+                  <Icon className="h-5 w-5 shrink-0 text-blue" />
                   <div>
-                    <h3 className="text-[15px] font-bold text-ink">{title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-ink-faint">{text}</p>
+                    <h3 className="text-[15px] font-bold text-navy">{title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-slate">{text}</p>
                   </div>
                 </li>
               ))}
             </ul>
 
-            {/*
-              Acervo da loja. Substitua por <Image /> quando as fotografias
-              antigas forem digitalizadas.
-            */}
+            {/* Acervo da loja: troque por <Image /> quando as fotos forem digitalizadas. */}
             <div
-              className="flex flex-col items-center justify-center gap-2 rounded-[var(--radius)] border border-dashed border-white/12 p-8 text-center"
+              className="flex flex-col items-center justify-center gap-2 rounded-[var(--radius)] border border-dashed border-line bg-mist p-8 text-center"
               data-reveal
             >
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-slate">
                 [FOTOS ANTIGAS DA LOJA]
               </p>
-              <p className="text-xs text-ink-faint/70">
+              <p className="text-xs text-slate-light">
                 Espaço reservado para o acervo histórico da Eletrogames.
               </p>
             </div>
@@ -105,8 +100,8 @@ export default function History() {
 
         {/* A ordem aqui é real (uma linha do tempo), então a numeração informa algo. */}
         <div className="mt-16">
-          <h3 className="font-display text-lg font-bold text-ink">Linha do tempo</h3>
-          <p className="mt-2 max-w-xl text-sm text-ink-faint">
+          <h3 className="font-display text-lg font-bold text-navy">Linha do tempo</h3>
+          <p className="mt-2 max-w-xl text-sm text-slate">
             Estrutura pronta para os marcos reais da Eletrogames. Nenhuma data foi preenchida sem
             confirmação da empresa.
           </p>
@@ -114,17 +109,17 @@ export default function History() {
             {[0, 1, 2, 3].map((index) => (
               <li
                 key={index}
-                className="relative rounded-[var(--radius)] border border-dashed border-white/12 p-5"
+                className="rounded-[var(--radius)] border border-dashed border-line bg-mist p-5"
                 data-reveal
                 style={{ ['--d' as string]: `${index * 70}ms` }}
               >
-                <span className="font-mono text-[11px] tracking-[0.2em] text-phosphor/60">
+                <span className="font-mono text-[11px] tracking-[0.2em] text-blue">
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <p className="mt-3 font-mono text-xs uppercase tracking-[0.18em] text-ink-faint">
+                <p className="mt-3 font-mono text-xs uppercase tracking-[0.18em] text-slate">
                   [ANO]
                 </p>
-                <p className="mt-2 text-sm text-ink-faint/80">[MARCO DA HISTÓRIA]</p>
+                <p className="mt-2 text-sm text-slate-light">[MARCO DA HISTÓRIA]</p>
               </li>
             ))}
           </ol>

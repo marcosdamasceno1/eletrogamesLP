@@ -1,13 +1,7 @@
 import Button from './Button';
 import SectionTitle from './SectionTitle';
 import ServiceCard from './ServiceCard';
-import {
-  IconGamepad,
-  IconStethoscope,
-  IconUsers,
-  IconWhatsApp,
-  IconWrench,
-} from './Icons';
+import { IconGamepad, IconStethoscope, IconUsers, IconWhatsApp, IconWrench } from './Icons';
 import { whatsappLink, whatsappMessages } from '@/lib/site';
 
 export const supportServices = [
@@ -44,12 +38,23 @@ export const commonProblems = [
   'Necessidade de avaliação técnica',
 ];
 
-/** Lista de sintomas. Aparece na home e na landing de assistência. */
-export function CommonProblems() {
+/**
+ * Lista de sintomas, usada na home e na landing de assistência.
+ * `tone` escolhe se ela vive sobre navy (padrão) ou sobre branco.
+ */
+export function CommonProblems({ tone = 'navy' }: { tone?: 'navy' | 'light' }) {
+  const navy = tone === 'navy';
+
   return (
-    <div className="overflow-hidden rounded-[var(--radius)] border border-diag/20 bg-panel-raised/50">
-      <div className="border-b border-white/[0.07] px-7 py-5 sm:px-9">
-        <h3 className="font-display text-xl font-bold text-ink sm:text-2xl">
+    <div
+      className={`overflow-hidden rounded-[var(--radius)] border ${
+        navy ? 'border-paper/15 bg-paper/[0.04]' : 'border-line bg-paper shadow-card'
+      }`}
+    >
+      <div className={`border-b px-6 py-5 sm:px-8 ${navy ? 'border-paper/15' : 'border-line'}`}>
+        <h3
+          className={`font-display text-xl font-bold sm:text-2xl ${navy ? 'text-paper' : 'text-navy'}`}
+        >
           Seu videogame está apresentando algum destes sinais?
         </h3>
       </div>
@@ -58,11 +63,23 @@ export function CommonProblems() {
         {commonProblems.map((problem, index) => (
           <li
             key={problem}
-            className="flex items-center gap-3.5 border-b border-white/[0.05] px-7 py-4 text-[15px] text-ink-muted sm:px-9 sm:odd:border-r sm:odd:border-white/[0.05]"
+            className={`flex items-center gap-3.5 border-b px-6 py-4 text-[15px] sm:px-8 sm:odd:border-r ${
+              navy
+                ? 'border-paper/10 text-sky/85 sm:odd:border-paper/10'
+                : 'border-line text-slate sm:odd:border-line'
+            }`}
             data-reveal
             style={{ ['--d' as string]: `${index * 45}ms` }}
           >
-            <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-diag" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              className={`h-4 w-4 shrink-0 ${navy ? 'text-blue-soft' : 'text-blue'}`}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
               <path d="m9 6 6 6-6 6" />
             </svg>
             {problem}
@@ -70,13 +87,19 @@ export function CommonProblems() {
         ))}
       </ul>
 
-      <div className="flex flex-col gap-6 px-7 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-9">
-        <p className="max-w-md text-[15px] font-semibold text-ink">
-          Antes de substituir seu equipamento, fale com nossos especialistas.
-        </p>
+      <div className="flex flex-col gap-6 px-6 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <div>
+          <p className={`text-[15px] font-semibold ${navy ? 'text-paper' : 'text-navy'}`}>
+            Antes de substituir seu equipamento, fale com nossos especialistas.
+          </p>
+          <p className={`mt-1.5 text-sm ${navy ? 'text-sky/70' : 'text-slate'}`}>
+            Descreva o problema pelo WhatsApp. A avaliação vem antes de qualquer serviço.
+          </p>
+        </div>
         <Button
           href={whatsappLink(whatsappMessages.support)}
-          variant="support"
+          variant="solid"
+          tone={navy ? 'navy' : 'light'}
           external
           cursorLabel="Avaliação"
           className="w-full shrink-0 sm:w-auto"
@@ -93,26 +116,23 @@ export default function TechSupport() {
   return (
     <section
       id="assistencia-tecnica"
-      className="relative py-24 sm:py-32"
+      className="on-navy relative overflow-hidden bg-navy py-24 sm:py-32"
       aria-labelledby="assistencia-title"
     >
-      {/* O lado técnico tem luz própria: ciano, nunca âmbar. */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-void">
-        <div className="aperture absolute inset-0 opacity-50" />
-        <div className="absolute left-[-8%] top-1/4 h-[460px] w-[600px] rounded-full bg-diag/[0.08] blur-[140px]" />
-      </div>
+      {/* O mundo da assistência é o inverso do da loja: branco sobre azul. */}
+      <div aria-hidden="true" className="blueprint-invert absolute inset-0" />
 
-      <div className="container-site">
+      <div className="container-site relative">
         <SectionTitle
           eyebrow="Assistência técnica"
           id="assistencia-title"
-          tone="diag"
+          tone="navy"
           title="Assistência técnica especializada em videogames."
           highlight="especializada"
           description="Seu console ou controle apresentou problema? Conte com quem trabalha com videogames há mais de 28 anos."
         />
 
-        <div className="mt-9 max-w-2xl space-y-4 text-[17px] leading-relaxed text-ink-muted">
+        <div className="mt-9 max-w-2xl space-y-4 text-[17px] leading-relaxed text-sky/80">
           <p data-reveal>
             Parou de ligar no meio da partida, desliga sozinho ou o analógico anda por conta
             própria. A primeira reação costuma ser abrir o site de uma loja e ver quanto custa um
@@ -137,7 +157,7 @@ export default function TechSupport() {
         </div>
 
         <div className="mt-8" data-reveal>
-          <Button href="/assistencia-tecnica" variant="ghost" cursorLabel="Abrir">
+          <Button href="/assistencia-tecnica" variant="outline" tone="navy" cursorLabel="Abrir">
             Ver a página completa de assistência técnica
           </Button>
         </div>

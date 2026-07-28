@@ -31,25 +31,21 @@ export default function ContatoPage() {
       >
         <Button
           href={whatsappLink(whatsappMessages.general)}
-          variant="support"
+          variant="solid"
           external
           cursorLabel="Falar"
         >
           <IconWhatsApp className="h-5 w-5" />
           Falar no WhatsApp
         </Button>
-        <Button href={safeHref(siteConfig.storeUrl)} variant="store" external cursorLabel="Ver loja">
+        <Button href={safeHref(siteConfig.storeUrl)} variant="outline" external cursorLabel="Ver loja">
           Acessar a Loja
         </Button>
       </PageHero>
 
       <TrustBar />
 
-      <ContactInfo
-        eyebrow="Canais de atendimento"
-        title="Onde encontrar a Eletrogames"
-        description="Escolha o canal mais prático. Para assistência técnica, o WhatsApp costuma ser o caminho mais rápido."
-      />
+      <ContactInfo eyebrow="Canais de atendimento" />
 
       <CTA />
     </>

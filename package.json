@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "publicar": "next build && rm -rf dist && mv out dist && echo '\\nPronto: a pasta dist/ contem o site. Envie o CONTEUDO dela para a raiz do servidor.\\n'"
   },
   "dependencies": {
     "next": "15.1.6",

@@ -32,9 +32,9 @@ const items = [
 ];
 
 export default function ContactInfo({
-  title = 'Localização e contato',
+  title = 'Onde encontrar a Eletrogames',
   eyebrow = 'Contato',
-  description = 'Fale com a equipe da Eletrogames pelo canal que for mais prático para você.',
+  description = 'Escolha o canal mais prático. Para assistência técnica, o WhatsApp costuma ser o caminho mais rápido.',
 }: {
   title?: string;
   eyebrow?: string;
@@ -43,29 +43,22 @@ export default function ContactInfo({
   const mapsReady = !isPlaceholder(siteConfig.address.mapsUrl);
 
   return (
-    <section id="contato" className="relative py-24 sm:py-32" aria-labelledby="contato-title">
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-panel/40" />
-
+    <section id="contato" className="bg-mist py-24 sm:py-32" aria-labelledby="contato-title">
       <div className="container-site">
-        <SectionTitle
-          eyebrow={eyebrow}
-          id="contato-title"
-          title={title}
-          description={description}
-        />
+        <SectionTitle eyebrow={eyebrow} id="contato-title" title={title} description={description} />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
-          <ul className="overflow-hidden rounded-[var(--radius)] border border-white/[0.08]">
+          <ul className="overflow-hidden rounded-[var(--radius)] border border-line bg-paper shadow-card">
             {items.map(({ icon: Icon, label, value, href }, index) => (
               <li
                 key={label}
-                className="flex gap-4 border-b border-white/[0.06] p-5 last:border-0"
+                className="flex gap-4 border-b border-line p-5 last:border-0"
                 data-reveal
                 style={{ ['--d' as string]: `${index * 60}ms` }}
               >
-                <Icon className="h-5 w-5 shrink-0 text-phosphor" />
+                <Icon className="h-5 w-5 shrink-0 text-blue" />
                 <div>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-faint">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-slate-light">
                     {label}
                   </p>
                   {href && href !== '#' ? (
@@ -73,12 +66,12 @@ export default function ContactInfo({
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="link-underline mt-1.5 inline-block text-[15px] text-ink transition-colors hover:text-phosphor"
+                      className="link-underline mt-1.5 inline-block text-[15px] text-navy transition-colors hover:text-blue"
                     >
                       {value}
                     </a>
                   ) : (
-                    <p className="mt-1.5 text-[15px] text-ink">{value}</p>
+                    <p className="mt-1.5 text-[15px] text-navy">{value}</p>
                   )}
                 </div>
               </li>
@@ -91,14 +84,14 @@ export default function ContactInfo({
               este bloco por <iframe loading="lazy" src={siteConfig.address.mapsUrl} />.
             */}
             <div
-              className="flex min-h-[240px] flex-1 flex-col items-center justify-center gap-3 rounded-[var(--radius)] border border-dashed border-white/12 p-8 text-center"
+              className="flex min-h-[240px] flex-1 flex-col items-center justify-center gap-3 rounded-[var(--radius)] border border-dashed border-line bg-paper p-8 text-center"
               data-reveal
             >
-              <IconPin className="h-7 w-7 text-ink-faint" />
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
+              <IconPin className="h-7 w-7 text-slate-light" />
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-slate">
                 [GOOGLE MAPS]
               </p>
-              <p className="text-xs text-ink-faint/70">
+              <p className="text-xs text-slate-light">
                 {mapsReady ? 'Mapa configurado.' : 'Espaço reservado para o mapa da loja.'}
               </p>
             </div>
@@ -106,7 +99,7 @@ export default function ContactInfo({
             <div className="flex flex-col gap-3 sm:flex-row" data-reveal>
               <Button
                 href={whatsappLink(whatsappMessages.support)}
-                variant="support"
+                variant="solid"
                 external
                 cursorLabel="Falar"
                 className="flex-1"
@@ -116,7 +109,7 @@ export default function ContactInfo({
               </Button>
               <Button
                 href={safeHref(siteConfig.storeUrl)}
-                variant="store"
+                variant="outline"
                 external
                 cursorLabel="Ver loja"
                 className="flex-1"

@@ -1,28 +1,31 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 
-type Variant = 'store' | 'support' | 'ghost';
+/**
+ * Dois pesos, dois ambientes.
+ *
+ * `solid` é a ação que importa na seção onde está. `outline` é o caminho
+ * alternativo. Em fundo claro o sólido é azul; em fundo navy o sólido é
+ * branco. Assim a ação principal é sempre a de maior contraste na tela,
+ * sem precisar de uma segunda cor de marca.
+ */
+type Variant = 'solid' | 'outline';
+type Tone = 'light' | 'navy';
 type Size = 'md' | 'lg';
 
 const base =
-  'group relative inline-flex min-h-[52px] items-center justify-center gap-2.5 overflow-hidden rounded-xl font-semibold ' +
-  'transition-[background-color,border-color,color,box-shadow] duration-300';
+  'group relative inline-flex min-h-[52px] items-center justify-center gap-2.5 rounded-[10px] ' +
+  'font-semibold transition-all duration-200';
 
-/**
- * Âmbar é sempre comprar. Ciano é sempre consertar. Um usuário nunca precisa
- * ler o botão duas vezes para saber em qual dos dois caminhos vai cair.
- */
-const variants: Record<Variant, string> = {
-  store: 'bg-phosphor text-void hover:bg-phosphor-soft hover:glow-phosphor',
-  support: 'bg-diag text-void hover:bg-diag-soft hover:glow-diag',
-  ghost:
-    'border border-white/15 bg-white/[0.04] text-ink hover:border-phosphor/50 hover:bg-white/[0.07]',
-};
-
-const cursorTone: Record<Variant, string | undefined> = {
-  store: undefined,
-  support: 'diag',
-  ghost: undefined,
+const styles: Record<Tone, Record<Variant, string>> = {
+  light: {
+    solid: 'bg-blue text-paper hover:bg-blue-deep shadow-card hover:shadow-lift',
+    outline: 'border border-line bg-paper text-navy hover:border-blue hover:text-blue',
+  },
+  navy: {
+    solid: 'bg-paper text-navy hover:bg-sky shadow-lift',
+    outline: 'border border-paper/30 text-paper hover:border-paper hover:bg-paper/10',
+  },
 };
 
 const sizes: Record<Size, string> = {
@@ -34,6 +37,7 @@ type Props = {
   href: string;
   children: ReactNode;
   variant?: Variant;
+  tone?: Tone;
   size?: Size;
   external?: boolean;
   className?: string;
@@ -46,7 +50,8 @@ type Props = {
 export default function Button({
   href,
   children,
-  variant = 'store',
+  variant = 'solid',
+  tone = 'light',
   size = 'lg',
   external = false,
   className = '',
@@ -54,23 +59,12 @@ export default function Button({
   cursorLabel,
   magnetic = true,
 }: Props) {
-  const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
+  const classes = `${base} ${styles[tone][variant]} ${sizes[size]} ${className}`;
 
   const fx = {
-    ...(magnetic ? { 'data-magnetic': '0.22' } : {}),
-    ...(cursorLabel ? { 'data-cursor': cursorLabel, 'data-cursor-tone': cursorTone[variant] } : {}),
+    ...(magnetic ? { 'data-magnetic': '0.2' } : {}),
+    ...(cursorLabel ? { 'data-cursor': cursorLabel } : {}),
   };
-
-  const inner = (
-    <>
-      {/* brilho que atravessa o botão no hover */}
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full"
-      />
-      <span className="relative flex items-center gap-2.5">{children}</span>
-    </>
-  );
 
   if (external || href.startsWith('http') || href === '#') {
     return (
@@ -81,14 +75,14 @@ export default function Button({
         {...fx}
         {...(href !== '#' ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       >
-        {inner}
+        {children}
       </a>
     );
   }
 
   return (
     <Link href={href} className={classes} aria-label={ariaLabel} {...fx}>
-      {inner}
+      {children}
     </Link>
   );
 }

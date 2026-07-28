@@ -1,29 +1,29 @@
 import type { ComponentType, SVGProps } from 'react';
 
-type Props = {
+/** Cartão de serviço, desenhado para viver sobre fundo navy. */
+export default function ServiceCard({
+  icon: Icon,
+  title,
+  description,
+  index = 0,
+}: {
   icon: ComponentType<SVGProps<SVGSVGElement>>;
   title: string;
   description: string;
   index?: number;
-};
-
-export default function ServiceCard({ icon: Icon, title, description, index = 0 }: Props) {
+}) {
   return (
     <article
       data-tilt
       data-reveal
       style={{ ['--d' as string]: `${index * 80}ms` }}
-      className="group relative h-full overflow-hidden rounded-[var(--radius)] border border-diag/20 bg-panel-raised/60 p-6 transition-colors duration-300 hover:border-diag/50"
+      className="h-full rounded-[var(--radius)] border border-paper/15 bg-paper/[0.06] p-6 transition-colors duration-300 hover:border-paper/40 hover:bg-paper/[0.1]"
     >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-diag/[0.12] opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
-      />
-      <span className="relative flex h-12 w-12 items-center justify-center rounded-xl border border-diag/30 bg-diag/[0.08] text-diag">
-        <Icon className="h-6 w-6" />
+      <span className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-paper/15 text-paper">
+        <Icon className="h-5 w-5" />
       </span>
-      <h3 className="relative mt-5 text-lg font-bold text-ink">{title}</h3>
-      <p className="relative mt-2.5 text-sm leading-relaxed text-ink-faint">{description}</p>
+      <h3 className="mt-5 text-[17px] font-bold text-paper">{title}</h3>
+      <p className="mt-2.5 text-sm leading-relaxed text-sky/75">{description}</p>
     </article>
   );
 }

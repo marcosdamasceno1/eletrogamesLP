@@ -30,9 +30,7 @@ const categories = [
 
 export default function Products() {
   return (
-    <section id="produtos" className="relative py-24 sm:py-32" aria-labelledby="produtos-title">
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-panel/40" />
-
+    <section id="produtos" className="bg-mist py-24 sm:py-32" aria-labelledby="produtos-title">
       <div className="container-site">
         <SectionTitle
           eyebrow="Produtos"
@@ -49,15 +47,20 @@ export default function Products() {
         </div>
 
         <div
-          className="mt-14 flex flex-col items-start gap-7 rounded-[var(--radius)] border border-phosphor/20 bg-phosphor/[0.05] p-8 sm:flex-row sm:items-center sm:justify-between"
+          className="mt-14 flex flex-col items-start gap-7 rounded-[var(--radius)] border border-line bg-paper p-8 shadow-card sm:flex-row sm:items-center sm:justify-between"
           data-reveal
         >
-          <p className="font-display text-xl font-bold leading-snug text-ink sm:text-2xl">
-            Encontre tudo para o seu videogame em um só lugar.
-          </p>
+          <div>
+            <p className="font-display text-xl font-bold leading-snug text-navy sm:text-2xl">
+              Encontre tudo para o seu videogame em um só lugar.
+            </p>
+            <p className="mt-2 text-sm text-slate">
+              O catálogo completo da Eletrogames fica na loja online.
+            </p>
+          </div>
           <Button
             href={safeHref(siteConfig.storeUrl)}
-            variant="store"
+            variant="solid"
             external
             cursorLabel="Ver loja"
             className="w-full shrink-0 sm:w-auto"

@@ -4,8 +4,8 @@ import { useEffect, useRef } from 'react';
 
 /**
  * Todo o comportamento fino do site em um só lugar: revelação ao rolar,
- * inclinação dos cartões, atração magnética dos botões, cursor de fósforo
- * e barra de progresso.
+ * traços da planta que se desenham, inclinação dos cartões, atração magnética
+ * dos botões, cursor e barra de progresso.
  *
  * Fica em um único componente de propósito: um observer, um listener de
  * ponteiro e um de rolagem para a página inteira, em vez de dezenas de
@@ -124,11 +124,10 @@ export default function Interactions() {
         const text = target?.dataset.cursor;
         if (text) {
           ringEl.classList.add('is-labelled');
-          ringEl.classList.toggle('is-labelled-diag', target?.dataset.cursorTone === 'diag');
           dotEl.classList.add('is-hidden');
           if (label.current && label.current.textContent !== text) label.current.textContent = text;
         } else {
-          ringEl.classList.remove('is-labelled', 'is-labelled-diag');
+          ringEl.classList.remove('is-labelled');
           dotEl.classList.remove('is-hidden');
         }
       };
@@ -153,14 +152,13 @@ export default function Interactions() {
     <>
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-x-0 top-0 z-[9999] h-[2px] origin-left scale-x-0 bg-gradient-to-r from-phosphor via-phosphor-soft to-diag"
+        className="pointer-events-none fixed inset-x-0 top-0 z-[9999] h-[2px] origin-left scale-x-0 bg-blue"
         ref={bar}
       />
       <div aria-hidden="true" className="cursor-dot" ref={dot} />
       <div aria-hidden="true" className="cursor-ring" ref={ring}>
         <span className="cursor-label" ref={label} />
       </div>
-      <div aria-hidden="true" className="grain" />
     </>
   );
 }

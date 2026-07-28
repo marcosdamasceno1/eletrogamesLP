@@ -7,34 +7,65 @@ type Props = {
   title?: string;
   text?: string;
   whatsappMessage?: string;
-  primaryLabel?: string;
-  secondaryLabel?: string;
+  storeLabel?: string;
+  whatsappLabel?: string;
+  /** Qual das duas ações é a principal nesta página. Ela vira o botão branco. */
+  primary?: 'store' | 'support';
 };
 
 export default function CTA({
   title = 'Há mais de 28 anos, a Eletrogames conecta pessoas ao universo dos videogames.',
   text = 'Seja para encontrar seu próximo console, escolher acessórios ou cuidar do equipamento que já faz parte da sua história, conte com a Eletrogames.',
   whatsappMessage = whatsappMessages.general,
-  primaryLabel = 'Acessar a Loja',
-  secondaryLabel = 'Falar no WhatsApp',
+  storeLabel = 'Acessar a Loja',
+  whatsappLabel = 'Falar no WhatsApp',
+  primary = 'store',
 }: Props) {
-  return (
-    <section className="relative overflow-hidden py-24 sm:py-32" aria-labelledby="cta-final-title">
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-void">
-        <div className="aperture absolute inset-0 opacity-70" />
-        <div className="absolute left-1/2 top-1/2 h-[420px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-phosphor/[0.09] blur-[140px]" />
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-phosphor/40 to-transparent" />
-      </div>
+  const store = (
+    <Button
+      href={safeHref(siteConfig.storeUrl)}
+      variant={primary === 'store' ? 'solid' : 'outline'}
+      tone="navy"
+      external
+      cursorLabel="Ver loja"
+    >
+      {storeLabel}
+    </Button>
+  );
 
-      <div className="container-site">
+  const support = (
+    <Button
+      href={whatsappLink(whatsappMessage)}
+      variant={primary === 'support' ? 'solid' : 'outline'}
+      tone="navy"
+      external
+      cursorLabel="Falar"
+    >
+      <IconWhatsApp className="h-5 w-5" />
+      {whatsappLabel}
+    </Button>
+  );
+
+  return (
+    <section
+      className="on-navy relative overflow-hidden bg-navy-deep py-24 sm:py-32"
+      aria-labelledby="cta-final-title"
+    >
+      <div aria-hidden="true" className="blueprint-invert absolute inset-0" />
+
+      <div className="container-site relative">
         <div className="mx-auto max-w-3xl text-center">
           <SplitText
             as="h2"
             id="cta-final-title"
             text={title}
-            className="block text-[2rem] font-black leading-[1.08] text-ink sm:text-[2.6rem] lg:text-[3rem]"
+            className="block text-[1.95rem] font-extrabold leading-[1.1] text-paper sm:text-[2.5rem] lg:text-[2.85rem]"
           />
-          <p className="mt-7 text-lg leading-relaxed text-ink-muted" data-reveal style={{ ['--d' as string]: '150ms' }}>
+          <p
+            className="mt-7 text-lg leading-relaxed text-sky/80"
+            data-reveal
+            style={{ ['--d' as string]: '150ms' }}
+          >
             {text}
           </p>
 
@@ -43,23 +74,17 @@ export default function CTA({
             data-reveal
             style={{ ['--d' as string]: '250ms' }}
           >
-            <Button
-              href={safeHref(siteConfig.storeUrl)}
-              variant="store"
-              external
-              cursorLabel="Ver loja"
-            >
-              {primaryLabel}
-            </Button>
-            <Button
-              href={whatsappLink(whatsappMessage)}
-              variant="support"
-              external
-              cursorLabel="Falar"
-            >
-              <IconWhatsApp className="h-5 w-5" />
-              {secondaryLabel}
-            </Button>
+            {primary === 'support' ? (
+              <>
+                {support}
+                {store}
+              </>
+            ) : (
+              <>
+                {store}
+                {support}
+              </>
+            )}
           </div>
         </div>
       </div>

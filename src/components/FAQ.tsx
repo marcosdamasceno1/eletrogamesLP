@@ -61,7 +61,7 @@ type Props = {
   title?: string;
   eyebrow?: string;
   description?: string;
-  tone?: 'phosphor' | 'diag';
+  tone?: 'light' | 'navy';
 };
 
 export default function FAQ({
@@ -69,10 +69,14 @@ export default function FAQ({
   title = 'Dúvidas frequentes',
   eyebrow = 'FAQ',
   description,
-  tone = 'phosphor',
+  tone = 'light',
 }: Props) {
   return (
-    <section id="faq" className="py-24 sm:py-32" aria-labelledby="faq-title">
+    <section
+      id="faq"
+      className={`py-24 sm:py-32 ${tone === 'navy' ? 'on-navy bg-navy' : ''}`}
+      aria-labelledby="faq-title"
+    >
       <div className="container-site">
         <SectionTitle
           eyebrow={eyebrow}
@@ -83,19 +87,37 @@ export default function FAQ({
         />
 
         {/* <details> nativo: o acordeão abre mesmo sem JavaScript. */}
-        <div className="mt-14 max-w-3xl overflow-hidden rounded-[var(--radius)] border border-white/[0.08]">
+        <div
+          className={`mt-14 max-w-3xl overflow-hidden rounded-[var(--radius)] border ${
+            tone === 'navy' ? 'border-paper/15' : 'border-line bg-paper shadow-card'
+          }`}
+        >
           {items.map((item, index) => (
             <details
               key={item.question}
-              className="group border-b border-white/[0.07] last:border-0 open:bg-panel-raised/50"
+              className={`group border-b last:border-0 ${
+                tone === 'navy' ? 'border-paper/10 open:bg-paper/[0.05]' : 'border-line open:bg-mist'
+              }`}
               data-reveal
               style={{ ['--d' as string]: `${index * 60}ms` }}
             >
-              <summary className="flex cursor-pointer list-none items-center gap-6 px-6 py-5 text-left transition-colors hover:bg-white/[0.03] sm:px-7">
-                <h3 className="flex-1 text-[16px] font-semibold text-ink">{item.question}</h3>
+              <summary
+                className={`flex cursor-pointer list-none items-center gap-6 px-6 py-5 text-left transition-colors sm:px-7 ${
+                  tone === 'navy' ? 'hover:bg-paper/[0.04]' : 'hover:bg-mist'
+                }`}
+              >
+                <h3
+                  className={`flex-1 text-[16px] font-semibold ${
+                    tone === 'navy' ? 'text-paper' : 'text-navy'
+                  }`}
+                >
+                  {item.question}
+                </h3>
                 <svg
                   viewBox="0 0 24 24"
-                  className={`h-5 w-5 shrink-0 transition-transform duration-300 group-open:rotate-45 ${tone === 'diag' ? 'text-diag' : 'text-phosphor'}`}
+                  className={`h-5 w-5 shrink-0 transition-transform duration-300 group-open:rotate-45 ${
+                    tone === 'navy' ? 'text-blue-soft' : 'text-blue'
+                  }`}
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={1.8}
@@ -105,7 +127,11 @@ export default function FAQ({
                   <path d="M12 5v14M5 12h14" />
                 </svg>
               </summary>
-              <div className="px-6 pb-6 text-[15px] leading-relaxed text-ink-muted sm:px-7">
+              <div
+                className={`px-6 pb-6 text-[15px] leading-relaxed sm:px-7 ${
+                  tone === 'navy' ? 'text-sky/80' : 'text-slate'
+                }`}
+              >
                 {item.answer}
               </div>
             </details>

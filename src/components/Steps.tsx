@@ -16,38 +16,39 @@ const steps = [
 
 export default function Steps() {
   return (
-    <section id="como-funciona" className="relative py-24 sm:py-32" aria-labelledby="etapas-title">
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-panel/40" />
-
+    <section id="como-funciona" className="py-24 sm:py-32" aria-labelledby="etapas-title">
       <div className="container-site">
         <SectionTitle
           eyebrow="Como funciona"
           id="etapas-title"
-          tone="diag"
           title="Quatro etapas, nessa ordem."
           highlight="ordem."
           description="Você entende o que está acontecendo com o equipamento antes de aprovar qualquer serviço."
         />
 
-        <ol className="mt-14 grid gap-px overflow-hidden rounded-[var(--radius)] border border-white/[0.08] bg-white/[0.06] sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-14 grid overflow-hidden rounded-[var(--radius)] border border-line sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
             <li
               key={step.title}
-              className="group relative bg-void p-7 transition-colors duration-300 hover:bg-panel-raised"
+              className="group relative border-b border-line bg-paper p-7 transition-colors duration-300 last:border-b-0 hover:bg-mist sm:border-r sm:[&:nth-child(2n)]:border-r-0 lg:border-b-0 lg:border-r lg:[&:nth-child(2n)]:border-r lg:last:border-r-0"
               data-reveal
               style={{ ['--d' as string]: `${index * 90}ms` }}
             >
               <span
                 aria-hidden="true"
-                className="font-display text-[3.25rem] font-black leading-none text-white/[0.07] transition-colors duration-300 group-hover:text-diag/25"
+                className="font-mono text-xs tracking-[0.2em] text-blue"
               >
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <h3 className="mt-4 text-lg font-bold text-ink">
+              <div
+                aria-hidden="true"
+                className="mt-4 h-px w-10 origin-left bg-line transition-all duration-300 group-hover:w-16 group-hover:bg-blue"
+              />
+              <h3 className="mt-5 text-[17px] font-bold text-navy">
                 <span className="sr-only">Etapa {index + 1}: </span>
                 {step.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-faint">{step.text}</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate">{step.text}</p>
             </li>
           ))}
         </ol>

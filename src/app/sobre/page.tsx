@@ -30,11 +30,11 @@ export default function SobrePage() {
         description="Mais de 28 anos no mesmo segmento, vendendo, testando e consertando videogames enquanto o mercado se reinventava a cada geração."
         trust={['+28 anos de mercado', 'Videogame é o que fazemos', 'Loja e bancada no mesmo lugar']}
       >
-        <Button href="/assistencia-tecnica" variant="support" cursorLabel="Assistência">
-          Preciso de assistência técnica
-        </Button>
-        <Button href={safeHref(siteConfig.storeUrl)} variant="store" external cursorLabel="Ver loja">
+        <Button href={safeHref(siteConfig.storeUrl)} variant="solid" external cursorLabel="Ver loja">
           Conheça nossa loja
+        </Button>
+        <Button href="/assistencia-tecnica" variant="outline" cursorLabel="Assistência">
+          Preciso de assistência técnica
         </Button>
       </PageHero>
       <TrustBar />

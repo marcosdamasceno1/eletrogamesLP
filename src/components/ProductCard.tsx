@@ -13,18 +13,13 @@ export default function ProductCard({ icon: Icon, title, description, index = 0 
       data-tilt
       data-reveal
       style={{ ['--d' as string]: `${index * 80}ms` }}
-      className="group relative h-full overflow-hidden rounded-[var(--radius)] border border-white/[0.08] bg-panel-raised/60 p-6 transition-colors duration-300 hover:border-phosphor/40"
+      className="group h-full rounded-[var(--radius)] border border-line bg-paper p-6 shadow-card transition-all duration-300 hover:border-blue/40 hover:shadow-lift"
     >
-      {/* halo âmbar que acende no hover */}
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-phosphor/[0.12] opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
-      />
-      <span className="relative flex h-12 w-12 items-center justify-center rounded-xl border border-phosphor/25 bg-phosphor/[0.08] text-phosphor">
-        <Icon className="h-6 w-6" />
+      <span className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-sky text-blue transition-colors duration-300 group-hover:bg-blue group-hover:text-paper">
+        <Icon className="h-5 w-5" />
       </span>
-      <h3 className="relative mt-5 text-lg font-bold text-ink">{title}</h3>
-      <p className="relative mt-2.5 text-sm leading-relaxed text-ink-faint">{description}</p>
+      <h3 className="mt-5 text-[17px] font-bold text-navy">{title}</h3>
+      <p className="mt-2.5 text-sm leading-relaxed text-slate">{description}</p>
     </article>
   );
 }
