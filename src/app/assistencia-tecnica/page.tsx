@@ -53,12 +53,12 @@ const differentials = [
   {
     icon: IconClock,
     title: 'Mais de 28 anos no segmento',
-    text: 'Experiência construída acompanhando diferentes gerações de videogames.',
+    text: 'Quase três décadas atendendo cada troca de geração de console.',
   },
   {
     icon: IconWrench,
     title: 'Videogame o dia inteiro',
-    text: 'Console e controle são o trabalho diário aqui, não uma linha a mais de serviço.',
+    text: 'Console e controle passam por essa bancada todo dia. É o que fazemos, não um serviço extra.',
   },
   {
     icon: IconShield,
@@ -84,7 +84,6 @@ export default function AssistenciaTecnicaPage() {
         eyebrow="Assistência técnica"
         tone="service"
         title="Assistência técnica especializada em videogames"
-        highlight="especializada"
         description="Seu console ou controle apresentou problema? Fale com quem possui mais de 28 anos de experiência no universo dos videogames."
         trust={[
           '+28 anos de experiência',
@@ -118,7 +117,6 @@ export default function AssistenciaTecnicaPage() {
             eyebrow="Problemas atendidos"
             id="problemas-title"
             title="Seu videogame está apresentando algum destes sinais?"
-            highlight="sinais?"
             description="Se o seu equipamento se encaixa em alguma dessas situações, ele pode passar por uma avaliação técnica na Eletrogames."
           />
           <div className="mt-14">
@@ -134,7 +132,6 @@ export default function AssistenciaTecnicaPage() {
             eyebrow="Nossos serviços"
             id="manutencao-title"
             title="Manutenção de consoles e de controles"
-            highlight="controles"
             description="A Eletrogames trabalha com os dois lados do equipamento: o aparelho que fica na estante e o que você segura na mão."
           />
 
@@ -235,7 +232,6 @@ export default function AssistenciaTecnicaPage() {
             eyebrow="Diferenciais"
             id="diferenciais-title"
             title="Por que trazer seu equipamento para a Eletrogames"
-            highlight="Eletrogames"
             description="Experiência não se improvisa. São mais de 28 anos convivendo com consoles e controles, no balcão e na bancada."
           />
           <ul className="mt-14 grid gap-5 sm:grid-cols-2">

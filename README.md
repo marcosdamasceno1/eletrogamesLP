@@ -60,9 +60,16 @@ sem virar componente cliente:
 - `data-reveal` — sobe e revela ao entrar na tela (`--d` controla o atraso)
 - `data-tilt` — cartão inclina sob o ponteiro
 - `data-magnetic="0.2"` — o elemento persegue o ponteiro (o número é a força)
-- `data-cursor="Ver loja"` — o cursor vira um disco azul com esse rótulo
+- `data-cursor="Ver loja"` — o cursor vira um disco neon com esse rótulo
+- `data-spotlight` — a moldura neon acende no ponto onde o ponteiro está,
+  em vez de acender inteira de uma vez
 
-Cursor, ímã e inclinação só entram em ponteiros finos. Nada disso roda no toque nem
+A fita rolante de categorias (`Marquee.tsx`) é o único elemento que se move
+sozinho o tempo todo. Ela existe para quebrar a sequência de blocos parados e
+dizer, em uma linha, tudo que a loja vende e conserta. É CSS puro, e para
+quando o ponteiro entra nela.
+
+Cursor, ímã, holofote e inclinação só entram em ponteiros finos. Nada disso roda no toque nem
 para quem pediu movimento reduzido, e o conteúdo nunca fica escondido esperando
 animação: sem JavaScript, o `<noscript>` deixa tudo visível.
 

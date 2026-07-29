@@ -23,7 +23,6 @@ export default function Testimonials() {
           eyebrow="Depoimentos"
           id="depoimentos-title"
           title="Quem conhece, recomenda."
-          highlight="recomenda."
           description="Espaço reservado para as avaliações reais de clientes da Eletrogames."
         />
 

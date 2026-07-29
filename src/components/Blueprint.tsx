@@ -64,7 +64,7 @@ export default function Blueprint({ className = '' }: { className?: string }) {
           ].map((circle, index) => (
             <circle
               key={index}
-              className="draw-path"
+              className="draw-path self-test"
               style={{ ['--len' as string]: 60, ['--d' as string]: `${700 + index * 80}ms` }}
               cx={circle.cx}
               cy={circle.cy}

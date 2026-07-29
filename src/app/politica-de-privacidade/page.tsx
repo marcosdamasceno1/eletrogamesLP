@@ -21,7 +21,6 @@ export default function PoliticaPage() {
       <PageHero
         eyebrow="Documento"
         title="Política de Privacidade"
-        highlight="Privacidade"
         description="Como a Eletrogames trata as informações de quem acessa este site e entra em contato conosco."
       />
 

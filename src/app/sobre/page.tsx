@@ -26,7 +26,6 @@ export default function SobrePage() {
       <PageHero
         eyebrow="Nossa história"
         title="Uma história construída entre gerações de jogadores."
-        highlight="gerações"
         description="Mais de 28 anos no mesmo segmento, vendendo, testando e consertando videogames enquanto o mercado se reinventava a cada geração."
         trust={['+28 anos de mercado', 'Videogame é o que fazemos', 'Loja e bancada no mesmo lugar']}
       >

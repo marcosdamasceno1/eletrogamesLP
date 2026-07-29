@@ -51,7 +51,10 @@ export default function CTA({
       className="relative overflow-hidden bg-abyss py-24 sm:py-32"
       aria-labelledby="cta-final-title"
     >
-      <div aria-hidden="true" className="grid-bg absolute inset-0" />
+      <div aria-hidden="true" className="absolute inset-0">
+        <div className="grid-bg absolute inset-0" />
+        <div className="neon-rule absolute inset-x-0 top-0" />
+      </div>
 
       <div className="container-site relative">
         <div className="mx-auto max-w-3xl text-center">

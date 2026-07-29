@@ -25,7 +25,6 @@ export default function ContatoPage() {
       <PageHero
         eyebrow="Contato"
         title="Fale com a Eletrogames"
-        highlight="Eletrogames"
         description="Dúvida sobre um produto, um acessório ou um equipamento que precisa de avaliação técnica? A equipe orienta você sobre o caminho mais adequado."
         trust={['+28 anos de mercado', 'Atendimento especializado', 'Venda e assistência técnica']}
       >

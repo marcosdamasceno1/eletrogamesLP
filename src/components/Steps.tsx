@@ -22,7 +22,6 @@ export default function Steps() {
           eyebrow="Como funciona"
           id="etapas-title"
           title="Quatro etapas, nessa ordem."
-          highlight="ordem."
           description="Você entende o que está acontecendo com o equipamento antes de aprovar qualquer serviço."
         />
 

@@ -15,6 +15,7 @@ export default function ServiceCard({
   return (
     <article
       data-tilt
+      data-spotlight
       data-reveal
       style={{ ['--d' as string]: `${index * 80}ms` }}
       className="neon-frame neon-frame-cyan h-full p-6 transition-transform duration-300 hover:shadow-lift"

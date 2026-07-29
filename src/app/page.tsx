@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Hero from '@/components/Hero';
 import History from '@/components/History';
 import Products from '@/components/Products';
+import Marquee from '@/components/Marquee';
 import TechSupport from '@/components/TechSupport';
 import Steps from '@/components/Steps';
 import Platforms from '@/components/Platforms';
@@ -24,6 +25,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <Marquee />
       <TrustBar />
       <History />
       <Products />

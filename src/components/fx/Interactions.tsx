@@ -99,6 +99,14 @@ export default function Interactions() {
           magnet.style.setProperty('--my', `${(event.clientY - (box.top + box.height / 2)) * strength}px`);
         }
 
+        // holofote: a moldura neon acende no ponto onde o ponteiro está
+        const lit = (event.target as HTMLElement | null)?.closest<HTMLElement>('[data-spotlight]');
+        if (lit) {
+          const box = lit.getBoundingClientRect();
+          lit.style.setProperty('--sx', `${event.clientX - box.left}px`);
+          lit.style.setProperty('--sy', `${event.clientY - box.top}px`);
+        }
+
         // inclinação dos cartões
         const nextTilt = (event.target as HTMLElement | null)?.closest<HTMLElement>('[data-tilt]');
         if (tilted && tilted !== nextTilt) {

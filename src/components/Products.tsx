@@ -44,8 +44,7 @@ export default function Products() {
           eyebrow="Produtos"
           id="produtos-title"
           title="O que você encontra na Eletrogames"
-          highlight="encontra"
-          description="As mesmas categorias da nossa loja online. Tem quem chegue com o modelo decidido e quem chegue sem saber por onde começar: nos dois casos, alguém aqui já mexeu nesse aparelho antes."
+          description="As mesmas categorias da nossa loja online. Você pode chegar com o modelo decidido ou sem ideia nenhuma: alguém aqui já mexeu nesse aparelho antes."
         />
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">

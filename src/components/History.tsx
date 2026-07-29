@@ -20,7 +20,7 @@ const pillars = [
   {
     icon: IconSparkle,
     title: 'Atualização',
-    text: 'Console novo, acessório novo, jeito novo de jogar. A gente acompanha.',
+    text: 'Cada console novo muda alguma coisa. A gente aprende junto, como sempre foi.',
   },
 ];
 
@@ -32,7 +32,6 @@ export default function History() {
           eyebrow="Nossa história"
           id="historia-title"
           title="Uma história construída entre gerações de jogadores."
-          highlight="gerações"
         />
 
         <div className="mt-14 grid gap-14 lg:grid-cols-[1.1fr_0.9fr]">
@@ -50,7 +49,7 @@ export default function History() {
               ajuda a avaliar com calma antes de propor qualquer serviço.
             </p>
             <p data-reveal style={{ ['--d' as string]: '240ms' }}>
-              Confiança de décadas não tem atalho. Veio cliente por cliente, e continua vindo assim.
+              Não dá para acelerar isso. Foi um cliente de cada vez, e continua sendo.
             </p>
 
             <blockquote

@@ -29,10 +29,7 @@ export default function PageHero({
         service ? 'bg-abyss' : 'bg-void'
       }`}
     >
-      <div
-        aria-hidden="true"
-        className={`absolute inset-0 ${service ? 'grid-bg' : 'grid-bg opacity-60'}`}
-      />
+      <div aria-hidden="true" className="absolute inset-0 grid-bg" />
       {!service ? (
         <div
           aria-hidden="true"

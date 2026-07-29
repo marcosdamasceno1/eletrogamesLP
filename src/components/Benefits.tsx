@@ -34,8 +34,7 @@ export default function Benefits() {
           eyebrow="Por que a Eletrogames"
           id="por-que-title"
           title="Experiência não se improvisa."
-          highlight="improvisa."
-          description="Videogame é o único assunto da Eletrogames há mais de 28 anos. Todo dia, no balcão e na bancada."
+          description="Videogame é o único assunto da Eletrogames há mais de 28 anos. Não é uma seção da loja: é a loja inteira."
         />
 
         <ul className="mt-14 grid gap-5 sm:grid-cols-2">

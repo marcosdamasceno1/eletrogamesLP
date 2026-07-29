@@ -54,8 +54,7 @@ export default function Platforms({ tone = 'store' }: { tone?: 'store' | 'servic
           id="plataformas-title"
           tone={tone}
           title="Qual console você tem em casa?"
-          highlight="console"
-          description="Clique no seu aparelho e a conversa já começa com a equipe sabendo do que se trata."
+          description="Toque no seu aparelho e a conversa abre no WhatsApp já dizendo qual console é."
         />
 
         <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -66,6 +65,7 @@ export default function Platforms({ tone = 'store' }: { tone?: 'store' | 'servic
                 target="_blank"
                 rel="noopener noreferrer"
                 data-tilt
+                data-spotlight
                 data-cursor="Falar"
                 className="neon-frame neon-frame-cyan group flex h-full flex-col p-6 transition-transform duration-300 hover:shadow-lift"
               >

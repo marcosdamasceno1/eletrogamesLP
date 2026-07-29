@@ -132,7 +132,6 @@ export default function TechSupport() {
           id="assistencia-title"
           tone="service"
           title="Assistência técnica especializada em videogames."
-          highlight="especializada"
           description="Seu console ou controle apresentou problema? Conte com quem trabalha com videogames há mais de 28 anos."
         />
 
