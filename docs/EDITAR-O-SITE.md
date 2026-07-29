@@ -154,9 +154,8 @@ Cuidados com a foto:
 - **Reduza o peso antes de subir.** Foto de celular costuma ter 3 a 8 MB, o que
   deixa o site muito lento no 4G. Sites como o Squoosh reduzem para menos de
   300 KB sem perda visível. Essa é a imagem mais pesada do site: vale o cuidado.
-- **A parte de baixo da imagem fica escurecida** pela faixa que segura o selo de
-  "28 anos". Escolha um enquadramento em que o letreiro e a vitrine apareçam na
-  metade de cima.
+- **Nada é escrito por cima da foto.** A moldura só emoldura, então escolha um
+  enquadramento em que o letreiro e a vitrine apareçam bem.
 
 Se trocar a proporção do arquivo, ajuste também os números em `index.html`:
 
@@ -166,20 +165,6 @@ Se trocar a proporção do arquivo, ajuste também os números em `index.html`:
 
 Eles não mudam o tamanho na tela: servem para o navegador reservar o espaço
 certo e a página não "pular" enquanto a foto carrega.
-
-### O texto que aparece sobre a foto
-
-No `index.html`, procure por `A FOTO DA LOJA`. Logo abaixo estão a legenda do
-topo, o selo com o número e a etiqueta:
-
-```html
-<span>Nossa loja · [CIDADE]/[ESTADO]</span>
-<strong>Eletro Games</strong>
-...
-<p class="vitrine__selo-numero">28<span>+</span></p>
-<p class="vitrine__selo-texto">anos no mesmo ramo</p>
-<span class="vitrine__selo-tag">Loja física</span>
-```
 
 ---
 
