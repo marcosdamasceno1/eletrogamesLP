@@ -28,6 +28,7 @@ instagramUrl: '[INSERIR URL DO INSTAGRAM]',
 E logo abaixo:
 
 ```ts
+warrantyPeriod: '[PRAZO DA GARANTIA]',   // ex: '90 dias'
 address: {
   street: '[ENDEREÇO]',
   city: '[CIDADE]',
@@ -48,6 +49,24 @@ https://wa.me/5511999999999
 
 Você não precisa acrescentar a mensagem automática: o site já faz isso sozinho,
 e a mensagem muda conforme o botão clicado (assistência, console, controle).
+
+### A garantia
+
+O campo `warrantyPeriod` aparece em três lugares: na faixa de destaques da página de
+assistência técnica, nos diferenciais e em duas perguntas frequentes. Escreva só o
+prazo, sem a palavra garantia: o site já monta a frase em volta.
+
+Enquanto o campo estiver entre colchetes, as frases continuam falando em garantia sem
+prometer um tempo específico.
+
+### As plataformas atendidas
+
+**Arquivo:** `src/components/Platforms.tsx`
+
+São os quatro cartões de console (PlayStation, Xbox, Nintendo e consoles antigos). Cada
+cartão abre o WhatsApp com uma mensagem que já diz qual console é, o que encurta o
+atendimento. Para adicionar ou remover uma plataforma, edite a lista `platforms` no topo
+do arquivo, mantendo o mesmo formato.
 
 ### O que acontece enquanto os dados não são preenchidos
 

@@ -26,7 +26,7 @@ const pillars = [
 
 export default function History() {
   return (
-    <section id="nossa-historia" className="py-24 sm:py-32" aria-labelledby="historia-title">
+    <section id="nossa-historia" className="border-t border-line py-24 sm:py-32" aria-labelledby="historia-title">
       <div className="container-site">
         <SectionTitle
           eyebrow="Nossa história"

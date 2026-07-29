@@ -3,6 +3,7 @@ import PageHero from '@/components/PageHero';
 import Button from '@/components/Button';
 import SectionTitle from '@/components/SectionTitle';
 import Steps from '@/components/Steps';
+import Platforms from '@/components/Platforms';
 import TrustBar from '@/components/TrustBar';
 import FAQ, { supportFaq } from '@/components/FAQ';
 import CTA from '@/components/CTA';
@@ -19,7 +20,7 @@ import {
   IconWrench,
 } from '@/components/Icons';
 import { faqSchema, serviceSchema } from '@/lib/schema';
-import { whatsappLink, whatsappMessages } from '@/lib/site';
+import { siteConfig, whatsappLink, whatsappMessages } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Assistência Técnica de Videogames | Manutenção de Console e Controle',
@@ -61,6 +62,11 @@ const differentials = [
   },
   {
     icon: IconShield,
+    title: `Garantia de ${siteConfig.warrantyPeriod}`,
+    text: 'Os serviços de manutenção saem com garantia, e as condições são informadas na aprovação.',
+  },
+  {
+    icon: IconCheck,
     title: 'Diagnóstico antes do serviço',
     text: 'A avaliação vem primeiro. O serviço acontece depois da sua aprovação.',
   },
@@ -82,8 +88,8 @@ export default function AssistenciaTecnicaPage() {
         description="Seu console ou controle apresentou problema? Fale com quem possui mais de 28 anos de experiência no universo dos videogames."
         trust={[
           '+28 anos de experiência',
-          'Consoles, controles e manetes',
-          'Diagnóstico antes do serviço',
+          'PlayStation, Xbox, Nintendo e consoles antigos',
+          `Serviços com garantia de ${siteConfig.warrantyPeriod}`,
         ]}
       >
         <Button
@@ -103,8 +109,10 @@ export default function AssistenciaTecnicaPage() {
 
       <TrustBar />
 
+      <Platforms />
+
       {/* Problemas atendidos */}
-      <section className="py-24 sm:py-32" aria-labelledby="problemas-title">
+      <section className="border-t border-line py-24 sm:py-32" aria-labelledby="problemas-title">
         <div className="container-site">
           <SectionTitle
             eyebrow="Problemas atendidos"
@@ -120,7 +128,7 @@ export default function AssistenciaTecnicaPage() {
       </section>
 
       {/* Manutenção de consoles e de controles */}
-      <section className="bg-mist py-24 sm:py-32" aria-labelledby="manutencao-title">
+      <section className="border-t border-line py-24 sm:py-32" aria-labelledby="manutencao-title">
         <div className="container-site">
           <SectionTitle
             eyebrow="Nossos serviços"
@@ -221,7 +229,7 @@ export default function AssistenciaTecnicaPage() {
       <Steps />
 
       {/* Diferenciais */}
-      <section className="bg-mist py-24 sm:py-32" aria-labelledby="diferenciais-title">
+      <section className="border-t border-line py-24 sm:py-32" aria-labelledby="diferenciais-title">
         <div className="container-site">
           <SectionTitle
             eyebrow="Diferenciais"

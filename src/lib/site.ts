@@ -41,6 +41,13 @@ export const siteConfig = {
   },
 
   openingHours: '[HORÁRIO DE FUNCIONAMENTO]',
+
+  /**
+   * Prazo de garantia dos serviços de manutenção.
+   * A empresa confirmou que existe garantia; falta informar o prazo.
+   * Enquanto estiver entre colchetes, o site fala em garantia sem prometer tempo.
+   */
+  warrantyPeriod: '[PRAZO DA GARANTIA]',
 } as const;
 
 /** Indica se um campo ainda é um placeholder não preenchido. */
@@ -72,6 +79,14 @@ export const whatsappMessages = {
     'Olá! Acessei o site da Eletrogames e gostaria de informações sobre manutenção de controle.',
   products:
     'Olá! Acessei o site da Eletrogames e gostaria de informações sobre produtos.',
+  playstation:
+    'Olá! Acessei o site da Eletrogames e gostaria de informações sobre manutenção de PlayStation.',
+  xbox:
+    'Olá! Acessei o site da Eletrogames e gostaria de informações sobre manutenção de Xbox.',
+  nintendo:
+    'Olá! Acessei o site da Eletrogames e gostaria de informações sobre manutenção de Nintendo.',
+  retro:
+    'Olá! Acessei o site da Eletrogames e gostaria de informações sobre manutenção de console antigo.',
 } as const;
 
 /**

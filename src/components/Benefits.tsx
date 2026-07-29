@@ -28,7 +28,7 @@ const reasons = [
 
 export default function Benefits() {
   return (
-    <section id="por-que-escolher" className="bg-mist py-24 sm:py-32" aria-labelledby="por-que-title">
+    <section id="por-que-escolher" className="border-t border-line py-24 sm:py-32" aria-labelledby="por-que-title">
       <div className="container-site">
         <SectionTitle
           eyebrow="Por que a Eletrogames"

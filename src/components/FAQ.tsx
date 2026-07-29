@@ -1,4 +1,5 @@
 import SectionTitle from './SectionTitle';
+import { siteConfig } from '@/lib/site';
 
 export type FaqItem = { question: string; answer: string };
 
@@ -21,6 +22,10 @@ export const homeFaq: FaqItem[] = [
     question: 'Posso comprar produtos pelo site?',
     answer:
       'O site institucional direciona o cliente para a loja online da Eletrogames, onde poderá consultar os produtos disponíveis.',
+  },
+  {
+    question: 'Os serviços de manutenção têm garantia?',
+    answer: `Sim. Os serviços de manutenção realizados pela Eletrogames têm garantia de ${siteConfig.warrantyPeriod}. As condições são informadas no momento da aprovação do serviço.`,
   },
   {
     question: 'A Eletrogames trabalha há quanto tempo com videogames?',
@@ -50,6 +55,15 @@ export const supportFaq: FaqItem[] = [
       'Você entra em contato e explica a situação, o equipamento passa por uma análise técnica e a equipe informa as possibilidades de manutenção de acordo com o diagnóstico. O serviço só é realizado após a sua aprovação.',
   },
   {
+    question: 'Quais consoles vocês atendem?',
+    answer:
+      'PlayStation, Xbox e Nintendo, incluindo as gerações anteriores de cada plataforma. Consoles antigos também são avaliados: são as gerações que acompanhamos desde o começo.',
+  },
+  {
+    question: 'O serviço tem garantia?',
+    answer: `Sim. Os serviços de manutenção têm garantia de ${siteConfig.warrantyPeriod}, com as condições informadas no momento da aprovação.`,
+  },
+  {
     question: 'Como solicito uma avaliação?',
     answer:
       'Entre em contato com a equipe da Eletrogames pelo WhatsApp ou pelos canais disponíveis no site.',
@@ -74,7 +88,7 @@ export default function FAQ({
   return (
     <section
       id="faq"
-      className={`py-24 sm:py-32 ${tone === 'navy' ? 'on-navy bg-navy' : ''}`}
+      className={`py-24 sm:py-32 ${tone === 'navy' ? 'on-navy bg-navy' : 'border-t border-line'}`}
       aria-labelledby="faq-title"
     >
       <div className="container-site">

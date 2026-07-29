@@ -30,7 +30,7 @@ const categories = [
 
 export default function Products() {
   return (
-    <section id="produtos" className="bg-mist py-24 sm:py-32" aria-labelledby="produtos-title">
+    <section id="produtos" className="border-t border-line py-24 sm:py-32" aria-labelledby="produtos-title">
       <div className="container-site">
         <SectionTitle
           eyebrow="Produtos"

@@ -17,7 +17,7 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials() {
   return (
-    <section id="depoimentos" className="py-24 sm:py-32" aria-labelledby="depoimentos-title">
+    <section id="depoimentos" className="border-t border-line py-24 sm:py-32" aria-labelledby="depoimentos-title">
       <div className="container-site">
         <SectionTitle
           eyebrow="Depoimentos"

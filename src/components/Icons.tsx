@@ -185,3 +185,35 @@ export function IconWhatsApp(props: IconProps) {
     </svg>
   );
 }
+
+/** Console de mesa com leitor de disco. */
+export function IconDisc(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="2.5" y="6.5" width="19" height="11" rx="2.5" />
+      <circle cx="8" cy="12" r="3" />
+      <path d="M14 10h4M14 14h4" />
+    </Svg>
+  );
+}
+
+/** Portátil com controles nas laterais. */
+export function IconHandheld(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="6.5" y="4.5" width="11" height="15" rx="1.6" />
+      <path d="M6.5 6.5H5A1.5 1.5 0 0 0 3.5 8v8A1.5 1.5 0 0 0 5 17.5h1.5M17.5 6.5H19A1.5 1.5 0 0 1 20.5 8v8a1.5 1.5 0 0 1-1.5 1.5h-1.5" />
+      <path d="M5 10v2M18 12v.01M18 14.5v.01" />
+    </Svg>
+  );
+}
+
+/** Cartucho, a mídia das gerações que a loja atravessou. */
+export function IconCartridge(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M5 3.5h14v13l-4 4H5z" />
+      <path d="M8.5 7h7v4h-7zM9 20.5v-4h6" />
+    </Svg>
+  );
+}

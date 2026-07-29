@@ -16,7 +16,7 @@ const steps = [
 
 export default function Steps() {
   return (
-    <section id="como-funciona" className="py-24 sm:py-32" aria-labelledby="etapas-title">
+    <section id="como-funciona" className="border-t border-line py-24 sm:py-32" aria-labelledby="etapas-title">
       <div className="container-site">
         <SectionTitle
           eyebrow="Como funciona"

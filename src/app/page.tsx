@@ -4,6 +4,7 @@ import History from '@/components/History';
 import Products from '@/components/Products';
 import TechSupport from '@/components/TechSupport';
 import Steps from '@/components/Steps';
+import Platforms from '@/components/Platforms';
 import Benefits from '@/components/Benefits';
 import TrustBar from '@/components/TrustBar';
 import Testimonials from '@/components/Testimonials';
@@ -27,6 +28,7 @@ export default function HomePage() {
       <History />
       <Products />
       <TechSupport />
+      <Platforms />
       <Steps />
       <Benefits />
       <Testimonials />
