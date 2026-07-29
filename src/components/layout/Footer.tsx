@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Logo from './Logo';
-import { IconClock, IconInstagram, IconPhone, IconPin, IconWhatsApp } from './Icons';
+import Logo from '@/components/layout/Logo';
+import { IconClock, IconInstagram, IconPhone, IconPin, IconWhatsApp } from '@/components/ui/Icons';
 import { safeHref, siteConfig, whatsappLink, whatsappMessages } from '@/lib/site';
 
 const footerLinks = [

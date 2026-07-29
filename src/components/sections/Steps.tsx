@@ -1,4 +1,4 @@
-import SectionTitle from './SectionTitle';
+import SectionTitle from '@/components/ui/SectionTitle';
 
 /** Aqui a ordem importa de verdade, então os números carregam informação. */
 const steps = [

@@ -1,5 +1,5 @@
 import { whatsappLink, whatsappMessages } from '@/lib/site';
-import { IconWhatsApp } from './Icons';
+import { IconWhatsApp } from '@/components/ui/Icons';
 
 /** Botão flutuante. Discreto no desktop, ao alcance do polegar no celular. */
 export default function WhatsAppButton() {

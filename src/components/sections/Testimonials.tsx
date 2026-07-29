@@ -1,4 +1,4 @@
-import SectionTitle from './SectionTitle';
+import SectionTitle from '@/components/ui/SectionTitle';
 
 /**
  * Componente pronto para avaliações REAIS.

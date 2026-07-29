@@ -1,6 +1,6 @@
-import Button from './Button';
-import SectionTitle from './SectionTitle';
-import { IconClock, IconInstagram, IconPhone, IconPin, IconWhatsApp } from './Icons';
+import Button from '@/components/ui/Button';
+import SectionTitle from '@/components/ui/SectionTitle';
+import { IconClock, IconInstagram, IconPhone, IconPin, IconWhatsApp } from '@/components/ui/Icons';
 import { isPlaceholder, safeHref, siteConfig, whatsappLink, whatsappMessages } from '@/lib/site';
 
 const items = [

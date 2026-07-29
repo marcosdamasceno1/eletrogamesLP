@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import PageHero from '@/components/PageHero';
-import History from '@/components/History';
-import TrustBar from '@/components/TrustBar';
-import Benefits from '@/components/Benefits';
-import CTA from '@/components/CTA';
-import Button from '@/components/Button';
+import PageHero from '@/components/sections/PageHero';
+import History from '@/components/sections/History';
+import TrustBar from '@/components/sections/TrustBar';
+import Benefits from '@/components/sections/Benefits';
+import CTA from '@/components/sections/CTA';
+import Button from '@/components/ui/Button';
 import { safeHref, siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {

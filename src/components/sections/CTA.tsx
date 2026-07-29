@@ -1,6 +1,6 @@
-import Button from './Button';
-import SplitText from './fx/SplitText';
-import { IconWhatsApp } from './Icons';
+import Button from '@/components/ui/Button';
+import SplitText from '@/components/fx/SplitText';
+import { IconWhatsApp } from '@/components/ui/Icons';
 import { safeHref, siteConfig, whatsappLink, whatsappMessages } from '@/lib/site';
 
 type Props = {

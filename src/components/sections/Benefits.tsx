@@ -1,6 +1,6 @@
-import Button from './Button';
-import SectionTitle from './SectionTitle';
-import { IconChat, IconClock, IconShield, IconStore, IconWhatsApp } from './Icons';
+import Button from '@/components/ui/Button';
+import SectionTitle from '@/components/ui/SectionTitle';
+import { IconChat, IconClock, IconShield, IconStore, IconWhatsApp } from '@/components/ui/Icons';
 import { whatsappLink, whatsappMessages } from '@/lib/site';
 
 const reasons = [

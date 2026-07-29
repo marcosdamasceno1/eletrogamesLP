@@ -90,15 +90,15 @@ export const whatsappMessages = {
 } as const;
 
 /**
- * Menu principal. `short` é usado na barra fixa em desktop (evita quebra de linha);
- * `label` é o rótulo completo, usado no menu mobile.
+ * Menu principal.
+ *
+ * Enxuto de propósito: com dois botões de ação no topo (loja e WhatsApp),
+ * cada item de navegação a mais disputa atenção com eles. As demais páginas
+ * continuam existindo e acessíveis pelo rodapé e pelos botões dentro da página.
+ *
+ * `short` é o rótulo da barra fixa no desktop; `label` é o do menu do celular.
  */
 export const navigation = [
   { label: 'Início', short: 'Início', href: '/' },
-  { label: 'Nossa História', short: 'História', href: '/sobre' },
-  { label: 'Produtos', short: 'Produtos', href: '/#produtos' },
-  { label: 'Assistência Técnica', short: 'Assistência', href: '/assistencia-tecnica' },
-  { label: 'Por que escolher a Eletrogames', short: 'Diferenciais', href: '/#por-que-escolher' },
   { label: 'Dúvidas Frequentes', short: 'Dúvidas', href: '/#faq' },
-  { label: 'Contato', short: 'Contato', href: '/contato' },
 ] as const;

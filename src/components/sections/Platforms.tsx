@@ -1,6 +1,6 @@
-import Button from './Button';
-import SectionTitle from './SectionTitle';
-import { IconCartridge, IconConsole, IconDisc, IconHandheld, IconWhatsApp } from './Icons';
+import Button from '@/components/ui/Button';
+import SectionTitle from '@/components/ui/SectionTitle';
+import { IconCartridge, IconConsole, IconDisc, IconHandheld, IconWhatsApp } from '@/components/ui/Icons';
 import { whatsappLink, whatsappMessages } from '@/lib/site';
 
 /**

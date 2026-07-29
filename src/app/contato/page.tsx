@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import PageHero from '@/components/PageHero';
-import ContactInfo from '@/components/ContactInfo';
-import Button from '@/components/Button';
-import TrustBar from '@/components/TrustBar';
-import CTA from '@/components/CTA';
-import { IconWhatsApp } from '@/components/Icons';
+import PageHero from '@/components/sections/PageHero';
+import ContactInfo from '@/components/sections/ContactInfo';
+import Button from '@/components/ui/Button';
+import TrustBar from '@/components/sections/TrustBar';
+import CTA from '@/components/sections/CTA';
+import { IconWhatsApp } from '@/components/ui/Icons';
 import { safeHref, siteConfig, whatsappLink, whatsappMessages } from '@/lib/site';
 
 export const metadata: Metadata = {

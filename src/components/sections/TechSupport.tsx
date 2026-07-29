@@ -1,7 +1,7 @@
-import Button from './Button';
-import SectionTitle from './SectionTitle';
-import ServiceCard from './ServiceCard';
-import { IconGamepad, IconStethoscope, IconUsers, IconWhatsApp, IconWrench } from './Icons';
+import Button from '@/components/ui/Button';
+import SectionTitle from '@/components/ui/SectionTitle';
+import ServiceCard from '@/components/ui/ServiceCard';
+import { IconGamepad, IconStethoscope, IconUsers, IconWhatsApp, IconWrench } from '@/components/ui/Icons';
 import { whatsappLink, whatsappMessages } from '@/lib/site';
 
 export const supportServices = [

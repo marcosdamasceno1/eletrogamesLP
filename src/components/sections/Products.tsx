@@ -1,7 +1,7 @@
-import Button from './Button';
-import ProductCard from './ProductCard';
-import SectionTitle from './SectionTitle';
-import { IconCable, IconConsole, IconGamepad, IconHeadset, IconMobilePad } from './Icons';
+import Button from '@/components/ui/Button';
+import ProductCard from '@/components/ui/ProductCard';
+import SectionTitle from '@/components/ui/SectionTitle';
+import { IconCable, IconConsole, IconGamepad, IconHeadset, IconMobilePad } from '@/components/ui/Icons';
 import { safeHref, siteConfig } from '@/lib/site';
 
 /**

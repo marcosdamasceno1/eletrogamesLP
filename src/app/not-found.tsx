@@ -1,5 +1,5 @@
-import Button from '@/components/Button';
-import { IconWhatsApp } from '@/components/Icons';
+import Button from '@/components/ui/Button';
+import { IconWhatsApp } from '@/components/ui/Icons';
 import { safeHref, siteConfig, whatsappLink, whatsappMessages } from '@/lib/site';
 
 /** 404 no registro da prancha técnica: a página some, a marca continua. */

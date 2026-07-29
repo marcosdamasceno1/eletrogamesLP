@@ -1,4 +1,4 @@
-import { IconClock, IconGamepad, IconStore, IconUsers } from './Icons';
+import { IconClock, IconGamepad, IconStore, IconUsers } from '@/components/ui/Icons';
 
 /** Ficha da empresa: quatro fatos, sem adjetivo sobrando. */
 const items = [

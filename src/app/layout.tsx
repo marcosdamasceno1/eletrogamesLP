@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from 'next';
 import { Archivo, IBM_Plex_Mono, IBM_Plex_Sans } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/WhatsAppButton';
-import JsonLd from '@/components/JsonLd';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import WhatsAppButton from '@/components/layout/WhatsAppButton';
+import JsonLd from '@/components/ui/JsonLd';
 import Interactions from '@/components/fx/Interactions';
 import { storeSchema } from '@/lib/schema';
 import { isPlaceholder, siteConfig } from '@/lib/site';

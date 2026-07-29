@@ -1,8 +1,8 @@
-import Button from './Button';
-import Blueprint from './Blueprint';
-import Counter from './fx/Counter';
-import SplitText from './fx/SplitText';
-import { IconCheck, IconStore, IconUsers, IconWrench } from './Icons';
+import Button from '@/components/ui/Button';
+import Blueprint from '@/components/ui/Blueprint';
+import Counter from '@/components/fx/Counter';
+import SplitText from '@/components/fx/SplitText';
+import { IconCheck, IconStore, IconUsers, IconWrench } from '@/components/ui/Icons';
 import { safeHref, siteConfig } from '@/lib/site';
 
 /** Selos curtos, no mesmo formato da faixa que a loja usa sob o banner. */

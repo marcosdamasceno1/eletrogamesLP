@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { navigation, safeHref, siteConfig, whatsappLink, whatsappMessages } from '@/lib/site';
-import { IconWhatsApp } from './Icons';
-import Logo from './Logo';
+import { IconWhatsApp } from '@/components/ui/Icons';
+import Logo from '@/components/layout/Logo';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -53,7 +53,7 @@ export default function Header() {
           <Logo />
         </Link>
 
-        <nav aria-label="Navegação principal" className="hidden xl:block">
+        <nav aria-label="Navegação principal" className="hidden md:block">
           <ul className="flex items-center gap-1">
             {navigation.map((item) => {
               const active = item.href.startsWith('/#') ? false : pathname === item.href;
@@ -81,7 +81,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 md:flex">
           <a
             href={whatsappLink(whatsappMessages.support)}
             target="_blank"
@@ -108,7 +108,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setOpen((value) => !value)}
-          className="flex h-12 w-12 items-center justify-center rounded-[10px] border border-white/10 text-ink lg:hidden"
+          className="flex h-12 w-12 items-center justify-center rounded-[10px] border border-white/10 text-ink md:hidden"
           aria-expanded={open}
           aria-controls="menu-mobile"
           aria-label={open ? 'Fechar menu' : 'Abrir menu'}
@@ -139,7 +139,7 @@ export default function Header() {
       <div
         id="menu-mobile"
         hidden={!open}
-        className="max-h-[calc(100vh-68px)] overflow-y-auto border-t border-white/10 bg-void lg:hidden"
+        className="max-h-[calc(100vh-68px)] overflow-y-auto border-t border-white/10 bg-void md:hidden"
       >
         <nav aria-label="Navegação principal, versão para celular" className="container-site py-5">
           <ul className="flex flex-col">

@@ -8,6 +8,9 @@ para o servidor. O passo a passo está em `docs/PUBLICAR.md`.
 
 ---
 
+> Antes de começar: `docs/ESTRUTURA.md` explica como as pastas estão organizadas
+> e por que a pasta `dist/` não deve ser editada à mão.
+
 ## 1. Dados da empresa: telefone, endereço, WhatsApp, loja
 
 **Arquivo:** `src/lib/site.ts`
@@ -61,7 +64,7 @@ prometer um tempo específico.
 
 ### As plataformas atendidas
 
-**Arquivo:** `src/components/Platforms.tsx`
+**Arquivo:** `src/components/sections/Platforms.tsx`
 
 São os quatro cartões de console (PlayStation, Xbox, Nintendo e consoles antigos). Cada
 cartão abre o WhatsApp com uma mensagem que já diz qual console é, o que encurta o
@@ -110,7 +113,7 @@ entre aspas, sem mexer no nome que vem antes dos dois pontos.
 
 ## 4. Os depoimentos de clientes
 
-**Arquivo:** `src/components/Testimonials.tsx`
+**Arquivo:** `src/components/sections/Testimonials.tsx`
 
 Nenhum depoimento foi inventado. Os três cartões estão marcados assim:
 
@@ -135,7 +138,7 @@ manter as chaves `{ }` e a vírgula entre eles.
 
 ## 5. A linha do tempo e as fotos antigas
 
-**Arquivo:** `src/components/History.tsx`
+**Arquivo:** `src/components/sections/History.tsx`
 
 Procure por `[ANO]` e `[MARCO DA HISTÓRIA]`. São quatro blocos prontos para receber
 os marcos reais da empresa. Escreva o ano e o acontecimento no lugar dos colchetes.
@@ -148,7 +151,7 @@ quem cuida do site para trocar aquele bloco por uma imagem.
 
 ## 6. As perguntas frequentes
 
-**Arquivo:** `src/components/FAQ.tsx`
+**Arquivo:** `src/components/sections/FAQ.tsx`
 
 São duas listas separadas:
 
@@ -175,17 +178,21 @@ Cada seção da página inicial mora em um arquivo próprio, dentro de `src/comp
 
 | Seção do site | Arquivo |
 | --- | --- |
-| Primeira dobra (o título grande) | `Hero.tsx` |
-| Faixa com os quatro fatos | `TrustBar.tsx` |
-| Nossa história | `History.tsx` |
-| Produtos | `Products.tsx` |
-| Assistência técnica | `TechSupport.tsx` |
-| Como funciona a assistência | `Steps.tsx` |
-| Por que escolher a Eletrogames | `Benefits.tsx` |
-| Depoimentos | `Testimonials.tsx` |
-| Dúvidas frequentes | `FAQ.tsx` |
-| Bloco final antes do rodapé | `CTA.tsx` |
-| Rodapé | `Footer.tsx` |
+| Primeira dobra (o título grande) | `src/components/sections/Hero.tsx` |
+| Fita rolante com as categorias | `src/components/sections/Marquee.tsx` |
+| Faixa com os quatro fatos | `src/components/sections/TrustBar.tsx` |
+| Nossa história | `src/components/sections/History.tsx` |
+| Produtos | `src/components/sections/Products.tsx` |
+| Assistência técnica | `src/components/sections/TechSupport.tsx` |
+| Plataformas atendidas | `src/components/sections/Platforms.tsx` |
+| Como funciona a assistência | `src/components/sections/Steps.tsx` |
+| Por que escolher a Eletrogames | `src/components/sections/Benefits.tsx` |
+| Depoimentos | `src/components/sections/Testimonials.tsx` |
+| Dúvidas frequentes | `src/components/sections/FAQ.tsx` |
+| Bloco final antes do rodapé | `src/components/sections/CTA.tsx` |
+| Localização e contato | `src/components/sections/ContactInfo.tsx` |
+| Cabeçalho e menu | `src/components/layout/Header.tsx` |
+| Rodapé | `src/components/layout/Footer.tsx` |
 
 Dentro de cada arquivo, o texto visível está entre aspas ou entre as marcas `>` e `<`.
 Mude apenas o texto, sem apagar os símbolos em volta.
@@ -221,3 +228,15 @@ que depende das ferramentas de anúncio que a empresa usar.
 - **Cores:** `tailwind.config.ts`. Explicação completa em `docs/LOGOMARCA.md`.
 - **Fontes:** `src/app/layout.tsx`, no topo do arquivo.
 - **Estilos gerais** (botões, cartões, espaçamentos): `src/app/globals.css`.
+
+---
+
+## 11. O menu do site
+
+O menu do topo tem só dois itens: Início e Dúvidas Frequentes. É proposital: ao
+lado deles ficam os dois botões de ação (Loja Online e WhatsApp), e cada link a
+mais no menu disputa atenção com eles.
+
+As outras páginas continuam no ar e acessíveis pelo rodapé e pelos botões dentro
+das seções. Para trazer alguma de volta ao menu, acrescente uma linha em
+`navigation`, dentro de `src/lib/site.ts`.

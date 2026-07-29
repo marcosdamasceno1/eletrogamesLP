@@ -1,17 +1,17 @@
 import type { Metadata } from 'next';
-import Hero from '@/components/Hero';
-import History from '@/components/History';
-import Products from '@/components/Products';
-import Marquee from '@/components/Marquee';
-import TechSupport from '@/components/TechSupport';
-import Steps from '@/components/Steps';
-import Platforms from '@/components/Platforms';
-import Benefits from '@/components/Benefits';
-import TrustBar from '@/components/TrustBar';
-import Testimonials from '@/components/Testimonials';
-import FAQ, { homeFaq } from '@/components/FAQ';
-import CTA from '@/components/CTA';
-import JsonLd from '@/components/JsonLd';
+import Hero from '@/components/sections/Hero';
+import History from '@/components/sections/History';
+import Products from '@/components/sections/Products';
+import Marquee from '@/components/sections/Marquee';
+import TechSupport from '@/components/sections/TechSupport';
+import Steps from '@/components/sections/Steps';
+import Platforms from '@/components/sections/Platforms';
+import Benefits from '@/components/sections/Benefits';
+import TrustBar from '@/components/sections/TrustBar';
+import Testimonials from '@/components/sections/Testimonials';
+import FAQ, { homeFaq } from '@/components/sections/FAQ';
+import CTA from '@/components/sections/CTA';
+import JsonLd from '@/components/ui/JsonLd';
 import { faqSchema } from '@/lib/schema';
 
 export const metadata: Metadata = {

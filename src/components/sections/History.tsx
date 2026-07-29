@@ -1,5 +1,5 @@
-import SectionTitle from './SectionTitle';
-import { IconClock, IconUsers, IconWrench, IconSparkle } from './Icons';
+import SectionTitle from '@/components/ui/SectionTitle';
+import { IconClock, IconUsers, IconWrench, IconSparkle } from '@/components/ui/Icons';
 
 const pillars = [
   {

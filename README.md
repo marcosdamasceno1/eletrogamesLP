@@ -13,6 +13,7 @@ Se você veio para mexer no conteúdo e não no código, comece por aqui:
 - **[docs/LOGOMARCA.md](docs/LOGOMARCA.md)** — subir a logomarca oficial e ajustar as
   cores da marca.
 - **[docs/PUBLICAR.md](docs/PUBLICAR.md)** — gerar os arquivos e enviar para o servidor.
+- **[docs/ESTRUTURA.md](docs/ESTRUTURA.md)** — onde cada coisa mora e onde não mexer.
 
 ## Stack
 
@@ -113,27 +114,33 @@ Schema.org omite o campo em vez de publicar dado falso.
 
 ## Estrutura
 
+Detalhada em [docs/ESTRUTURA.md](docs/ESTRUTURA.md).
+
 ```
-docs/                                # guias de edição, logomarca e publicação
+docs/                                # guias de edição, logomarca, publicação e estrutura
+scripts/pos-build.mjs                # carimba o HTML gerado com aviso de "não edite"
 public/
 ├─ brand/                            # arquivos da logomarca oficial
 └─ og-image.svg                      # imagem de compartilhamento
 src/
-├─ app/
+├─ app/                              # uma pasta por página do site
 │  ├─ layout.tsx                     # metadata global, fontes, header/footer, Schema Store
 │  ├─ page.tsx                       # Home (landing institucional completa)
 │  ├─ sobre/, assistencia-tecnica/, contato/, politica-de-privacidade/
 │  └─ not-found.tsx, sitemap.ts, robots.ts, globals.css
-├─ components/                       # Header, Hero, Blueprint, SectionTitle,
-│  │                                 # ProductCard, ServiceCard, Benefits, History,
-│  │                                 # FAQ, CTA, Footer, WhatsAppButton, TrustBar,
-│  │                                 # Steps, Testimonials, ContactInfo, PageHero
+├─ components/
+│  ├─ layout/                        # Header, Footer, Logo, WhatsAppButton
+│  ├─ sections/                      # um arquivo por seção de conteúdo
+│  ├─ ui/                            # Button, SectionTitle, cartões, Icons, Blueprint
 │  └─ fx/                            # Interactions, SplitText, Counter
 └─ lib/
    ├─ site.ts                        # dados da empresa, navegação, mensagens de WhatsApp
    ├─ brand.ts                       # logomarca
    └─ schema.ts                      # Schema.org (Store, Service, FAQPage)
 ```
+
+A pasta `dist/` é saída de build e não entra no versionamento. Cada HTML dela
+começa com um comentário avisando que é arquivo gerado e apontando para os guias.
 
 ## Decisões de conversão
 

@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
-import PageHero from '@/components/PageHero';
-import Button from '@/components/Button';
-import SectionTitle from '@/components/SectionTitle';
-import Steps from '@/components/Steps';
-import Platforms from '@/components/Platforms';
-import TrustBar from '@/components/TrustBar';
-import FAQ, { supportFaq } from '@/components/FAQ';
-import CTA from '@/components/CTA';
-import ContactInfo from '@/components/ContactInfo';
-import JsonLd from '@/components/JsonLd';
-import { CommonProblems, supportServices } from '@/components/TechSupport';
+import PageHero from '@/components/sections/PageHero';
+import Button from '@/components/ui/Button';
+import SectionTitle from '@/components/ui/SectionTitle';
+import Steps from '@/components/sections/Steps';
+import Platforms from '@/components/sections/Platforms';
+import TrustBar from '@/components/sections/TrustBar';
+import FAQ, { supportFaq } from '@/components/sections/FAQ';
+import CTA from '@/components/sections/CTA';
+import ContactInfo from '@/components/sections/ContactInfo';
+import JsonLd from '@/components/ui/JsonLd';
+import { CommonProblems, supportServices } from '@/components/sections/TechSupport';
 import {
   IconCheck,
   IconClock,
@@ -18,7 +18,7 @@ import {
   IconStore,
   IconWhatsApp,
   IconWrench,
-} from '@/components/Icons';
+} from '@/components/ui/Icons';
 import { faqSchema, serviceSchema } from '@/lib/schema';
 import { siteConfig, whatsappLink, whatsappMessages } from '@/lib/site';
 

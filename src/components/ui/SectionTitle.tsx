@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import SplitText from './fx/SplitText';
+import SplitText from '@/components/fx/SplitText';
 
 type Props = {
   eyebrow?: string;
