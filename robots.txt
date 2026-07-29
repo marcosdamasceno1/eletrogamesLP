@@ -1,0 +1,6 @@
+# Permite que todos os buscadores leiam o site inteiro.
+User-agent: *
+Allow: /
+
+# Troque SEU-DOMINIO.com.br pelo endereço real antes de publicar.
+Sitemap: https://SEU-DOMINIO.com.br/sitemap.xml

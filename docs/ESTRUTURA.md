@@ -1,107 +1,113 @@
 # Como o projeto está organizado
 
-Guia para quem vai dar manutenção no site depois. Diz onde cada coisa mora e,
-principalmente, onde **não** mexer.
+O site é feito de arquivos comuns: HTML, CSS, JavaScript e imagens. Não existe
+build, não existe pasta de saída, não existe programa para instalar. O que você
+vê na pasta é exatamente o que vai para o servidor.
 
 ---
 
-## A regra mais importante
-
-O site tem dois lados:
-
-| | O que é | Você edita? |
-| --- | --- | --- |
-| **`src/`** | O código-fonte. É aqui que o site é escrito. | Sim |
-| **`dist/`** | O resultado pronto, que vai para o servidor. | Não |
-
-A pasta `dist/` é gerada por inteiro toda vez que alguém roda `npm run publicar`.
-O HTML dela vem comprimido em poucas linhas, porque foi otimizado para carregar
-rápido, e não para ser lido por uma pessoa.
-
-Se você abrir esses arquivos e achar que o código está bagunçado: está tudo certo.
-Nenhum site feito com ferramenta moderna gera HTML legível na saída. Cada arquivo
-de `dist/` começa com um comentário lembrando disso.
-
-Alterações feitas direto em `dist/` funcionam até o próximo `npm run publicar`, e
-somem. Mexa sempre em `src/`.
-
----
-
-## O que tem em cada pasta
+## A pasta por dentro
 
 ```
-docs/            Estes guias
-scripts/         Tarefas do build (o carimbo de aviso no HTML gerado)
-public/          Arquivos servidos como estão: logomarca, imagem de compartilhamento
-src/
-├─ app/          Uma pasta por página do site
-├─ components/   As peças visuais, separadas por papel
-└─ lib/          Dados e configuração, sem visual nenhum
+index.html                    Página inicial
+assistencia-tecnica.html      Assistência técnica (feita para receber anúncios)
+sobre.html                    Nossa história
+contato.html                  Contato e localização
+politica-de-privacidade.html  Documento legal
+404.html                      Página de erro
+
+robots.txt                    Instruções para os buscadores
+sitemap.xml                   Lista de páginas para o Google
+
+assets/
+├─ css/estilo.css             Toda a aparência do site
+├─ js/script.js               Tudo que se mexe
+├─ fontes/                    As fontes, hospedadas junto com o site
+└─ img/                       Imagens, logotipo e ícone da aba
+
+docs/                         Estes guias (não precisam ir para o servidor)
 ```
-
-### `src/app` — as páginas
-
-Cada pasta vira um endereço no site.
-
-| Pasta | Endereço |
-| --- | --- |
-| `page.tsx` | `/` |
-| `sobre/` | `/sobre` |
-| `assistencia-tecnica/` | `/assistencia-tecnica` |
-| `contato/` | `/contato` |
-| `politica-de-privacidade/` | `/politica-de-privacidade` |
-
-Também moram aqui: `layout.tsx` (cabeçalho, rodapé e informações para o Google),
-`not-found.tsx` (a página de erro 404), `globals.css` (estilos gerais),
-`sitemap.ts` e `robots.ts` (arquivos que os buscadores leem).
-
-### `src/components` — as peças visuais
-
-| Pasta | O que guarda |
-| --- | --- |
-| `layout/` | Cabeçalho, rodapé, logotipo e o botão flutuante do WhatsApp |
-| `sections/` | Cada bloco de conteúdo do site. Um arquivo por seção |
-| `ui/` | Peças pequenas reaproveitadas: botão, título, cartões, ícones |
-| `fx/` | Os efeitos (revelação ao rolar, cursor, holofote, contador) |
-
-Para mudar o texto de uma seção, procure em `sections/`. O nome do arquivo é o
-nome da seção. A tabela completa está em `docs/EDITAR-O-SITE.md`.
-
-### `src/lib` — os dados
-
-| Arquivo | O que guarda |
-| --- | --- |
-| `site.ts` | Telefone, WhatsApp, endereço, horário, links, menu, garantia |
-| `brand.ts` | Caminhos dos arquivos da logomarca |
-| `schema.ts` | As informações que o Google lê sobre a empresa |
-
-Este é o lugar onde a maior parte das alterações do dia a dia acontece. Nenhum
-desses arquivos tem visual: é só informação.
 
 ---
 
-## Por que o código está em componentes, e não em um HTML só
+## Como cada arquivo se conecta
 
-O cabeçalho, o rodapé e o botão do WhatsApp aparecem em cinco páginas. Em um site
-de arquivos HTML soltos, mudar o telefone significaria editar cinco arquivos e
-torcer para não esquecer nenhum.
+Toda página HTML começa carregando dois arquivos:
 
-Aqui o telefone está escrito em um lugar só, em `src/lib/site.ts`, e as cinco
-páginas leem dali. Trocar leva uma linha.
+```html
+<link rel="stylesheet" href="assets/fontes/fontes.css">
+<link rel="stylesheet" href="assets/css/estilo.css">
+```
 
-O mesmo vale para as seções: `sections/FAQ.tsx` é usado na página inicial e na de
-assistência técnica, com perguntas diferentes. É o mesmo componente, alimentado
-com conteúdo diferente.
+e termina carregando um:
+
+```html
+<script src="assets/js/script.js" defer></script>
+```
+
+É só isso. Uma folha de estilo e um script para o site inteiro.
 
 ---
 
-## O ciclo de trabalho
+## O arquivo de estilo
 
-```bash
-npm install        # só na primeira vez
-npm run dev        # abre em http://localhost:3000 e recarrega ao salvar
-npm run publicar   # gera a pasta dist/ para enviar ao servidor
+`assets/css/estilo.css` tem um índice numerado logo no começo:
+
+```
+01. Tokens (cores, fontes, medidas)   <- mexa aqui para trocar as cores
+02. Base e tipografia
+03. Utilitários de layout
+04. Cabeçalho e menu
+05. Botões
+...
 ```
 
-Enquanto o `npm run dev` estiver rodando, cada arquivo salvo aparece no navegador
-na hora. É assim que dá para conferir uma alteração antes de publicar.
+Cada bloco começa com um comentário do mesmo tipo. Para achar o estilo dos
+botões, procure por `05. BOTOES` no arquivo.
+
+As classes têm nome em português e seguem um padrão simples:
+
+| Nome | O que é |
+| --- | --- |
+| `.cartao` | o bloco em si |
+| `.cartao__titulo` | uma parte de dentro dele (dois sublinhados) |
+| `.cartao--neon` | uma variação dele (dois traços) |
+
+Sabendo disso, dá para ler qualquer trecho do HTML sem precisar procurar no CSS.
+
+---
+
+## O arquivo de comportamento
+
+`assets/js/script.js` também tem índice no começo. Ele cuida do menu do celular,
+da sombra do cabeçalho, da barra de progresso, da revelação dos blocos ao rolar,
+do contador do número 28 e dos efeitos de mouse.
+
+Ele é **opcional**. Se o arquivo for apagado ou falhar, o site continua abrindo,
+os textos continuam aparecendo e todos os links continuam funcionando. Nada de
+importante depende dele.
+
+---
+
+## A biblioteca de ícones
+
+No fim de cada página existe um bloco `<svg>` invisível guardando os desenhos dos
+ícones. No meio da página, cada ícone é chamado assim:
+
+```html
+<svg width="20" height="20"><use href="#icone-controle"></use></svg>
+```
+
+Isso evita repetir o desenho inteiro toda vez que um ícone aparece. Para trocar
+um ícone, altere o desenho uma vez lá no fim do arquivo.
+
+---
+
+## O que se repete entre as páginas
+
+O cabeçalho, o rodapé e a biblioteca de ícones são iguais nas seis páginas. Se
+mudar um deles, repita a mudança nas outras.
+
+É o preço de não ter um programa montando as páginas. Em troca, qualquer pessoa
+que saiba HTML consegue dar manutenção, hoje ou daqui a cinco anos, sem instalar
+nada e sem depender de quem escreveu o site.

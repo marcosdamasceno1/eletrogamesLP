@@ -1,242 +1,183 @@
 # Como editar o site da Eletrogames
 
-Guia para mudar textos, dados de contato e links sem depender de programação.
-Cada item diz **o que muda**, **em qual arquivo** e **o que procurar dentro dele**.
-
-Depois de qualquer alteração, rode `npm run publicar` e envie a pasta `dist/`
-para o servidor. O passo a passo está em `docs/PUBLICAR.md`.
+O site é feito de arquivos HTML, CSS e JavaScript comuns. Você abre qualquer um
+deles em um editor de texto, altera, salva e envia para o servidor. Não existe
+programa para instalar nem comando para rodar.
 
 ---
 
-> Antes de começar: `docs/ESTRUTURA.md` explica como as pastas estão organizadas
-> e por que a pasta `dist/` não deve ser editada à mão.
+## Antes de tudo: preencher os dados da empresa
 
-## 1. Dados da empresa: telefone, endereço, WhatsApp, loja
+O site foi entregue com marcações no lugar das informações que ainda não foram
+passadas. Todas elas aparecem escritas na tela, então é fácil ver o que falta.
 
-**Arquivo:** `src/lib/site.ts`
+Use **Localizar e Substituir** do editor (Ctrl + H no Windows, Cmd + H no Mac),
+marcando a opção de substituir em **todos os arquivos**, e troque:
 
-Esse é o arquivo mais importante. Tudo que aparece entre colchetes no site
-(`[TELEFONE]`, `[ENDEREÇO]`, e assim por diante) sai daqui.
+| Procure por | Substitua por | Exemplo |
+| --- | --- | --- |
+| `LINK_DA_LOJA` | o endereço da loja online | `https://loja.eletrogames.com.br` |
+| `NUMERO_DO_WHATSAPP` | 55 + DDD + número, tudo junto | `5511999999999` |
+| `SEU-DOMINIO.com.br` | o domínio do site | `eletrogames.com.br` |
+| `[TELEFONE]` | o telefone da loja | `(11) 3333-4444` |
+| `[ENDEREÇO]` | rua e número | `Rua das Palmeiras, 120` |
+| `[CIDADE]` | a cidade | `São Paulo` |
+| `[ESTADO]` | a sigla do estado | `SP` |
+| `[WHATSAPP]` | o número como quer que apareça escrito | `(11) 99999-9999` |
+| `[INSTAGRAM]` | o perfil | `@eletrogames` |
+| `[HORÁRIO DE FUNCIONAMENTO]` | os horários | `Seg a sex, 9h às 18h` |
+| `[PRAZO DA GARANTIA]` | o prazo, só o prazo | `90 dias` |
 
-```ts
-url: '[INSERIR URL DO SITE]',        // endereço final do site, ex: 'https://eletrogames.com.br'
-storeUrl: '[INSERIR URL DA LOJA]',   // link da loja online
-whatsappUrl: '[INSERIR WHATSAPP]',   // ex: 'https://wa.me/5511999999999'
-whatsappDisplay: '[WHATSAPP]',       // o número como você quer que apareça escrito
-phone: '[TELEFONE]',
-instagram: '[INSTAGRAM]',            // ex: '@eletrogames'
-instagramUrl: '[INSERIR URL DO INSTAGRAM]',
-```
+Fazendo isso uma vez, o site inteiro fica preenchido: os botões passam a abrir a
+conversa certa e o Google passa a ler os dados corretos.
 
-E logo abaixo:
+### Sobre o número do WhatsApp
 
-```ts
-warrantyPeriod: '[PRAZO DA GARANTIA]',   // ex: '90 dias'
-address: {
-  street: '[ENDEREÇO]',
-  city: '[CIDADE]',
-  state: '[ESTADO]',
-  mapsUrl: '[GOOGLE MAPS]',
-},
-openingHours: '[HORÁRIO DE FUNCIONAMENTO]',
-```
-
-### Como montar o link do WhatsApp
-
-Use o formato `https://wa.me/` seguido de 55, DDD e o número, tudo junto e sem
-símbolos. Para o número (11) 99999-9999, o link fica:
-
-```
-https://wa.me/5511999999999
-```
-
-Você não precisa acrescentar a mensagem automática: o site já faz isso sozinho,
-e a mensagem muda conforme o botão clicado (assistência, console, controle).
-
-### A garantia
-
-O campo `warrantyPeriod` aparece em três lugares: na faixa de destaques da página de
-assistência técnica, nos diferenciais e em duas perguntas frequentes. Escreva só o
-prazo, sem a palavra garantia: o site já monta a frase em volta.
-
-Enquanto o campo estiver entre colchetes, as frases continuam falando em garantia sem
-prometer um tempo específico.
-
-### As plataformas atendidas
-
-**Arquivo:** `src/components/sections/Platforms.tsx`
-
-São os quatro cartões de console (PlayStation, Xbox, Nintendo e consoles antigos). Cada
-cartão abre o WhatsApp com uma mensagem que já diz qual console é, o que encurta o
-atendimento. Para adicionar ou remover uma plataforma, edite a lista `platforms` no topo
-do arquivo, mantendo o mesmo formato.
-
-### O que acontece enquanto os dados não são preenchidos
-
-O site não quebra. Enquanto um valor estiver escrito entre colchetes, os links
-não levam a lugar nenhum em vez de dar erro, e as informações da empresa ficam
-de fora do código que o Google lê. É proposital: nada falso é publicado.
+Escreva sem espaço, traço ou parênteses. Para (11) 99999-9999, o número vira
+`5511999999999`. As mensagens que já aparecem escritas na conversa mudam conforme
+o botão clicado, e isso já está montado dentro de cada link.
 
 ---
 
-## 2. As mensagens automáticas do WhatsApp
+## Trocar textos
 
-**Arquivo:** `src/lib/site.ts`, no bloco `whatsappMessages`
+Abra o arquivo da página, procure a frase e troque. Só isso.
 
-```ts
-export const whatsappMessages = {
-  general: 'Olá! Acessei o site da Eletrogames e gostaria de mais informações.',
-  support: 'Olá! Acessei o site da Eletrogames e gostaria de informações sobre assistência técnica.',
-  console: 'Olá! Acessei o site da Eletrogames e gostaria de informações sobre manutenção de console.',
-  controller: 'Olá! Acessei o site da Eletrogames e gostaria de informações sobre manutenção de controle.',
-};
-```
-
-É o texto que já vem escrito quando o cliente abre a conversa. Mude o que estiver
-entre aspas, sem mexer no nome que vem antes dos dois pontos.
-
----
-
-## 3. O menu do topo
-
-**Arquivo:** `src/lib/site.ts`, no bloco `navigation`
-
-```ts
-{ label: 'Nossa História', short: 'História', href: '/sobre' },
-```
-
-- `label` é o nome completo, que aparece no menu do celular.
-- `short` é a versão curta, que aparece no menu do computador (o espaço é menor).
-- `href` é para onde o item leva.
-
----
-
-## 4. Os depoimentos de clientes
-
-**Arquivo:** `src/components/sections/Testimonials.tsx`
-
-Nenhum depoimento foi inventado. Os três cartões estão marcados assim:
-
-```ts
-const testimonials = [
-  { quote: '[DEPOIMENTO REAL DO CLIENTE]', author: '[NOME DO CLIENTE]' },
-];
-```
-
-Substitua pelos depoimentos reais, mantendo o formato:
-
-```ts
-const testimonials = [
-  { quote: 'Levei meu console e voltou funcionando.', author: 'Ana Paula', context: 'Cliente desde 2019' },
-];
-```
-
-O campo `context` é opcional. Pode adicionar ou remover cartões da lista, basta
-manter as chaves `{ }` e a vírgula entre eles.
-
----
-
-## 5. A linha do tempo e as fotos antigas
-
-**Arquivo:** `src/components/sections/History.tsx`
-
-Procure por `[ANO]` e `[MARCO DA HISTÓRIA]`. São quatro blocos prontos para receber
-os marcos reais da empresa. Escreva o ano e o acontecimento no lugar dos colchetes.
-
-Logo acima existe uma área marcada como `[FOTOS ANTIGAS DA LOJA]`, reservada para a
-galeria histórica. Para colocar uma foto ali, salve o arquivo em `public/` e peça a
-quem cuida do site para trocar aquele bloco por uma imagem.
-
----
-
-## 6. As perguntas frequentes
-
-**Arquivo:** `src/components/sections/FAQ.tsx`
-
-São duas listas separadas:
-
-- `homeFaq` são as perguntas da página inicial.
-- `supportFaq` são as perguntas da página de assistência técnica.
-
-Cada pergunta segue este formato:
-
-```ts
-{
-  question: 'A Eletrogames faz manutenção de videogames?',
-  answer: 'Sim. A assistência técnica é uma das especialidades da Eletrogames.',
-},
-```
-
-**Um cuidado importante:** evite escrever prazos, valores ou garantias que a empresa
-não confirmou. Uma resposta publicada vira compromisso.
-
----
-
-## 7. Os textos das seções
-
-Cada seção da página inicial mora em um arquivo próprio, dentro de `src/components/`:
-
-| Seção do site | Arquivo |
+| Página do site | Arquivo |
 | --- | --- |
-| Primeira dobra (o título grande) | `src/components/sections/Hero.tsx` |
-| Fita rolante com as categorias | `src/components/sections/Marquee.tsx` |
-| Faixa com os quatro fatos | `src/components/sections/TrustBar.tsx` |
-| Nossa história | `src/components/sections/History.tsx` |
-| Produtos | `src/components/sections/Products.tsx` |
-| Assistência técnica | `src/components/sections/TechSupport.tsx` |
-| Plataformas atendidas | `src/components/sections/Platforms.tsx` |
-| Como funciona a assistência | `src/components/sections/Steps.tsx` |
-| Por que escolher a Eletrogames | `src/components/sections/Benefits.tsx` |
-| Depoimentos | `src/components/sections/Testimonials.tsx` |
-| Dúvidas frequentes | `src/components/sections/FAQ.tsx` |
-| Bloco final antes do rodapé | `src/components/sections/CTA.tsx` |
-| Localização e contato | `src/components/sections/ContactInfo.tsx` |
-| Cabeçalho e menu | `src/components/layout/Header.tsx` |
-| Rodapé | `src/components/layout/Footer.tsx` |
+| Página inicial | `index.html` |
+| Assistência técnica | `assistencia-tecnica.html` |
+| Nossa história | `sobre.html` |
+| Contato | `contato.html` |
+| Política de privacidade | `politica-de-privacidade.html` |
+| Página de erro | `404.html` |
 
-Dentro de cada arquivo, o texto visível está entre aspas ou entre as marcas `>` e `<`.
-Mude apenas o texto, sem apagar os símbolos em volta.
+Dentro do `index.html`, cada seção começa com um comentário grande em maiúsculas
+dizendo o que é. Procure por `SEÇÃO 5` para chegar direto nos produtos, por
+exemplo:
 
----
+```html
+<!-- ===================================================================
+     SEÇÃO 5 - PRODUTOS
+     =================================================================== -->
+```
 
-## 8. A política de privacidade
+As seções do `index.html`, na ordem:
 
-**Arquivo:** `src/app/politica-de-privacidade/page.tsx`
+1. Primeira dobra (o título grande)
+2. Fita rolante das categorias
+3. Faixa de fatos
+4. Nossa história
+5. Produtos
+6. Assistência técnica
+7. Plataformas atendidas
+8. Como funciona
+9. Por que a Eletrogames
+10. Depoimentos
+11. Dúvidas frequentes
+12. Chamada final
 
-O texto é um **modelo base** e está marcado como tal no topo da página. Peça uma
-revisão jurídica antes de publicar, principalmente na parte de cookies e medição,
-que depende das ferramentas de anúncio que a empresa usar.
+### Regras para não quebrar nada
 
----
-
-## 9. Regras que valem para qualquer edição
-
-1. **Mexa só no que está entre aspas.** O resto é o que faz a página funcionar.
-2. **Não apague vírgulas nem chaves.** Se o site parar de abrir depois de uma
-   alteração, quase sempre é uma vírgula ou uma aspa que sumiu.
-3. **Acento e cedilha podem ser usados normalmente.** O site está em UTF-8.
-4. **Teste antes de publicar** com `npm run dev` e o navegador em
-   `http://localhost:3000`.
-5. **Aspas dentro de um texto** precisam ser diferentes das aspas de fora. Se o texto
-   já está entre aspas simples, use aspas duplas por dentro:
-   `'Ele disse "está pronto" na hora'`.
-
----
-
-## 10. Onde ficam as cores e as fontes
-
-- **Cores:** `tailwind.config.ts`. Explicação completa em `docs/LOGOMARCA.md`.
-- **Fontes:** `src/app/layout.tsx`, no topo do arquivo.
-- **Estilos gerais** (botões, cartões, espaçamentos): `src/app/globals.css`.
+1. Mexa apenas no texto que aparece **entre** as marcações `>` e `<`.
+   Em `<h3 class="cartao__titulo">Consoles</h3>`, altere só a palavra `Consoles`.
+2. Não apague os sinais `<` e `>`.
+3. Acento e cedilha podem ser usados normalmente.
+4. Toda marcação aberta precisa ser fechada. Se apagar `<p>`, apague o `</p>` também.
+5. Salve o arquivo com codificação **UTF-8** (é o padrão da maioria dos editores).
+   Se os acentos virarem símbolos estranhos, foi isso.
 
 ---
 
-## 11. O menu do site
+## Trocar as cores
 
-O menu do topo tem só dois itens: Início e Dúvidas Frequentes. É proposital: ao
-lado deles ficam os dois botões de ação (Loja Online e WhatsApp), e cada link a
-mais no menu disputa atenção com eles.
+Abra `assets/css/estilo.css`. Logo no começo do arquivo está o bloco de cores:
 
-As outras páginas continuam no ar e acessíveis pelo rodapé e pelos botões dentro
-das seções. Para trazer alguma de volta ao menu, acrescente uma linha em
-`navigation`, dentro de `src/lib/site.ts`.
+```css
+:root {
+  --fundo:          #08060F;   /* fundo principal, quase preto */
+  --violeta:        #7526E0;   /* botões da loja */
+  --magenta:        #FF3DCB;   /* brilhos e destaques */
+  --ciano:          #22E3F0;   /* assistência técnica */
+  --texto:          #F4F1FF;   /* títulos */
+  ...
+}
+```
+
+Trocar um valor aqui muda esse elemento no site inteiro, em todas as páginas.
+
+**Um cuidado:** o violeta dos botões é escuro de propósito. O texto branco em
+cima dele precisa de contraste para ser legível. Se clarear demais essa cor, o
+texto dos botões fica difícil de ler.
+
+---
+
+## Trocar os depoimentos
+
+No `index.html`, procure por `SEÇÃO 10 - DEPOIMENTOS`. Existem três blocos com
+`[DEPOIMENTO REAL DO CLIENTE]` e `[NOME DO CLIENTE]`. Troque pelo texto real.
+
+Nenhum depoimento foi escrito por nós. Publique apenas avaliações verdadeiras.
+
+---
+
+## Preencher a linha do tempo
+
+No `index.html`, na seção 4, existem quatro blocos com `[ANO]` e
+`[MARCO DA HISTÓRIA]`. Preencha com os marcos reais da empresa.
+
+---
+
+## Colocar o mapa da loja
+
+1. Abra o Google Maps e procure o endereço da loja.
+2. Clique em **Compartilhar** e depois em **Incorporar um mapa**.
+3. Copie o código que aparece (começa com `<iframe`).
+4. No `contato.html`, procure por `[GOOGLE MAPS]` e troque o bloco inteiro
+   marcado com o comentário `MAPA:` pelo código copiado.
+
+---
+
+## Adicionar uma foto
+
+1. Coloque o arquivo dentro de `assets/img/`.
+2. No HTML, no lugar onde a foto deve aparecer, escreva:
+
+```html
+<img src="assets/img/nome-do-arquivo.jpg" alt="Descrição curta da foto">
+```
+
+O `alt` é obrigatório: é o texto que descreve a imagem para quem não enxerga e
+para o Google. Descreva o que aparece na foto.
+
+Antes de subir, reduza o tamanho do arquivo em um site como o Squoosh. Fotos
+direto do celular costumam ter vários megabytes e deixam o site lento no 4G.
+
+---
+
+## Mudar o menu
+
+O menu aparece em **todas** as páginas, então precisa ser alterado em todas elas.
+Em cada arquivo `.html`, procure por:
+
+```html
+<nav class="menu" aria-label="Navegação principal">
+```
+
+O mesmo vale para o rodapé, que também se repete em todas as páginas. Procure por
+`RODAPÉ` no arquivo.
+
+Esse é o custo de um site em arquivos separados: alterações no cabeçalho e no
+rodapé precisam ser repetidas. Em compensação, você não depende de programa
+nenhum para editar o resto.
+
+---
+
+## Conferir antes de publicar
+
+Dê dois cliques no arquivo `index.html` do seu computador. Ele abre no navegador
+e funciona igual ao site publicado. Confira os textos, clique nos botões e veja
+se o WhatsApp abre com a mensagem certa.
+
+Depois é só enviar os arquivos para o servidor. O passo a passo está em
+`docs/PUBLICAR.md`.
