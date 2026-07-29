@@ -606,38 +606,188 @@ summary:focus-visible {
   color: var(--texto-fraco);
 }
 
-/* --- Prancha tecnica do controle --- */
-.prancha {
+/* --- Vitrine: a foto da loja dentro de uma moldura elaborada ---------------
+
+   A moldura tem quatro camadas, de fora para dentro:
+     1. halo neon por tras, que da o brilho
+     2. fio de luz em gradiente correndo pela borda
+     3. cantoneiras em L nos quatro cantos, no registro de mira de HUD
+     4. a foto, com legenda em cima e faixa de credito embaixo
+   --------------------------------------------------------------------------- */
+.vitrine {
+  position: relative;
   margin: 0;
 }
-.prancha__moldura {
+
+/* 1. Halo neon por tras da moldura */
+.vitrine::before {
+  content: '';
+  position: absolute;
+  inset: 8%;
+  z-index: -1;
+  background: linear-gradient(120deg, var(--violeta), var(--magenta) 55%, var(--ciano));
+  filter: blur(60px);
+  opacity: 0.35;
+  transition: opacity 0.5s ease;
+}
+.vitrine:hover::before {
+  opacity: 0.55;
+}
+
+/* 2. Fio de luz na borda */
+.vitrine__moldura {
   position: relative;
   overflow: hidden;
   border-radius: var(--arredondamento);
   background: var(--painel);
 }
-.prancha__legenda {
+.vitrine__moldura::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: linear-gradient(140deg, var(--violeta), var(--magenta) 50%, var(--ciano));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* 3. Cantoneiras em L. Cada elemento desenha dois cantos opostos. */
+.vitrine__canto {
+  position: absolute;
+  z-index: 4;
+  width: 26px;
+  height: 26px;
+  pointer-events: none;
+  border-color: var(--ciano);
+  border-style: solid;
+  border-width: 0;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+.vitrine__canto--se { top: 12px;    left: 12px;  border-top-width: 2px; border-left-width: 2px; }
+.vitrine__canto--sd { top: 12px;    right: 12px; border-top-width: 2px; border-right-width: 2px; }
+.vitrine__canto--ie { bottom: 12px; left: 12px;  border-bottom-width: 2px; border-left-width: 2px; }
+.vitrine__canto--id { bottom: 12px; right: 12px; border-bottom-width: 2px; border-right-width: 2px; }
+.vitrine:hover .vitrine__canto {
+  width: 38px;
+  height: 38px;
+}
+
+/* Legenda do topo, no mesmo registro do resto do site */
+.vitrine__legenda {
   position: relative;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
-  padding: 0.85rem 1.25rem;
+  gap: 1rem;
+  padding: 0.85rem 3.4rem;
   border-bottom: 1px solid var(--linha);
+  background: rgba(8, 6, 15, 0.75);
   font-family: var(--fonte-codigo);
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--texto-fraco);
 }
-.prancha__legenda strong {
+.vitrine__legenda strong {
   font-weight: 500;
   color: var(--ciano);
 }
-.prancha__desenho {
+
+/* 4. A foto */
+.vitrine__foto {
   position: relative;
+  overflow: hidden;
+}
+.vitrine__foto img {
   width: 100%;
-  filter: drop-shadow(0 0 6px rgba(139, 61, 255, 0.55));
+  height: auto;
+  display: block;
+  transform: scale(1.01);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.vitrine:hover .vitrine__foto img {
+  transform: scale(1.06);
 }
 
+/* Malha do site por cima da foto, quase imperceptivel, para amarrar o visual */
+.vitrine__foto::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.5;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right,  rgba(139, 61, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 61, 255, 0.05) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+/* Escurecimento na base, para o selo ficar legivel sobre qualquer foto */
+.vitrine__foto::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 1;
+  height: 55%;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(8, 6, 15, 0.95), transparent);
+}
+
+/* Selo sobre a foto */
+.vitrine__selo {
+  position: absolute;
+  z-index: 2;
+  left: 3.4rem;
+  bottom: 1.75rem;
+  right: 3.4rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.vitrine__selo-numero {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--texto);
+}
+.vitrine__selo-numero span {
+  color: var(--magenta);
+}
+.vitrine__selo-texto {
+  margin-top: 0.35rem;
+  font-size: 13px;
+  color: var(--texto-suave);
+}
+.vitrine__selo-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgba(34, 227, 240, 0.4);
+  border-radius: 999px;
+  background: rgba(8, 6, 15, 0.7);
+  font-family: var(--fonte-codigo);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ciano-claro);
+  white-space: nowrap;
+}
+.vitrine__selo-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ciano);
+  box-shadow: 0 0 10px var(--ciano);
+}
 
 /* =========================================================================
    07. SECOES E TITULOS
@@ -1336,8 +1486,8 @@ summary:focus-visible {
   .hero__interno {
     grid-template-columns: 1fr;
   }
-  .prancha {
-    display: none;   /* o desenho pesa muito na largura pequena */
+  .vitrine {
+    max-width: 640px;   /* no tablet, a foto nao precisa ocupar a largura toda */
   }
   .grade--5,
   .grade--4 {
@@ -1416,6 +1566,28 @@ summary:focus-visible {
   }
   .botao {
     width: 100%;
+  }
+  /* No celular as cantoneiras encolhem, entao o texto pode chegar mais perto */
+  .vitrine__canto {
+    width: 16px;
+    height: 16px;
+  }
+  .vitrine:hover .vitrine__canto {
+    width: 22px;
+    height: 22px;
+  }
+  .vitrine__legenda {
+    padding: 0.75rem 2rem;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+  .vitrine__selo {
+    left: 2rem;
+    right: 2rem;
+    bottom: 1.25rem;
+  }
+  .vitrine__selo-texto {
+    font-size: 12px;
   }
   .whatsapp-flutuante {
     padding: 0;

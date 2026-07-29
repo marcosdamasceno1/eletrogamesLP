@@ -190,58 +190,40 @@
           </dl>
         </div>
 
-        <!-- Desenho técnico do controle. As linhas se traçam ao aparecer. -->
-        <figure class="prancha" data-revelar>
-          <div class="prancha__moldura cartao--neon">
-            <div class="malha" style="position:absolute; inset:0;" aria-hidden="true"></div>
-            <figcaption class="prancha__legenda">
-              <span>Controle · vista superior</span>
-              <strong>Bancada Eletrogames</strong>
-            </figcaption>
-            <svg class="prancha__desenho" viewBox="0 0 420 296" fill="none" role="img"
-                 aria-label="Desenho técnico de um controle de videogame visto de cima">
-              <defs>
-                <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#B183FF"></stop>
-                  <stop offset="55%" stop-color="#FF3DCB"></stop>
-                  <stop offset="100%" stop-color="#22E3F0"></stop>
-                </linearGradient>
-              </defs>
+        <!--
+          A FOTO DA LOJA
+          Para trocar a imagem, substitua o arquivo assets/img/loja.jpg
+          mantendo o mesmo nome. Use uma foto na proporção 16:9 (por exemplo
+          1600 x 900 pixels) e reduza o peso antes de subir, em um site como
+          o Squoosh: foto de celular costuma ter vários megabytes e deixa o
+          site lento no 4G.
+        -->
+        <figure class="vitrine" data-revelar style="--atraso:200ms">
+          <div class="vitrine__moldura">
 
-              <!-- corpo -->
-              <path class="traco" style="--comprimento:900; --atraso:120ms" stroke="url(#neon)" stroke-width="1.8"
-                    d="M150 96h120c26 0 42 14 50 40l22 62c8 24-6 42-26 42-14 0-24-8-34-22l-20-28H138l-20 28c-10 14-20 22-34 22-20 0-34-18-26-42l22-62c8-26 24-40 50-40Z"></path>
-              <!-- direcional -->
-              <path class="traco" style="--comprimento:260; --atraso:620ms" stroke="url(#neon)" stroke-width="1.8"
-                    stroke-linecap="round" d="M132 150h34M149 133v34"></path>
-              <!-- botões de ação (piscam em sequência depois de desenhados) -->
-              <circle class="traco autoteste" style="--comprimento:60; --atraso:700ms" cx="288" cy="134" r="8.5" stroke="url(#neon)" stroke-width="1.8"></circle>
-              <circle class="traco autoteste" style="--comprimento:60; --atraso:780ms" cx="306" cy="152" r="8.5" stroke="url(#neon)" stroke-width="1.8"></circle>
-              <circle class="traco autoteste" style="--comprimento:60; --atraso:860ms" cx="288" cy="170" r="8.5" stroke="url(#neon)" stroke-width="1.8"></circle>
-              <circle class="traco autoteste" style="--comprimento:60; --atraso:940ms" cx="270" cy="152" r="8.5" stroke="url(#neon)" stroke-width="1.8"></circle>
-              <!-- analógicos -->
-              <circle class="traco" style="--comprimento:130; --atraso:860ms" cx="186" cy="192" r="20" stroke="url(#neon)" stroke-width="1.8"></circle>
-              <circle class="traco" style="--comprimento:130; --atraso:940ms" cx="242" cy="192" r="20" stroke="url(#neon)" stroke-width="1.8"></circle>
-              <!-- botões centrais -->
-              <path class="traco" style="--comprimento:120; --atraso:1000ms" stroke="url(#neon)" stroke-width="1.8"
-                    stroke-linecap="round" d="M196 132h12M212 132h12"></path>
-              <!-- linha de cota -->
-              <g class="traco" style="--comprimento:420; --atraso:1080ms" stroke="#8479A0" stroke-width="1">
-                <path d="M96 268h228"></path>
-                <path d="M96 262v12M324 262v12"></path>
-              </g>
-              <text x="210" y="258" text-anchor="middle" fill="#8479A0"
-                    style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.14em">
-                DIAGNÓSTICO ANTES DO SERVIÇO
-              </text>
-              <!-- chamada de detalhe -->
-              <g class="traco" style="--comprimento:200; --atraso:1160ms" stroke="url(#neon)" stroke-width="1">
-                <path d="M306 152h58"></path>
-                <circle cx="306" cy="152" r="2.5" fill="#22E3F0"></circle>
-              </g>
-              <text x="368" y="149" fill="#22E3F0"
-                    style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.12em">REPARO</text>
-            </svg>
+            <span class="vitrine__canto vitrine__canto--se" aria-hidden="true"></span>
+            <span class="vitrine__canto vitrine__canto--sd" aria-hidden="true"></span>
+            <span class="vitrine__canto vitrine__canto--ie" aria-hidden="true"></span>
+            <span class="vitrine__canto vitrine__canto--id" aria-hidden="true"></span>
+
+            <figcaption class="vitrine__legenda">
+              <span>Nossa loja · [CIDADE]/[ESTADO]</span>
+              <strong>Eletro Games</strong>
+            </figcaption>
+
+            <div class="vitrine__foto">
+              <img src="assets/img/loja.jpg" width="1600" height="900" loading="eager"
+                   alt="Fachada da loja Eletro Games, com letreiro luminoso e vitrines cheias de consoles, controles e acessórios">
+
+              <div class="vitrine__selo">
+                <div>
+                  <p class="vitrine__selo-numero">28<span>+</span></p>
+                  <p class="vitrine__selo-texto">anos no mesmo ramo</p>
+                </div>
+                <span class="vitrine__selo-tag">Loja física</span>
+              </div>
+            </div>
+
           </div>
         </figure>
 

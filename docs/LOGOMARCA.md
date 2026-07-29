@@ -6,6 +6,12 @@ chegar, siga os passos abaixo.
 
 ---
 
+> **Sobre a marca real:** na fachada da loja, o logotipo é o mascote azul com
+> as letras "WG" ao lado de "ELETRO GAMES" em branco, sobre azul forte. O site
+> está usando o violeta e o magenta da loja online, que é uma expressão
+> diferente da mesma marca. Vale decidir qual das duas o site deve seguir. Se a
+> escolha for o azul da fachada, é uma troca de três valores no CSS.
+
 ## Passo 1. Prepare o arquivo
 
 Peça ao designer o logotipo em **SVG**, com fundo transparente. É o melhor

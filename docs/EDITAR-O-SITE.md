@@ -138,6 +138,51 @@ No `index.html`, na seção 4, existem quatro blocos com `[ANO]` e
 
 ---
 
+## Trocar a foto da loja no topo do site
+
+A primeira dobra mostra a fachada da loja dentro de uma moldura. Para trocar a
+imagem, **substitua o arquivo** `assets/img/loja.jpg`, mantendo exatamente esse
+nome. Não é preciso mexer em nenhum código.
+
+O arquivo que está lá agora é um marcador provisório, com o aviso escrito na
+própria imagem. Assim que a foto real entrar no lugar, ela aparece no site.
+
+Cuidados com a foto:
+
+- **Proporção 16:9**, por exemplo 1600 x 900 pixels. Fora dessa proporção a foto
+  pode ficar cortada de um jeito estranho.
+- **Reduza o peso antes de subir.** Foto de celular costuma ter 3 a 8 MB, o que
+  deixa o site muito lento no 4G. Sites como o Squoosh reduzem para menos de
+  300 KB sem perda visível. Essa é a imagem mais pesada do site: vale o cuidado.
+- **A parte de baixo da imagem fica escurecida** pela faixa que segura o selo de
+  "28 anos". Escolha um enquadramento em que o letreiro e a vitrine apareçam na
+  metade de cima.
+
+Se trocar a proporção do arquivo, ajuste também os números em `index.html`:
+
+```html
+<img src="assets/img/loja.jpg" width="1600" height="900" ...>
+```
+
+Eles não mudam o tamanho na tela: servem para o navegador reservar o espaço
+certo e a página não "pular" enquanto a foto carrega.
+
+### O texto que aparece sobre a foto
+
+No `index.html`, procure por `A FOTO DA LOJA`. Logo abaixo estão a legenda do
+topo, o selo com o número e a etiqueta:
+
+```html
+<span>Nossa loja · [CIDADE]/[ESTADO]</span>
+<strong>Eletro Games</strong>
+...
+<p class="vitrine__selo-numero">28<span>+</span></p>
+<p class="vitrine__selo-texto">anos no mesmo ramo</p>
+<span class="vitrine__selo-tag">Loja física</span>
+```
+
+---
+
 ## Adicionar uma foto
 
 1. Coloque o arquivo dentro de `assets/img/`.
