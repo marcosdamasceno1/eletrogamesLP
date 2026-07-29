@@ -8,7 +8,7 @@ type Props = {
   description?: ReactNode;
   children?: ReactNode;
   trust?: string[];
-  tone?: 'light' | 'navy';
+  tone?: 'store' | 'service';
 };
 
 /** Hero das páginas internas. Mantém um H1 por rota. */
@@ -19,21 +19,21 @@ export default function PageHero({
   description,
   children,
   trust,
-  tone = 'light',
+  tone = 'store',
 }: Props) {
-  const navy = tone === 'navy';
+  const service = tone === 'service';
 
   return (
     <section
       className={`relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-24 ${
-        navy ? 'on-navy bg-navy' : 'bg-paper'
+        service ? 'bg-abyss' : 'bg-void'
       }`}
     >
       <div
         aria-hidden="true"
-        className={`absolute inset-0 ${navy ? 'blueprint-invert' : 'blueprint opacity-60'}`}
+        className={`absolute inset-0 ${service ? 'grid-bg' : 'grid-bg opacity-60'}`}
       />
-      {!navy ? (
+      {!service ? (
         <div
           aria-hidden="true"
           className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-paper"
@@ -41,7 +41,7 @@ export default function PageHero({
       ) : null}
 
       <div className="container-site relative">
-        <p className={navy ? 'label-invert' : 'label'} data-reveal>
+        <p className={service ? 'label-cyan' : 'label'} data-reveal>
           {eyebrow}
         </p>
 
@@ -49,15 +49,15 @@ export default function PageHero({
           as="h1"
           text={title}
           highlight={highlight}
-          highlightClass={navy ? 'text-blue-soft' : 'text-blue'}
+          highlightClass={service ? 'text-cyan-soft' : 'text-violet-soft'}
           className={`mt-6 block max-w-4xl text-[2.3rem] font-extrabold leading-[1.06] sm:text-[3.1rem] ${
-            navy ? 'text-paper' : 'text-navy'
+            service ? 'text-ink' : 'text-ink'
           }`}
         />
 
         {description ? (
           <p
-            className={`mt-7 max-w-2xl text-lg leading-relaxed ${navy ? 'text-sky/85' : 'text-slate'}`}
+            className={`mt-7 max-w-2xl text-lg leading-relaxed ${service ? 'text-ink-muted' : 'text-ink-muted'}`}
             data-reveal
             style={{ ['--d' as string]: '180ms' }}
           >
@@ -78,7 +78,7 @@ export default function PageHero({
         {trust?.length ? (
           <ul
             className={`mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t pt-6 ${
-              navy ? 'border-paper/20' : 'border-line'
+              service ? 'border-white/15' : 'border-white/10'
             }`}
             data-reveal
             style={{ ['--d' as string]: '360ms' }}
@@ -86,11 +86,11 @@ export default function PageHero({
             {trust.map((item) => (
               <li
                 key={item}
-                className={`flex items-center gap-2.5 text-sm ${navy ? 'text-sky/85' : 'text-slate'}`}
+                className={`flex items-center gap-2.5 text-sm ${service ? 'text-ink-muted' : 'text-ink-muted'}`}
               >
                 <span
                   aria-hidden="true"
-                  className={`h-1 w-1 rounded-full ${navy ? 'bg-blue-soft' : 'bg-blue'}`}
+                  className={`h-1 w-1 rounded-full ${service ? 'bg-violet-soft' : 'bg-violet'}`}
                 />
                 {item}
               </li>

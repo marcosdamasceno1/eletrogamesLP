@@ -13,13 +13,13 @@ export default function ProductCard({ icon: Icon, title, description, index = 0 
       data-tilt
       data-reveal
       style={{ ['--d' as string]: `${index * 80}ms` }}
-      className="group h-full rounded-[var(--radius)] border border-line bg-paper p-6 shadow-card transition-all duration-300 hover:border-blue/40 hover:shadow-lift"
+      className="neon-frame group h-full p-6 transition-transform duration-300 hover:shadow-lift"
     >
-      <span className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-sky text-blue transition-colors duration-300 group-hover:bg-blue group-hover:text-paper">
+      <span className="flex h-11 w-11 items-center justify-center rounded-[10px] border border-violet/30 bg-violet/10 text-violet-soft transition-all duration-300 group-hover:border-transparent group-hover:bg-gradient-to-br group-hover:from-violet group-hover:to-magenta group-hover:text-white">
         <Icon className="h-5 w-5" />
       </span>
-      <h3 className="mt-5 text-[17px] font-bold text-navy">{title}</h3>
-      <p className="mt-2.5 text-sm leading-relaxed text-slate">{description}</p>
+      <h3 className="mt-5 text-[17px] font-bold text-ink">{title}</h3>
+      <p className="mt-2.5 text-sm leading-relaxed text-ink-muted">{description}</p>
     </article>
   );
 }

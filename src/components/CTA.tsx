@@ -25,7 +25,7 @@ export default function CTA({
     <Button
       href={safeHref(siteConfig.storeUrl)}
       variant={primary === 'store' ? 'solid' : 'outline'}
-      tone="navy"
+      tone="service"
       external
       cursorLabel="Ver loja"
     >
@@ -37,7 +37,7 @@ export default function CTA({
     <Button
       href={whatsappLink(whatsappMessage)}
       variant={primary === 'support' ? 'solid' : 'outline'}
-      tone="navy"
+      tone="service"
       external
       cursorLabel="Falar"
     >
@@ -48,10 +48,10 @@ export default function CTA({
 
   return (
     <section
-      className="on-navy relative overflow-hidden bg-navy-deep py-24 sm:py-32"
+      className="relative overflow-hidden bg-abyss py-24 sm:py-32"
       aria-labelledby="cta-final-title"
     >
-      <div aria-hidden="true" className="blueprint-invert absolute inset-0" />
+      <div aria-hidden="true" className="grid-bg absolute inset-0" />
 
       <div className="container-site relative">
         <div className="mx-auto max-w-3xl text-center">
@@ -59,10 +59,10 @@ export default function CTA({
             as="h2"
             id="cta-final-title"
             text={title}
-            className="block text-[1.95rem] font-extrabold leading-[1.1] text-paper sm:text-[2.5rem] lg:text-[2.85rem]"
+            className="block text-[1.95rem] font-extrabold leading-[1.1] text-ink sm:text-[2.5rem] lg:text-[2.85rem]"
           />
           <p
-            className="mt-7 text-lg leading-relaxed text-sky/80"
+            className="mt-7 text-lg leading-relaxed text-ink-muted"
             data-reveal
             style={{ ['--d' as string]: '150ms' }}
           >

@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    color-scheme: light;
-    --radius: 12px;
+    color-scheme: dark;
+    --radius: 14px;
   }
 
   html {
@@ -14,26 +14,23 @@
   }
 
   body {
-    @apply bg-paper text-navy antialiased;
+    @apply bg-void text-ink antialiased;
   }
 
   ::selection {
-    @apply bg-blue text-paper;
+    @apply bg-magenta text-void;
   }
 
   ::-webkit-scrollbar {
     width: 12px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-mist;
+    @apply bg-void;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-line;
+    background: linear-gradient(180deg, theme('colors.violet.DEFAULT'), theme('colors.magenta.DEFAULT'));
     border-radius: 99px;
-    border: 3px solid #f3f7fd;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-blue-soft;
+    border: 3px solid #08060f;
   }
 
   a:focus-visible,
@@ -42,18 +39,9 @@
   [tabindex]:focus-visible {
     @apply outline-none;
     box-shadow:
-      0 0 0 2px theme('colors.paper'),
-      0 0 0 4px theme('colors.blue.DEFAULT');
-    border-radius: 10px;
-  }
-
-  /* Em fundo navy o anel de foco inverte para não sumir. */
-  .on-navy a:focus-visible,
-  .on-navy button:focus-visible,
-  .on-navy summary:focus-visible {
-    box-shadow:
-      0 0 0 2px theme('colors.navy.DEFAULT'),
-      0 0 0 4px theme('colors.paper');
+      0 0 0 2px theme('colors.void'),
+      0 0 0 4px theme('colors.cyan.DEFAULT');
+    border-radius: 12px;
   }
 
   h1,
@@ -74,37 +62,74 @@
   }
 
   .surface {
-    @apply rounded-[var(--radius)] border border-line bg-paper;
+    @apply rounded-[var(--radius)] border border-white/10 bg-panel/70;
   }
 
-  /* Rótulo utilitário, no registro da legenda de prancha técnica. */
-  .label {
-    @apply font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-blue;
+  /* Pílula de rótulo, no formato usado na loja da marca. */
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-violet/40 bg-violet/10 px-4 py-1.5
+           font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-violet-soft;
   }
-  .label-invert {
-    @apply font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-blue-soft;
+  .pill-cyan {
+    @apply inline-flex items-center gap-2 rounded-full border border-cyan/40 bg-cyan/10 px-4 py-1.5
+           font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-cyan-soft;
+  }
+
+  .label {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-violet-soft;
+  }
+  .label-cyan {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-cyan-soft;
   }
 
   /*
-    Malha de planta técnica. É o fio condutor visual do site: aparece atrás do
-    hero, do bloco de assistência e do CTA final, sempre bem apagada.
+    Borda em gradiente neon. É o traço da loja: o cartão tem um fio
+    violeta→ciano correndo pela moldura, e o miolo continua escuro.
   */
-  .blueprint {
-    background-image:
-      linear-gradient(to right, rgba(21, 96, 224, 0.07) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(21, 96, 224, 0.07) 1px, transparent 1px);
-    background-size: 26px 26px;
+  .neon-frame {
+    position: relative;
+    border-radius: var(--radius);
+    background: theme('colors.panel.DEFAULT');
   }
-  .blueprint-invert {
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-    background-size: 26px 26px;
+  .neon-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(140deg, theme('colors.violet.DEFAULT'), theme('colors.cyan.DEFAULT'));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.45;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .neon-frame:hover::before {
+    opacity: 1;
+  }
+  .neon-frame-cyan::before {
+    background: linear-gradient(140deg, theme('colors.cyan.DEFAULT'), theme('colors.violet.DEFAULT'));
   }
 
-  /* Marcas de cota: a régua fina que separa blocos de conteúdo. */
-  .tick-rule {
-    @apply h-px w-full bg-line;
+  /* Malha discreta de fundo, herdada do grid da loja. */
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(139, 61, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(139, 61, 255, 0.06) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+
+  /* Filete neon que separa blocos. */
+  .neon-rule {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(139, 61, 255, 0.5),
+      rgba(34, 227, 240, 0.4),
+      transparent
+    );
   }
 
   .link-underline {
@@ -121,11 +146,41 @@
 }
 
 @layer utilities {
-  .shadow-card {
-    box-shadow: 0 1px 2px rgba(7, 43, 79, 0.04), 0 8px 24px -12px rgba(7, 43, 79, 0.12);
+  .text-gradient {
+    background-image: linear-gradient(
+      100deg,
+      theme('colors.violet.soft'),
+      theme('colors.magenta.DEFAULT') 55%,
+      theme('colors.cyan.DEFAULT')
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
-  .shadow-lift {
-    box-shadow: 0 2px 4px rgba(7, 43, 79, 0.05), 0 18px 40px -18px rgba(7, 43, 79, 0.25);
+  .glow-violet {
+    box-shadow: 0 0 32px -6px rgba(139, 61, 255, 0.7);
+  }
+  .glow-cyan {
+    box-shadow: 0 0 32px -6px rgba(34, 227, 240, 0.6);
+  }
+  .text-glow-violet {
+    filter: drop-shadow(0 0 22px rgba(255, 61, 203, 0.35));
+  }
+  /* Halo por trás do título, no lugar de brilho no próprio texto. */
+  .title-halo {
+    position: relative;
+  }
+  .title-halo::after {
+    content: '';
+    position: absolute;
+    left: -6%;
+    top: 30%;
+    width: 70%;
+    height: 60%;
+    background: radial-gradient(closest-side, rgba(255, 61, 203, 0.22), transparent);
+    filter: blur(28px);
+    z-index: -1;
+    pointer-events: none;
   }
 }
 
@@ -150,13 +205,12 @@
   transform: none;
 }
 
-/* Título por palavra: cada palavra sobe por trás de uma máscara. */
 .split-word {
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
-  padding-bottom: 0.08em;
-  margin-bottom: -0.08em;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
 }
 .split-word > span {
   display: inline-block;
@@ -168,7 +222,7 @@
   transform: none;
 }
 
-/* Traço da planta técnica que se desenha ao entrar na tela. */
+/* Traço neon que se desenha ao entrar na tela. */
 .draw-path {
   stroke-dasharray: var(--len, 1200);
   stroke-dashoffset: var(--len, 1200);
@@ -196,7 +250,7 @@
   transition: transform 0.12s linear;
 }
 
-/* Cursor: um ponto e um anel finos, no azul da marca. */
+/* Cursor neon. */
 .cursor-dot,
 .cursor-ring {
   position: fixed;
@@ -209,24 +263,24 @@
   transition: opacity 0.3s ease;
 }
 .cursor-dot {
-  width: 5px;
-  height: 5px;
-  margin: -2.5px 0 0 -2.5px;
-  @apply bg-blue;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  @apply bg-magenta;
 }
 .cursor-ring {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
-  margin: -17px 0 0 -17px;
-  border: 1px solid rgba(21, 96, 224, 0.5);
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1px solid rgba(139, 61, 255, 0.6);
   transition:
     opacity 0.3s ease,
     width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     margin 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 0.3s ease,
+    background 0.3s ease,
     border-color 0.3s ease;
 }
 .cursor-on .cursor-dot,
@@ -238,7 +292,7 @@
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #fff;
+  color: #08060f;
   opacity: 0;
   transform: scale(0.85);
   transition:
@@ -247,11 +301,11 @@
   white-space: nowrap;
 }
 .cursor-ring.is-labelled {
-  width: 84px;
-  height: 84px;
-  margin: -42px 0 0 -42px;
+  width: 86px;
+  height: 86px;
+  margin: -43px 0 0 -43px;
   border-color: transparent;
-  @apply bg-blue;
+  background: linear-gradient(120deg, theme('colors.violet.DEFAULT'), theme('colors.magenta.DEFAULT'));
 }
 .cursor-ring.is-labelled .cursor-label {
   opacity: 1;
@@ -262,8 +316,7 @@
 }
 
 /* --------------------------------------------------------------
-   Movimento reduzido: a estética fica, o movimento sai. Nada de
-   conteúdo escondido esperando animação que não vem.
+   Movimento reduzido: a estética fica, o movimento sai.
    -------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -287,5 +340,17 @@
   .cursor-dot,
   .cursor-ring {
     display: none;
+  }
+}
+
+@layer utilities {
+  /* Profundidade em fundo escuro vem de sombra difusa, não de borda dura. */
+  .shadow-card {
+    box-shadow: 0 10px 34px -20px rgba(0, 0, 0, 0.95);
+  }
+  .shadow-lift {
+    box-shadow:
+      0 18px 50px -24px rgba(139, 61, 255, 0.6),
+      0 4px 14px -8px rgba(0, 0, 0, 0.8);
   }
 }

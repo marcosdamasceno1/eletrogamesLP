@@ -40,20 +40,20 @@ export const commonProblems = [
 
 /**
  * Lista de sintomas, usada na home e na landing de assistência.
- * `tone` escolhe se ela vive sobre navy (padrão) ou sobre branco.
+ * `tone` escolhe se ela puxa o ciano da assistência ou o violeta da loja.
  */
-export function CommonProblems({ tone = 'navy' }: { tone?: 'navy' | 'light' }) {
-  const navy = tone === 'navy';
+export function CommonProblems({ tone = 'service' }: { tone?: 'service' | 'store' }) {
+  const service = tone === 'service';
 
   return (
     <div
       className={`overflow-hidden rounded-[var(--radius)] border ${
-        navy ? 'border-paper/15 bg-paper/[0.04]' : 'border-line bg-paper shadow-card'
+        service ? 'border-white/10 bg-void/[0.04]' : 'border-white/10 bg-void shadow-card'
       }`}
     >
-      <div className={`border-b px-6 py-5 sm:px-8 ${navy ? 'border-paper/15' : 'border-line'}`}>
+      <div className={`border-b px-6 py-5 sm:px-8 ${service ? 'border-white/10' : 'border-white/10'}`}>
         <h3
-          className={`font-display text-xl font-bold sm:text-2xl ${navy ? 'text-paper' : 'text-navy'}`}
+          className={`font-display text-xl font-bold sm:text-2xl ${service ? 'text-ink' : 'text-ink'}`}
         >
           Seu videogame está apresentando algum destes sinais?
         </h3>
@@ -64,16 +64,16 @@ export function CommonProblems({ tone = 'navy' }: { tone?: 'navy' | 'light' }) {
           <li
             key={problem}
             className={`flex items-center gap-3.5 border-b px-6 py-4 text-[15px] sm:px-8 sm:odd:border-r ${
-              navy
-                ? 'border-paper/10 text-sky/85 sm:odd:border-paper/10'
-                : 'border-line text-slate sm:odd:border-line'
+              service
+                ? 'border-white/10 text-ink-muted sm:odd:border-white/10'
+                : 'border-white/10 text-ink-muted sm:odd:border-white/10'
             }`}
             data-reveal
             style={{ ['--d' as string]: `${index * 45}ms` }}
           >
             <svg
               viewBox="0 0 24 24"
-              className={`h-4 w-4 shrink-0 ${navy ? 'text-blue-soft' : 'text-blue'}`}
+              className={`h-4 w-4 shrink-0 ${service ? 'text-cyan-soft' : 'text-violet-soft'}`}
               fill="none"
               stroke="currentColor"
               strokeWidth={2}
@@ -89,17 +89,17 @@ export function CommonProblems({ tone = 'navy' }: { tone?: 'navy' | 'light' }) {
 
       <div className="flex flex-col gap-6 px-6 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <div>
-          <p className={`text-[15px] font-semibold ${navy ? 'text-paper' : 'text-navy'}`}>
+          <p className={`text-[15px] font-semibold ${service ? 'text-ink' : 'text-ink'}`}>
             Antes de substituir seu equipamento, fale com nossos especialistas.
           </p>
-          <p className={`mt-1.5 text-sm ${navy ? 'text-sky/70' : 'text-slate'}`}>
+          <p className={`mt-1.5 text-sm ${service ? 'text-ink-muted' : 'text-ink-muted'}`}>
             Descreva o problema pelo WhatsApp. A avaliação vem antes de qualquer serviço.
           </p>
         </div>
         <Button
           href={whatsappLink(whatsappMessages.support)}
           variant="solid"
-          tone={navy ? 'navy' : 'light'}
+          tone={service ? 'service' : 'store'}
           external
           cursorLabel="Avaliação"
           className="w-full shrink-0 sm:w-auto"
@@ -116,23 +116,27 @@ export default function TechSupport() {
   return (
     <section
       id="assistencia-tecnica"
-      className="on-navy relative overflow-hidden bg-navy py-24 sm:py-32"
+      className="relative overflow-hidden bg-abyss py-24 sm:py-32"
       aria-labelledby="assistencia-title"
     >
       {/* O mundo da assistência é o inverso do da loja: branco sobre azul. */}
-      <div aria-hidden="true" className="blueprint-invert absolute inset-0" />
+      {/* O lado técnico tem luz própria: halo ciano em vez do violeta da loja. */}
+      <div aria-hidden="true" className="absolute inset-0">
+        <div className="grid-bg absolute inset-0" />
+        <div className="absolute left-[-8%] top-1/4 h-[480px] w-[620px] rounded-full bg-cyan/[0.09] blur-[150px]" />
+      </div>
 
       <div className="container-site relative">
         <SectionTitle
           eyebrow="Assistência técnica"
           id="assistencia-title"
-          tone="navy"
+          tone="service"
           title="Assistência técnica especializada em videogames."
           highlight="especializada"
           description="Seu console ou controle apresentou problema? Conte com quem trabalha com videogames há mais de 28 anos."
         />
 
-        <div className="mt-9 max-w-2xl space-y-4 text-[17px] leading-relaxed text-sky/80">
+        <div className="mt-9 max-w-2xl space-y-4 text-[17px] leading-relaxed text-ink-muted">
           <p data-reveal>
             Parou de ligar no meio da partida, desliga sozinho ou o analógico anda por conta
             própria. A primeira reação costuma ser abrir o site de uma loja e ver quanto custa um
@@ -157,7 +161,7 @@ export default function TechSupport() {
         </div>
 
         <div className="mt-8" data-reveal>
-          <Button href="/assistencia-tecnica" variant="outline" tone="navy" cursorLabel="Abrir">
+          <Button href="/assistencia-tecnica" variant="outline" tone="service" cursorLabel="Abrir">
             Ver a página completa de assistência técnica
           </Button>
         </div>

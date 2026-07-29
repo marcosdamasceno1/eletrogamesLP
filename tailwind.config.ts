@@ -1,44 +1,49 @@
 import type { Config } from 'tailwindcss';
 
 /**
- * Identidade Eletrogames: azul e branco.
+ * Identidade Eletrogames, tirada da loja online da própria marca:
+ * fundo quase preto com fundo violeta, neon violeta/magenta nos destaques
+ * e ciano nos elementos técnicos.
  *
- * A referência é a planta técnica, o desenho azul sobre branco de quem abre
- * aparelho. Toda superfície do site sai destes seis valores.
+ * Os dois acentos têm função fixa e nunca trocam de lado:
+ *   violeta → magenta = comprar   (loja, produtos, catálogo)
+ *   ciano                = consertar (assistência, avaliação, diagnóstico)
  *
- * Comprar e consertar não se separam por matiz, e sim por ambiente:
- *   seções claras (azul sobre branco) = loja
- *   seções navy (branco sobre azul)   = assistência técnica
- * Em cada ambiente, a ação que importa ali é a preenchida.
- *
- * Ao receber o logotipo oficial, ajuste `blue` e `navy` para as cores da
- * marca. O site inteiro deriva desses dois. Veja docs/LOGOMARCA.md.
+ * Ao receber os arquivos oficiais da marca, ajuste `violet`, `magenta` e
+ * `cyan`. Todo o site deriva desses três. Veja docs/LOGOMARCA.md.
  */
 const config: Config = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        paper: '#FFFFFF',
-        mist: '#F3F7FD',
-        line: '#DBE6F5',
-        sky: '#E3EEFF',
-        blue: {
-          DEFAULT: '#1560E0',
-          deep: '#0E49B0',
-          soft: '#6FA3F5',
+        void: '#08060F',
+        abyss: '#0C0818',
+        panel: {
+          DEFAULT: '#130C22',
+          raised: '#1A1030',
         },
-        navy: {
-          DEFAULT: '#072B4F',
-          deep: '#04203D',
-          soft: '#12446F',
+        violet: {
+          // Preenchimento de botão: escuro o bastante para o texto branco
+          // passar no critério AA. O brilho neon vem do glow em volta,
+          // não da cor de fundo.
+          DEFAULT: '#7526E0',
+          deep: '#571399',
+          soft: '#B183FF',
         },
-        slate: {
-          DEFAULT: '#54677F',
-          // Aferido no navegador: 5,3:1 sobre branco e 4,9:1 sobre o azul
-          // claro das seções. Não clarear além disto, senão as legendas
-          // pequenas param de passar no critério AA de contraste.
-          light: '#5E6C86',
+        magenta: {
+          DEFAULT: '#FF3DCB',
+          soft: '#FF7ADD',
+        },
+        cyan: {
+          DEFAULT: '#22E3F0',
+          deep: '#0FB6C2',
+          soft: '#7BF0F8',
+        },
+        ink: {
+          DEFAULT: '#F4F1FF',
+          muted: '#B3AACB',
+          faint: '#8479A0',
         },
       },
       fontFamily: {
@@ -53,21 +58,18 @@ const config: Config = {
         tightest: '-0.035em',
       },
       keyframes: {
-        'draw-rule': {
-          from: { transform: 'scaleX(0)' },
-          to: { transform: 'scaleX(1)' },
+        'pulse-glow': {
+          '0%,100%': { opacity: '0.55' },
+          '50%': { opacity: '1' },
         },
-        'draw-path': {
-          to: { strokeDashoffset: '0' },
-        },
-        'fade-in': {
-          from: { opacity: '0', transform: 'translateY(6px)' },
-          to: { opacity: '1', transform: 'none' },
+        float: {
+          '0%,100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
         },
       },
       animation: {
-        'draw-rule': 'draw-rule .55s cubic-bezier(.16,1,.3,1) both',
-        'fade-in': 'fade-in .5s ease-out both',
+        'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+        float: 'float 6s ease-in-out infinite',
       },
     },
   },

@@ -40,12 +40,12 @@ const platforms = [
   },
 ];
 
-export default function Platforms({ tone = 'light' }: { tone?: 'light' | 'navy' }) {
-  const navy = tone === 'navy';
+export default function Platforms({ tone = 'store' }: { tone?: 'store' | 'service' }) {
+  const service = tone === 'service';
 
   return (
     <section
-      className={`py-24 sm:py-32 ${navy ? 'on-navy bg-navy' : 'border-t border-line'}`}
+      className={`py-24 sm:py-32 ${service ? 'bg-abyss' : 'border-t border-white/10'}`}
       aria-labelledby="plataformas-title"
     >
       <div className="container-site">
@@ -67,37 +67,27 @@ export default function Platforms({ tone = 'light' }: { tone?: 'light' | 'navy' 
                 rel="noopener noreferrer"
                 data-tilt
                 data-cursor="Falar"
-                className={`group flex h-full flex-col rounded-[var(--radius)] border p-6 transition-all duration-300 ${
-                  navy
-                    ? 'border-paper/15 bg-paper/[0.06] hover:border-paper/40 hover:bg-paper/[0.1]'
-                    : 'border-line bg-paper shadow-card hover:border-blue/40 hover:shadow-lift'
-                }`}
+                className="neon-frame neon-frame-cyan group flex h-full flex-col p-6 transition-transform duration-300 hover:shadow-lift"
               >
                 <span
-                  className={`flex h-11 w-11 items-center justify-center rounded-[10px] transition-colors duration-300 ${
-                    navy
-                      ? 'bg-paper/15 text-paper'
-                      : 'bg-sky text-blue group-hover:bg-blue group-hover:text-paper'
-                  }`}
+                  className="flex h-11 w-11 items-center justify-center rounded-[10px] border border-cyan/30 bg-cyan/10 text-cyan transition-colors duration-300 group-hover:bg-cyan group-hover:text-void"
                 >
                   <Icon className="h-5 w-5" />
                 </span>
 
                 <h3
-                  className={`mt-5 text-[17px] font-bold ${navy ? 'text-paper' : 'text-navy'}`}
+                  className={`mt-5 text-[17px] font-bold ${service ? 'text-ink' : 'text-ink'}`}
                 >
                   {name}
                 </h3>
                 <p
-                  className={`mt-2 flex-1 text-sm leading-relaxed ${navy ? 'text-sky/75' : 'text-slate'}`}
+                  className={`mt-2 flex-1 text-sm leading-relaxed ${service ? 'text-ink-muted' : 'text-ink-muted'}`}
                 >
                   {text}
                 </p>
 
                 <span
-                  className={`mt-5 inline-flex items-center gap-2 text-sm font-semibold ${
-                    navy ? 'text-blue-soft' : 'text-blue'
-                  }`}
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cyan-soft"
                 >
                   <IconWhatsApp className="h-4 w-4" />
                   Falar sobre este console
@@ -108,7 +98,7 @@ export default function Platforms({ tone = 'light' }: { tone?: 'light' | 'navy' 
         </ul>
 
         <p
-          className={`mt-8 text-sm ${navy ? 'text-sky/70' : 'text-slate'}`}
+          className={`mt-8 text-sm ${service ? 'text-ink-muted' : 'text-ink-muted'}`}
           data-reveal
         >
           Não achou o seu aparelho na lista? Fale com a equipe mesmo assim.{' '}
@@ -116,7 +106,7 @@ export default function Platforms({ tone = 'light' }: { tone?: 'light' | 'navy' 
             href={whatsappLink(whatsappMessages.support)}
             target="_blank"
             rel="noopener noreferrer"
-            className={`link-underline font-semibold ${navy ? 'text-paper' : 'text-blue'}`}
+            className="link-underline inline-flex min-h-[44px] items-center font-semibold text-cyan-soft"
           >
             Descrever o problema
           </a>

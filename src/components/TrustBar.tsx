@@ -10,8 +10,8 @@ const items = [
 
 export default function TrustBar() {
   return (
-    <section aria-label="Ficha da Eletrogames" className="border-y border-line bg-mist">
-      <div className="container-site grid divide-y divide-line lg:grid-cols-4 lg:divide-x lg:divide-y-0">
+    <section aria-label="Ficha da Eletrogames" className="border-y border-white/10 bg-abyss">
+      <div className="container-site grid divide-y divide-white/10 lg:grid-cols-4 lg:divide-x lg:divide-y-0">
         {items.map(({ icon: Icon, value, note }, index) => (
           <div
             key={value}
@@ -19,10 +19,10 @@ export default function TrustBar() {
             data-reveal
             style={{ ['--d' as string]: `${index * 70}ms` }}
           >
-            <Icon className="h-6 w-6 shrink-0 text-blue" />
+            <Icon className="h-6 w-6 shrink-0 text-violet-soft" />
             <div>
-              <p className="font-display text-[17px] font-bold leading-tight text-navy">{value}</p>
-              <p className="mt-1 text-sm text-slate">{note}</p>
+              <p className="font-display text-[17px] font-bold leading-tight text-ink">{value}</p>
+              <p className="mt-1 text-sm text-ink-muted">{note}</p>
             </div>
           </div>
         ))}

@@ -24,25 +24,31 @@ Se você veio para mexer no conteúdo e não no código, comece por aqui:
 
 ## Direção de arte
 
-Azul e branco, na referência da **planta técnica**: o desenho azul sobre branco de
-quem abre aparelho. A malha fina de fundo, as marcas de cota e a legenda no topo do
-desenho vêm daí.
+A identidade vem da loja online da própria Eletrogames: fundo quase preto com
+fundo violeta, neon violeta/magenta nos destaques e ciano no lado técnico.
 
-Comprar e consertar não se separam por uma segunda cor de marca, e sim por ambiente:
+Os dois acentos têm função fixa e nunca trocam de lado:
 
-- **seções claras** (azul sobre branco) são o mundo da loja;
-- **seções navy** (branco sobre azul) são o mundo da assistência técnica.
+- **violeta → magenta** = comprar. Loja, produtos, catálogo.
+- **ciano** = consertar. Assistência, avaliação, diagnóstico.
 
-Em cada ambiente, a ação que importa ali é a preenchida, e a alternativa fica em
-contorno. Assim a ação principal é sempre o elemento de maior contraste na tela.
+Tipografia: **Archivo** nos títulos, em caixa alta e peso máximo, no registro do
+banner da loja. **IBM Plex Sans** no texto e **IBM Plex Mono** nos rótulos.
 
-Tipografia: **Archivo** nos títulos, **IBM Plex Sans** no texto e **IBM Plex Mono** nos
-rótulos. A família Plex nasceu de documentação de engenharia, que é o registro de quem
-trabalha em bancada.
+O elemento de assinatura é o **controle desenhado em neon no hero**, que se traça
+sozinho quando entra na tela. É SVG escrito à mão com gradiente violeta→magenta→ciano:
+pesa poucos KB, fica nítido em qualquer tela e acompanha a cor da marca.
 
-O elemento de assinatura é o **desenho técnico do controle no hero**, que se traça
-sozinho quando entra na tela. É SVG escrito à mão: pesa poucos KB, fica nítido em
-qualquer tela e acompanha a cor da marca sem precisar de outro arquivo.
+As categorias de produto são as mesmas da loja online, na mesma ordem: manetes,
+consoles, headset, controles mobile e acessórios. Quem sai daqui e cai lá encontra a
+prateleira com o nome que já leu aqui.
+
+### Uma nota sobre o neon e o contraste
+
+O preenchimento dos botões é um violeta escurecido de propósito (`#7526E0`), e não o
+violeta vibrante. O brilho vem do halo em volta, não da cor de fundo. Isso foi medido:
+com o violeta claro, o texto branco dos botões reprovava no critério AA de contraste.
+O magenta segue vivo nos títulos, bordas e brilhos, onde não carrega texto pequeno.
 
 ## Efeitos e onde eles moram
 

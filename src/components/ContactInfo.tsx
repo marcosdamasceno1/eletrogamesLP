@@ -43,22 +43,22 @@ export default function ContactInfo({
   const mapsReady = !isPlaceholder(siteConfig.address.mapsUrl);
 
   return (
-    <section id="contato" className="bg-mist py-24 sm:py-32" aria-labelledby="contato-title">
+    <section id="contato" className="bg-abyss py-24 sm:py-32" aria-labelledby="contato-title">
       <div className="container-site">
         <SectionTitle eyebrow={eyebrow} id="contato-title" title={title} description={description} />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
-          <ul className="overflow-hidden rounded-[var(--radius)] border border-line bg-paper shadow-card">
+          <ul className="overflow-hidden rounded-[var(--radius)] border border-white/10 bg-void shadow-card">
             {items.map(({ icon: Icon, label, value, href }, index) => (
               <li
                 key={label}
-                className="flex gap-4 border-b border-line p-5 last:border-0"
+                className="flex gap-4 border-b border-white/10 p-5 last:border-0"
                 data-reveal
                 style={{ ['--d' as string]: `${index * 60}ms` }}
               >
-                <Icon className="h-5 w-5 shrink-0 text-blue" />
+                <Icon className="h-5 w-5 shrink-0 text-violet-soft" />
                 <div>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-slate-light">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-faint">
                     {label}
                   </p>
                   {href && href !== '#' ? (
@@ -66,12 +66,12 @@ export default function ContactInfo({
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="link-underline mt-1.5 inline-block text-[15px] text-navy transition-colors hover:text-blue"
+                      className="link-underline mt-1.5 inline-block text-[15px] text-ink transition-colors hover:text-violet-soft"
                     >
                       {value}
                     </a>
                   ) : (
-                    <p className="mt-1.5 text-[15px] text-navy">{value}</p>
+                    <p className="mt-1.5 text-[15px] text-ink">{value}</p>
                   )}
                 </div>
               </li>
@@ -84,14 +84,14 @@ export default function ContactInfo({
               este bloco por <iframe loading="lazy" src={siteConfig.address.mapsUrl} />.
             */}
             <div
-              className="flex min-h-[240px] flex-1 flex-col items-center justify-center gap-3 rounded-[var(--radius)] border border-dashed border-line bg-paper p-8 text-center"
+              className="flex min-h-[240px] flex-1 flex-col items-center justify-center gap-3 rounded-[var(--radius)] border border-dashed border-white/10 bg-void p-8 text-center"
               data-reveal
             >
-              <IconPin className="h-7 w-7 text-slate-light" />
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-slate">
+              <IconPin className="h-7 w-7 text-ink-faint" />
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-muted">
                 [GOOGLE MAPS]
               </p>
-              <p className="text-xs text-slate-light">
+              <p className="text-xs text-ink-faint">
                 {mapsReady ? 'Mapa configurado.' : 'Espaço reservado para o mapa da loja.'}
               </p>
             </div>

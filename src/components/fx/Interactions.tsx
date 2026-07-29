@@ -152,7 +152,7 @@ export default function Interactions() {
     <>
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-x-0 top-0 z-[9999] h-[2px] origin-left scale-x-0 bg-blue"
+        className="pointer-events-none fixed inset-x-0 top-0 z-[9999] h-[2px] origin-left scale-x-0 bg-violet"
         ref={bar}
       />
       <div aria-hidden="true" className="cursor-dot" ref={dot} />

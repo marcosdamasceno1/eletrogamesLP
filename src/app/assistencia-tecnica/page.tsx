@@ -82,7 +82,7 @@ export default function AssistenciaTecnicaPage() {
     <>
       <PageHero
         eyebrow="Assistência técnica"
-        tone="navy"
+        tone="service"
         title="Assistência técnica especializada em videogames"
         highlight="especializada"
         description="Seu console ou controle apresentou problema? Fale com quem possui mais de 28 anos de experiência no universo dos videogames."
@@ -95,14 +95,14 @@ export default function AssistenciaTecnicaPage() {
         <Button
           href={whatsappLink(whatsappMessages.support)}
           variant="solid"
-          tone="navy"
+          tone="service"
           external
           cursorLabel="Avaliação"
         >
           <IconWhatsApp className="h-5 w-5" />
           Solicitar avaliação técnica
         </Button>
-        <Button href="#como-funciona" variant="outline" tone="navy" cursorLabel="Ver">
+        <Button href="#como-funciona" variant="outline" tone="service" cursorLabel="Ver">
           Como funciona a avaliação
         </Button>
       </PageHero>
@@ -112,7 +112,7 @@ export default function AssistenciaTecnicaPage() {
       <Platforms />
 
       {/* Problemas atendidos */}
-      <section className="border-t border-line py-24 sm:py-32" aria-labelledby="problemas-title">
+      <section className="border-t border-white/10 py-24 sm:py-32" aria-labelledby="problemas-title">
         <div className="container-site">
           <SectionTitle
             eyebrow="Problemas atendidos"
@@ -122,13 +122,13 @@ export default function AssistenciaTecnicaPage() {
             description="Se o seu equipamento se encaixa em alguma dessas situações, ele pode passar por uma avaliação técnica na Eletrogames."
           />
           <div className="mt-14">
-            <CommonProblems tone="light" />
+            <CommonProblems tone="store" />
           </div>
         </div>
       </section>
 
       {/* Manutenção de consoles e de controles */}
-      <section className="border-t border-line py-24 sm:py-32" aria-labelledby="manutencao-title">
+      <section className="border-t border-white/10 py-24 sm:py-32" aria-labelledby="manutencao-title">
         <div className="container-site">
           <SectionTitle
             eyebrow="Nossos serviços"
@@ -140,21 +140,21 @@ export default function AssistenciaTecnicaPage() {
 
           <div className="mt-14 grid gap-6 lg:grid-cols-2">
             <article
-              className="rounded-[var(--radius)] border border-line bg-paper p-8 shadow-card"
+              className="rounded-[var(--radius)] border border-white/10 bg-void p-8 shadow-card"
               data-reveal
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-[10px] bg-sky text-blue">
+              <span className="flex h-12 w-12 items-center justify-center rounded-[10px] bg-violet/15 text-violet-soft">
                 <IconWrench className="h-6 w-6" />
               </span>
-              <h3 className="mt-6 text-2xl font-bold text-navy">Manutenção de consoles</h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-slate">
+              <h3 className="mt-6 text-2xl font-bold text-ink">Manutenção de consoles</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-ink-muted">
                 Diagnóstico e manutenção especializada para diferentes tipos de problemas
                 apresentados por consoles, com análise técnica antes de qualquer serviço.
               </p>
               <ul className="mt-7 space-y-3">
                 {consoleTopics.map((topic) => (
-                  <li key={topic} className="flex gap-3 text-[15px] text-slate">
-                    <IconCheck className="mt-0.5 h-5 w-5 shrink-0 text-blue" />
+                  <li key={topic} className="flex gap-3 text-[15px] text-ink-muted">
+                    <IconCheck className="mt-0.5 h-5 w-5 shrink-0 text-violet-soft" />
                     {topic}
                   </li>
                 ))}
@@ -173,22 +173,22 @@ export default function AssistenciaTecnicaPage() {
             </article>
 
             <article
-              className="rounded-[var(--radius)] border border-line bg-paper p-8 shadow-card"
+              className="rounded-[var(--radius)] border border-white/10 bg-void p-8 shadow-card"
               data-reveal
               style={{ ['--d' as string]: '110ms' }}
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-[10px] bg-sky text-blue">
+              <span className="flex h-12 w-12 items-center justify-center rounded-[10px] bg-violet/15 text-violet-soft">
                 <IconGamepad className="h-6 w-6" />
               </span>
-              <h3 className="mt-6 text-2xl font-bold text-navy">Manutenção de controles</h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-slate">
+              <h3 className="mt-6 text-2xl font-bold text-ink">Manutenção de controles</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-ink-muted">
                 Avaliação e reparo de controles e manetes, com atenção às queixas mais comuns de
                 quem joga com frequência.
               </p>
               <ul className="mt-7 space-y-3">
                 {controllerTopics.map((topic) => (
-                  <li key={topic} className="flex gap-3 text-[15px] text-slate">
-                    <IconCheck className="mt-0.5 h-5 w-5 shrink-0 text-blue" />
+                  <li key={topic} className="flex gap-3 text-[15px] text-ink-muted">
+                    <IconCheck className="mt-0.5 h-5 w-5 shrink-0 text-violet-soft" />
                     {topic}
                   </li>
                 ))}
@@ -211,15 +211,15 @@ export default function AssistenciaTecnicaPage() {
             {supportServices.map(({ icon: Icon, title, description }, index) => (
               <li
                 key={title}
-                className="h-full rounded-[var(--radius)] border border-line bg-paper p-6 shadow-card"
+                className="h-full rounded-[var(--radius)] border border-white/10 bg-void p-6 shadow-card"
                 data-reveal
                 style={{ ['--d' as string]: `${index * 80}ms` }}
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-sky text-blue">
+                <span className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-violet/15 text-violet-soft">
                   <Icon className="h-5 w-5" />
                 </span>
-                <h3 className="mt-5 text-[17px] font-bold text-navy">{title}</h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-slate">{description}</p>
+                <h3 className="mt-5 text-[17px] font-bold text-ink">{title}</h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-ink-muted">{description}</p>
               </li>
             ))}
           </ul>
@@ -229,7 +229,7 @@ export default function AssistenciaTecnicaPage() {
       <Steps />
 
       {/* Diferenciais */}
-      <section className="border-t border-line py-24 sm:py-32" aria-labelledby="diferenciais-title">
+      <section className="border-t border-white/10 py-24 sm:py-32" aria-labelledby="diferenciais-title">
         <div className="container-site">
           <SectionTitle
             eyebrow="Diferenciais"
@@ -246,12 +246,12 @@ export default function AssistenciaTecnicaPage() {
                 data-reveal
                 style={{ ['--d' as string]: `${index * 80}ms` }}
               >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px] bg-sky text-blue">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px] bg-violet/15 text-violet-soft">
                   <Icon className="h-5 w-5" />
                 </span>
                 <div>
-                  <h3 className="text-[17px] font-bold text-navy">{title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate">{text}</p>
+                  <h3 className="text-[17px] font-bold text-ink">{title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{text}</p>
                 </div>
               </li>
             ))}

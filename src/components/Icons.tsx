@@ -217,3 +217,14 @@ export function IconCartridge(props: IconProps) {
     </Svg>
   );
 }
+
+/** Controle acoplado ao celular, a categoria "controles mobile" da loja. */
+export function IconMobilePad(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="8.5" y="4" width="7" height="16" rx="1.4" />
+      <path d="M8.5 8H6a2.5 2.5 0 0 0-2.5 2.5v3A2.5 2.5 0 0 0 6 16h2.5M15.5 8H18a2.5 2.5 0 0 1 2.5 2.5v3A2.5 2.5 0 0 1 18 16h-2.5" />
+      <path d="M5.2 11.2v1.6M4.4 12h1.6M18.4 11.4v.01M19.4 12.8v.01" />
+    </Svg>
+  );
+}

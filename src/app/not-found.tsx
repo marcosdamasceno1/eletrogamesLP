@@ -5,16 +5,16 @@ import { safeHref, siteConfig, whatsappLink, whatsappMessages } from '@/lib/site
 /** 404 no registro da prancha técnica: a página some, a marca continua. */
 export default function NotFound() {
   return (
-    <section className="relative flex min-h-[80vh] items-center overflow-hidden bg-paper py-32">
-      <div aria-hidden="true" className="blueprint absolute inset-0 opacity-60" />
+    <section className="relative flex min-h-[80vh] items-center overflow-hidden bg-void py-32">
+      <div aria-hidden="true" className="grid-bg absolute inset-0 opacity-60" />
 
       <div className="container-site relative max-w-2xl">
         <p className="label">Erro 404</p>
 
-        <h1 className="mt-6 text-[2rem] font-extrabold leading-tight text-navy sm:text-[2.6rem]">
+        <h1 className="mt-6 text-[2rem] font-extrabold leading-tight text-ink sm:text-[2.6rem]">
           Essa página não está no ar.
         </h1>
-        <p className="mt-5 text-lg leading-relaxed text-slate">
+        <p className="mt-5 text-lg leading-relaxed text-ink-muted">
           O endereço pode ter mudado. Os caminhos abaixo continuam funcionando.
         </p>
 
@@ -35,13 +35,13 @@ export default function NotFound() {
           </Button>
         </div>
 
-        <p className="mt-10 text-sm text-slate">
+        <p className="mt-10 text-sm text-ink-muted">
           Procurando algo específico?{' '}
           <a
             href={whatsappLink(whatsappMessages.general)}
             target="_blank"
             rel="noopener noreferrer"
-            className="link-underline font-semibold text-blue"
+            className="link-underline font-semibold text-violet-soft"
           >
             <IconWhatsApp className="mr-1 inline h-4 w-4" />
             Pergunte no WhatsApp

@@ -17,7 +17,7 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials() {
   return (
-    <section id="depoimentos" className="border-t border-line py-24 sm:py-32" aria-labelledby="depoimentos-title">
+    <section id="depoimentos" className="border-t border-white/10 py-24 sm:py-32" aria-labelledby="depoimentos-title">
       <div className="container-site">
         <SectionTitle
           eyebrow="Depoimentos"
@@ -31,17 +31,17 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <li
               key={index}
-              className="flex h-full flex-col justify-between gap-6 rounded-[var(--radius)] border border-dashed border-line bg-mist p-6"
+              className="flex h-full flex-col justify-between gap-6 rounded-[var(--radius)] border border-dashed border-white/10 bg-abyss p-6"
               data-reveal
               style={{ ['--d' as string]: `${index * 90}ms` }}
             >
-              <p className="font-mono text-sm leading-relaxed text-slate">{testimonial.quote}</p>
-              <div className="border-t border-line pt-4">
-                <p className="font-mono text-xs uppercase tracking-[0.16em] text-slate-light">
+              <p className="font-mono text-sm leading-relaxed text-ink-muted">{testimonial.quote}</p>
+              <div className="border-t border-white/10 pt-4">
+                <p className="font-mono text-xs uppercase tracking-[0.16em] text-ink-faint">
                   {testimonial.author}
                 </p>
                 {testimonial.context ? (
-                  <p className="mt-1 text-xs text-slate-light">{testimonial.context}</p>
+                  <p className="mt-1 text-xs text-ink-faint">{testimonial.context}</p>
                 ) : null}
               </div>
             </li>

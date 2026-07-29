@@ -75,7 +75,7 @@ type Props = {
   title?: string;
   eyebrow?: string;
   description?: string;
-  tone?: 'light' | 'navy';
+  tone?: 'store' | 'service';
 };
 
 export default function FAQ({
@@ -83,12 +83,12 @@ export default function FAQ({
   title = 'Dúvidas frequentes',
   eyebrow = 'FAQ',
   description,
-  tone = 'light',
+  tone = 'store',
 }: Props) {
   return (
     <section
       id="faq"
-      className={`py-24 sm:py-32 ${tone === 'navy' ? 'on-navy bg-navy' : 'border-t border-line'}`}
+      className={`py-24 sm:py-32 ${tone === 'service' ? 'bg-abyss' : 'border-t border-white/10'}`}
       aria-labelledby="faq-title"
     >
       <div className="container-site">
@@ -103,26 +103,26 @@ export default function FAQ({
         {/* <details> nativo: o acordeão abre mesmo sem JavaScript. */}
         <div
           className={`mt-14 max-w-3xl overflow-hidden rounded-[var(--radius)] border ${
-            tone === 'navy' ? 'border-paper/15' : 'border-line bg-paper shadow-card'
+            tone === 'service' ? 'border-white/10' : 'border-white/10 bg-void shadow-card'
           }`}
         >
           {items.map((item, index) => (
             <details
               key={item.question}
               className={`group border-b last:border-0 ${
-                tone === 'navy' ? 'border-paper/10 open:bg-paper/[0.05]' : 'border-line open:bg-mist'
+                tone === 'service' ? 'border-white/10 open:bg-void/[0.05]' : 'border-white/10 open:bg-abyss'
               }`}
               data-reveal
               style={{ ['--d' as string]: `${index * 60}ms` }}
             >
               <summary
                 className={`flex cursor-pointer list-none items-center gap-6 px-6 py-5 text-left transition-colors sm:px-7 ${
-                  tone === 'navy' ? 'hover:bg-paper/[0.04]' : 'hover:bg-mist'
+                  tone === 'service' ? 'hover:bg-void/[0.04]' : 'hover:bg-abyss'
                 }`}
               >
                 <h3
                   className={`flex-1 text-[16px] font-semibold ${
-                    tone === 'navy' ? 'text-paper' : 'text-navy'
+                    tone === 'service' ? 'text-ink' : 'text-ink'
                   }`}
                 >
                   {item.question}
@@ -130,7 +130,7 @@ export default function FAQ({
                 <svg
                   viewBox="0 0 24 24"
                   className={`h-5 w-5 shrink-0 transition-transform duration-300 group-open:rotate-45 ${
-                    tone === 'navy' ? 'text-blue-soft' : 'text-blue'
+                    tone === 'service' ? 'text-cyan-soft' : 'text-violet-soft'
                   }`}
                   fill="none"
                   stroke="currentColor"
@@ -143,7 +143,7 @@ export default function FAQ({
               </summary>
               <div
                 className={`px-6 pb-6 text-[15px] leading-relaxed sm:px-7 ${
-                  tone === 'navy' ? 'text-sky/80' : 'text-slate'
+                  tone === 'service' ? 'text-ink-muted' : 'text-ink-muted'
                 }`}
               >
                 {item.answer}

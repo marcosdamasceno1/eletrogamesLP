@@ -2,35 +2,39 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 /**
- * Dois pesos, dois ambientes.
+ * Dois caminhos, duas cores, sempre as mesmas.
  *
- * `solid` é a ação que importa na seção onde está. `outline` é o caminho
- * alternativo. Em fundo claro o sólido é azul; em fundo navy o sólido é
- * branco. Assim a ação principal é sempre a de maior contraste na tela,
- * sem precisar de uma segunda cor de marca.
+ *   tone="store"   → gradiente violeta/magenta. É o botão de comprar,
+ *                    o mesmo tratamento do "VER PRODUTOS" da loja.
+ *   tone="service" → ciano. É o botão de consertar.
+ *
+ * `solid` é a ação principal da seção; `outline` é o caminho alternativo.
  */
 type Variant = 'solid' | 'outline';
-type Tone = 'light' | 'navy';
+type Tone = 'store' | 'service';
 type Size = 'md' | 'lg';
 
 const base =
-  'group relative inline-flex min-h-[52px] items-center justify-center gap-2.5 rounded-[10px] ' +
-  'font-semibold transition-all duration-200';
+  'group relative inline-flex min-h-[52px] items-center justify-center gap-2.5 overflow-hidden ' +
+  'rounded-xl font-bold uppercase transition-all duration-300';
 
 const styles: Record<Tone, Record<Variant, string>> = {
-  light: {
-    solid: 'bg-blue text-paper hover:bg-blue-deep shadow-card hover:shadow-lift',
-    outline: 'border border-line bg-paper text-navy hover:border-blue hover:text-blue',
+  store: {
+    solid:
+      'bg-gradient-to-r from-violet-deep to-violet text-white shadow-lift glow-violet hover:from-violet hover:to-violet',
+    outline:
+      'border border-violet/50 bg-violet/5 text-ink hover:border-violet hover:bg-violet/15 hover:glow-violet',
   },
-  navy: {
-    solid: 'bg-paper text-navy hover:bg-sky shadow-lift',
-    outline: 'border border-paper/30 text-paper hover:border-paper hover:bg-paper/10',
+  service: {
+    solid: 'bg-cyan text-void hover:bg-cyan-soft hover:glow-cyan',
+    outline:
+      'border border-cyan/50 bg-cyan/5 text-cyan-soft hover:border-cyan hover:bg-cyan/15 hover:glow-cyan',
   },
 };
 
 const sizes: Record<Size, string> = {
-  md: 'px-5 text-sm',
-  lg: 'px-7 py-4 text-[15px]',
+  md: 'px-5 text-[13px]',
+  lg: 'px-6 py-4 text-sm',
 };
 
 type Props = {
@@ -51,7 +55,7 @@ export default function Button({
   href,
   children,
   variant = 'solid',
-  tone = 'light',
+  tone = 'store',
   size = 'lg',
   external = false,
   className = '',
@@ -66,6 +70,17 @@ export default function Button({
     ...(cursorLabel ? { 'data-cursor': cursorLabel } : {}),
   };
 
+  const inner = (
+    <>
+      {/* varredura de luz atravessando o botão no hover */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+      />
+      <span className="relative flex items-center gap-2.5">{children}</span>
+    </>
+  );
+
   if (external || href.startsWith('http') || href === '#') {
     return (
       <a
@@ -75,14 +90,14 @@ export default function Button({
         {...fx}
         {...(href !== '#' ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       >
-        {children}
+        {inner}
       </a>
     );
   }
 
   return (
     <Link href={href} className={classes} aria-label={ariaLabel} {...fx}>
-      {children}
+      {inner}
     </Link>
   );
 }

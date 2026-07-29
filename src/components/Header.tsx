@@ -35,8 +35,8 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 bg-paper/90 backdrop-blur-md transition-shadow duration-300 ${
-        scrolled || open ? 'border-b border-line shadow-card' : 'border-b border-transparent'
+      className={`fixed inset-x-0 top-0 z-50 bg-void/90 backdrop-blur-md transition-shadow duration-300 ${
+        scrolled || open ? 'border-b border-white/10 shadow-card' : 'border-b border-transparent'
       }`}
     >
       <div
@@ -64,13 +64,13 @@ export default function Header() {
                     data-magnetic="0.15"
                     aria-current={active ? 'page' : undefined}
                     className={`relative block whitespace-nowrap rounded-lg px-3 py-2 text-sm transition-colors ${
-                      active ? 'text-blue' : 'text-slate hover:text-navy'
+                      active ? 'text-violet-soft' : 'text-ink-muted hover:text-ink'
                     }`}
                   >
                     {item.short}
                     <span
                       aria-hidden="true"
-                      className={`absolute inset-x-3 bottom-0 h-0.5 origin-left rounded-full bg-blue transition-transform duration-300 ${
+                      className={`absolute inset-x-3 bottom-0 h-0.5 origin-left rounded-full bg-violet transition-transform duration-300 ${
                         active ? 'scale-x-100' : 'scale-x-0'
                       }`}
                     />
@@ -88,9 +88,9 @@ export default function Header() {
             rel="noopener noreferrer"
             data-magnetic="0.18"
             data-cursor="Falar"
-            className="inline-flex min-h-[44px] items-center gap-2 whitespace-nowrap rounded-[10px] border border-line px-4 text-sm font-semibold text-navy transition-colors hover:border-blue hover:text-blue"
+            className="inline-flex min-h-[44px] items-center gap-2 whitespace-nowrap rounded-[10px] border border-white/10 px-4 text-sm font-semibold text-ink transition-colors hover:border-violet hover:text-violet-soft"
           >
-            <IconWhatsApp className="h-4 w-4 text-blue" />
+            <IconWhatsApp className="h-4 w-4 text-violet-soft" />
             WhatsApp
           </a>
           <a
@@ -99,7 +99,7 @@ export default function Header() {
             rel="noopener noreferrer"
             data-magnetic="0.22"
             data-cursor="Ver loja"
-            className="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-[10px] bg-blue px-5 text-sm font-bold text-paper shadow-card transition-all hover:bg-blue-deep hover:shadow-lift"
+            className="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-[10px] bg-violet px-5 text-sm font-bold text-ink shadow-card transition-all hover:bg-violet-deep hover:shadow-lift"
           >
             Loja Online
           </a>
@@ -108,7 +108,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setOpen((value) => !value)}
-          className="flex h-12 w-12 items-center justify-center rounded-[10px] border border-line text-navy lg:hidden"
+          className="flex h-12 w-12 items-center justify-center rounded-[10px] border border-white/10 text-ink lg:hidden"
           aria-expanded={open}
           aria-controls="menu-mobile"
           aria-label={open ? 'Fechar menu' : 'Abrir menu'}
@@ -139,16 +139,16 @@ export default function Header() {
       <div
         id="menu-mobile"
         hidden={!open}
-        className="max-h-[calc(100vh-68px)] overflow-y-auto border-t border-line bg-paper lg:hidden"
+        className="max-h-[calc(100vh-68px)] overflow-y-auto border-t border-white/10 bg-void lg:hidden"
       >
         <nav aria-label="Navegação principal, versão para celular" className="container-site py-5">
           <ul className="flex flex-col">
             {navigation.map((item) => (
-              <li key={item.href} className="border-b border-line last:border-0">
+              <li key={item.href} className="border-b border-white/10 last:border-0">
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="block py-4 text-[17px] text-navy transition-colors hover:text-blue"
+                  className="block py-4 text-[17px] text-ink transition-colors hover:text-violet-soft"
                 >
                   {item.label}
                 </Link>
@@ -161,7 +161,7 @@ export default function Header() {
               href={safeHref(siteConfig.storeUrl)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[54px] items-center justify-center rounded-[10px] bg-blue px-5 text-base font-bold text-paper"
+              className="inline-flex min-h-[54px] items-center justify-center rounded-[10px] bg-violet px-5 text-base font-bold text-ink"
             >
               Loja Online
             </a>
@@ -169,9 +169,9 @@ export default function Header() {
               href={whatsappLink(whatsappMessages.support)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-[10px] border border-line px-5 text-base font-bold text-navy"
+              className="inline-flex min-h-[54px] items-center justify-center gap-2 rounded-[10px] border border-white/10 px-5 text-base font-bold text-ink"
             >
-              <IconWhatsApp className="h-5 w-5 text-blue" />
+              <IconWhatsApp className="h-5 w-5 text-violet-soft" />
               Falar com a assistência
             </a>
           </div>

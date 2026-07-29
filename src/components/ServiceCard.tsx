@@ -1,6 +1,6 @@
 import type { ComponentType, SVGProps } from 'react';
 
-/** Cartão de serviço, desenhado para viver sobre fundo navy. */
+/** Cartão de serviço: moldura neon em ciano, o lado técnico da marca. */
 export default function ServiceCard({
   icon: Icon,
   title,
@@ -17,13 +17,13 @@ export default function ServiceCard({
       data-tilt
       data-reveal
       style={{ ['--d' as string]: `${index * 80}ms` }}
-      className="h-full rounded-[var(--radius)] border border-paper/15 bg-paper/[0.06] p-6 transition-colors duration-300 hover:border-paper/40 hover:bg-paper/[0.1]"
+      className="neon-frame neon-frame-cyan h-full p-6 transition-transform duration-300 hover:shadow-lift"
     >
-      <span className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-paper/15 text-paper">
+      <span className="flex h-11 w-11 items-center justify-center rounded-[10px] border border-cyan/30 bg-cyan/10 text-cyan">
         <Icon className="h-5 w-5" />
       </span>
-      <h3 className="mt-5 text-[17px] font-bold text-paper">{title}</h3>
-      <p className="mt-2.5 text-sm leading-relaxed text-sky/75">{description}</p>
+      <h3 className="mt-5 text-[17px] font-bold text-ink">{title}</h3>
+      <p className="mt-2.5 text-sm leading-relaxed text-ink-muted">{description}</p>
     </article>
   );
 }
