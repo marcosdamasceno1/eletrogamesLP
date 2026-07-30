@@ -606,93 +606,69 @@ summary:focus-visible {
   color: var(--texto-fraco);
 }
 
-/* --- Vitrine: a foto da loja dentro de uma moldura ------------------------
+/* --- Quadro: a foto da loja emoldurada -----------------------------------
 
-   Tres camadas, de fora para dentro:
-     1. halo neon por tras, que da o brilho
-     2. fio de luz em gradiente correndo pela borda
-     3. cantoneiras em L nos quatro cantos, que crescem no hover
+   Montado como um quadro de parede, de fora para dentro:
+     1. brilho neon por tras, fazendo as vezes da luz na parede
+     2. a moldura em si, um friso grosso em gradiente
+     3. o paspatur, a borda escura entre a moldura e a foto
+     4. a foto, sempre deitada (16:9), recortada para caber
 
-   Nada e escrito por cima da foto: a moldura emoldura, a foto fala sozinha.
+   E deliberadamente pequeno: um quadro pendurado, nao um painel.
    --------------------------------------------------------------------------- */
-.vitrine {
+.quadro {
   position: relative;
-  margin: 0;
+  max-width: 460px;
+  margin: 0 auto;
 }
 
-/* 1. Halo neon por tras da moldura */
-.vitrine::before {
+/* 1. Luz por tras do quadro */
+.quadro::before {
   content: '';
   position: absolute;
-  inset: 8%;
+  inset: 6%;
   z-index: -1;
   background: linear-gradient(120deg, var(--violeta), var(--magenta) 55%, var(--ciano));
-  filter: blur(60px);
-  opacity: 0.35;
+  filter: blur(48px);
+  opacity: 0.4;
   transition: opacity 0.5s ease;
 }
-.vitrine:hover::before {
-  opacity: 0.55;
+.quadro:hover::before {
+  opacity: 0.65;
 }
 
-/* 2. Fio de luz na borda */
-.vitrine__moldura {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--arredondamento);
-  background: var(--painel);
-  line-height: 0;   /* remove o vao que a imagem deixaria embaixo */
+/* 2. A moldura: friso grosso em gradiente, com sombra de peso */
+.quadro__moldura {
+  padding: 13px;
+  border-radius: 8px;
+  background: linear-gradient(140deg, var(--violeta), var(--magenta) 45%, var(--ciano));
+  box-shadow:
+    0 24px 48px -20px rgba(0, 0, 0, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.vitrine__moldura::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  padding: 1.5px;
-  border-radius: inherit;
-  background: linear-gradient(140deg, var(--violeta), var(--magenta) 50%, var(--ciano));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  pointer-events: none;
+.quadro:hover .quadro__moldura {
+  transform: translateY(-6px);
 }
 
-/* 3. Cantoneiras em L, no registro de mira */
-.vitrine__canto {
-  position: absolute;
-  z-index: 4;
-  width: 26px;
-  height: 26px;
-  pointer-events: none;
-  border-color: var(--ciano);
-  border-style: solid;
-  border-width: 0;
-  transition: width 0.4s ease, height 0.4s ease;
-}
-.vitrine__canto--se { top: 14px;    left: 14px;  border-top-width: 2px;    border-left-width: 2px; }
-.vitrine__canto--sd { top: 14px;    right: 14px; border-top-width: 2px;    border-right-width: 2px; }
-.vitrine__canto--ie { bottom: 14px; left: 14px;  border-bottom-width: 2px; border-left-width: 2px; }
-.vitrine__canto--id { bottom: 14px; right: 14px; border-bottom-width: 2px; border-right-width: 2px; }
-.vitrine:hover .vitrine__canto {
-  width: 40px;
-  height: 40px;
+/* 3. Paspatur: a borda escura que separa a moldura da foto */
+.quadro__paspatur {
+  padding: 11px;
+  border-radius: 3px;
+  background: var(--fundo);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
-/* A foto */
-.vitrine__foto {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--arredondamento);
-}
-.vitrine__foto img {
-  width: 100%;
-  height: auto;
+/* 4. A foto, sempre deitada */
+.quadro__foto {
   display: block;
-  transform: scale(1.01);
-  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.vitrine:hover .vitrine__foto img {
-  transform: scale(1.06);
+  width: 100%;
+  /* height: auto e obrigatorio: sem ele, o atributo height="900" da tag
+     vence o aspect-ratio e a foto estica na vertical. */
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;      /* recorta o excesso em vez de deformar a foto */
+  border-radius: 2px;
 }
 
 /* =========================================================================
@@ -1392,8 +1368,8 @@ summary:focus-visible {
   .hero__interno {
     grid-template-columns: 1fr;
   }
-  .vitrine {
-    max-width: 640px;   /* no tablet, a foto nao precisa ocupar a largura toda */
+  .quadro {
+    max-width: 420px;   /* no tablet o quadro fica um pouco menor */
   }
   .grade--5,
   .grade--4 {
@@ -1473,14 +1449,11 @@ summary:focus-visible {
   .botao {
     width: 100%;
   }
-  /* Cantoneiras menores, proporcionais a moldura estreita do celular */
-  .vitrine__canto {
-    width: 18px;
-    height: 18px;
+  .quadro__moldura {
+    padding: 10px;
   }
-  .vitrine:hover .vitrine__canto {
-    width: 26px;
-    height: 26px;
+  .quadro__paspatur {
+    padding: 8px;
   }
   .whatsapp-flutuante {
     padding: 0;

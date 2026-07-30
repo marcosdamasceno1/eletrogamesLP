@@ -140,7 +140,7 @@ No `index.html`, na seção 4, existem quatro blocos com `[ANO]` e
 
 ## Trocar a foto da loja no topo do site
 
-A primeira dobra mostra a fachada da loja dentro de uma moldura. Para trocar a
+A primeira dobra mostra a fachada da loja dentro de um quadro. Para trocar a
 imagem, **substitua o arquivo** `assets/img/loja.jpg`, mantendo exatamente esse
 nome. Não é preciso mexer em nenhum código.
 
@@ -149,13 +149,15 @@ própria imagem. Assim que a foto real entrar no lugar, ela aparece no site.
 
 Cuidados com a foto:
 
-- **Proporção 16:9**, por exemplo 1600 x 900 pixels. Fora dessa proporção a foto
-  pode ficar cortada de um jeito estranho.
+- **Proporção 16:9**, por exemplo 1600 x 900 pixels. O quadro é sempre deitado e
+  recorta o que sobra, então uma foto em pé perde as bordas de cima e de baixo.
 - **Reduza o peso antes de subir.** Foto de celular costuma ter 3 a 8 MB, o que
   deixa o site muito lento no 4G. Sites como o Squoosh reduzem para menos de
   300 KB sem perda visível. Essa é a imagem mais pesada do site: vale o cuidado.
-- **Nada é escrito por cima da foto.** A moldura só emoldura, então escolha um
+- **Nada é escrito por cima da foto.** O quadro só emoldura, então escolha um
   enquadramento em que o letreiro e a vitrine apareçam bem.
+- **O quadro é pequeno de propósito**, por volta de 460 pixels de largura.
+  Detalhes miúdos na foto não vão ser lidos: prefira um enquadramento aberto.
 
 Se trocar a proporção do arquivo, ajuste também os números em `index.html`:
 
