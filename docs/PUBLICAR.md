@@ -107,9 +107,21 @@ Como reconhecer:
 **e a pasta `assets` inteira**, juntos. Eles são um conjunto. Trocar só o HTML
 deixa o site pedindo arquivos que não existem mais, ou usando versões velhas.
 
-Se a aparência não mudar depois de enviar, recarregue sem cache:
-Ctrl + F5 no Windows, Cmd + Shift + R no Mac. O navegador guarda o CSS antigo
-por algumas horas.
+### Quando a aparência não muda depois de enviar
+
+O navegador guarda o CSS e o JavaScript em cache por horas. Você envia o arquivo
+novo, o servidor já está com ele, mas a tela continua mostrando o antigo.
+
+Para conferir se é isso, recarregue sem cache: **Ctrl + F5** no Windows,
+**Cmd + Shift + R** no Mac. Se a aparência corrigir, era cache.
+
+Para corrigir para todo mundo, e não só para você, use o número de versão:
+
+1. Abra `assets/css/estilo.css` e some 1 no `VERSAO 2` da terceira linha.
+2. Em **cada** arquivo `.html`, procure por `estilo.css?v=2` e some 1 também.
+
+O `?v=` não muda nada no arquivo: serve só para o navegador entender que é um
+endereço novo e buscar do zero. É por isso que ele existe.
 
 ---
 

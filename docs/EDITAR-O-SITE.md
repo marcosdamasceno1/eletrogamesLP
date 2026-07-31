@@ -106,6 +106,11 @@ Abra `assets/css/estilo.css`. Logo no começo do arquivo está o bloco de cores:
 
 Trocar um valor aqui muda esse elemento no site inteiro, em todas as páginas.
 
+**Depois de alterar o CSS**, some 1 no número de versão: no `VERSAO 2` da
+terceira linha do arquivo, e no `estilo.css?v=2` de cada `.html`. Sem isso, quem
+já visitou o site continua vendo as cores antigas por algumas horas, porque o
+navegador guarda o arquivo em cache.
+
 **Um cuidado:** o violeta dos botões é escuro de propósito. O texto branco em
 cima dele precisa de contraste para ser legível. Se clarear demais essa cor, o
 texto dos botões fica difícil de ler.
