@@ -88,10 +88,39 @@ automaticamente. Não precisa fazer nada.
 
 ---
 
+## Se algo aparecer errado depois de publicar
+
+Quase todo problema de site estático vem de **arquivo desatualizado no
+servidor**. O HTML novo procura por um estilo ou uma imagem que ainda não
+subiram, e a página fica pela metade.
+
+Como reconhecer:
+
+| O que aparece na tela | O que provavelmente falta |
+| --- | --- |
+| Texto sem cor, sem fundo, tudo empilhado | `assets/css/estilo.css` não subiu |
+| A moldura sumiu, mas o resto está certo | `estilo.css` subiu, mas é uma versão antiga |
+| Ícone de imagem quebrada | falta o arquivo da imagem em `assets/img/` |
+| As letras mudaram de formato | a pasta `assets/fontes/` não subiu |
+
+**A regra que evita tudo isso:** ao atualizar o site, envie sempre o `index.html`
+**e a pasta `assets` inteira**, juntos. Eles são um conjunto. Trocar só o HTML
+deixa o site pedindo arquivos que não existem mais, ou usando versões velhas.
+
+Se a aparência não mudar depois de enviar, recarregue sem cache:
+Ctrl + F5 no Windows, Cmd + Shift + R no Mac. O navegador guarda o CSS antigo
+por algumas horas.
+
+---
+
 ## Atualizar depois
 
-Edite o arquivo, salve e envie de novo só o arquivo alterado, substituindo o que
-está no servidor. Não precisa reenviar o site inteiro.
+Edite o arquivo, salve e envie de novo o arquivo alterado, substituindo o que
+está no servidor.
+
+Se a alteração mexeu no CSS ou em alguma imagem, envie a pasta `assets` inteira
+junto com o HTML. Na dúvida, mande tudo: são poucos arquivos e evita o problema
+descrito acima.
 
 Se o navegador continuar mostrando a versão antiga, recarregue sem cache:
 Ctrl + F5 no Windows, Cmd + Shift + R no Mac.
