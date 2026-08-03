@@ -118,8 +118,11 @@
      ======================================================================= */
   var contador = document.querySelector('[data-contador]');
 
-  if (contador && !reduzirMovimento && 'IntersectionObserver' in window) {
-    var destino = parseInt(contador.getAttribute('data-contador'), 10);
+  var destino = contador ? parseInt(contador.getAttribute('data-contador'), 10) : NaN;
+
+  /* Sem numero valido no data-contador nao ha o que contar. Sem esta checagem
+     a conta daria NaN e a palavra "NaN" apareceria escrita na tela. */
+  if (contador && !isNaN(destino) && !reduzirMovimento && 'IntersectionObserver' in window) {
     var duracao = 1100;
 
     var observadorContador = new IntersectionObserver(function (entradas) {

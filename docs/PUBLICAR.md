@@ -117,8 +117,8 @@ Para conferir se é isso, recarregue sem cache: **Ctrl + F5** no Windows,
 
 Para corrigir para todo mundo, e não só para você, use o número de versão:
 
-1. Abra `assets/css/estilo.css` e some 1 no `VERSAO 2` da terceira linha.
-2. Em **cada** arquivo `.html`, procure por `estilo.css?v=2` e some 1 também.
+1. Abra `assets/css/estilo.css` e some 1 no `VERSAO 3` da terceira linha.
+2. Em **cada** arquivo `.html`, procure por `estilo.css?v=3` e some 1 também.
 
 O `?v=` não muda nada no arquivo: serve só para o navegador entender que é um
 endereço novo e buscar do zero. É por isso que ele existe.

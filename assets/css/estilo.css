@@ -1,13 +1,13 @@
 /* =========================================================================
    ELETROGAMES - FOLHA DE ESTILO UNICA
-   VERSAO 2
+   VERSAO 3
    =========================================================================
 
    IMPORTANTE AO ALTERAR ESTE ARQUIVO
    O navegador guarda o CSS em cache por horas. Para que a alteracao apareca
    na hora para todo mundo, suba o numero da versao em dois lugares:
-     1. o "VERSAO 2" da linha acima
-     2. o "?v=2" no final do endereco deste arquivo, dentro de cada .html
+     1. o "VERSAO 3" da linha acima
+     2. o "?v=3" no final do endereco deste arquivo, dentro de cada .html
    Sem isso, quem ja visitou o site continua vendo a aparencia antiga.
    =========================================================================
 
@@ -191,6 +191,7 @@ summary:focus-visible {
   gap: 1.25rem;
 }
 .grade--2 { grid-template-columns: repeat(2, 1fr); }
+.grade--3 { grid-template-columns: repeat(3, 1fr); }
 .grade--4 { grid-template-columns: repeat(4, 1fr); }
 .grade--5 { grid-template-columns: repeat(5, 1fr); }
 
@@ -942,10 +943,11 @@ summary:focus-visible {
 }
 .faixa-fatos__lista {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 .faixa-fatos__item {
   display: flex;
+  align-items: center;
   gap: 1rem;
   padding: 1.75rem;
   border-left: 1px solid var(--linha);
@@ -1398,11 +1400,11 @@ summary:focus-visible {
     max-width: 420px;   /* no tablet o quadro fica um pouco menor */
   }
   .grade--5,
-  .grade--4 {
+  .grade--4,
+  .grade--3 {
     grid-template-columns: repeat(2, 1fr);
   }
-  .etapas,
-  .faixa-fatos__lista {
+  .etapas {
     grid-template-columns: repeat(2, 1fr);
   }
   .etapa:nth-child(2) {
@@ -1435,6 +1437,7 @@ summary:focus-visible {
     padding: 7.5rem 0 4rem;
   }
   .grade--2,
+  .grade--3,
   .grade--4,
   .grade--5,
   .etapas,

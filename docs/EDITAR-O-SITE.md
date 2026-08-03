@@ -106,8 +106,8 @@ Abra `assets/css/estilo.css`. Logo no começo do arquivo está o bloco de cores:
 
 Trocar um valor aqui muda esse elemento no site inteiro, em todas as páginas.
 
-**Depois de alterar o CSS**, some 1 no número de versão: no `VERSAO 2` da
-terceira linha do arquivo, e no `estilo.css?v=2` de cada `.html`. Sem isso, quem
+**Depois de alterar o CSS**, some 1 no número de versão: no `VERSAO 3` da
+terceira linha do arquivo, e no `estilo.css?v=3` de cada `.html`. Sem isso, quem
 já visitou o site continua vendo as cores antigas por algumas horas, porque o
 navegador guarda o arquivo em cache.
 
