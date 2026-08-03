@@ -1,13 +1,13 @@
 /* =========================================================================
    ELETROGAMES - FOLHA DE ESTILO UNICA
-   VERSAO 6
+   VERSAO 7
    =========================================================================
 
    IMPORTANTE AO ALTERAR ESTE ARQUIVO
    O navegador guarda o CSS em cache por horas. Para que a alteracao apareca
    na hora para todo mundo, suba o numero da versao em dois lugares:
-     1. o "VERSAO 6" da linha acima
-     2. o "?v=6" no final do endereco deste arquivo, dentro de cada .html
+     1. o "VERSAO 7" da linha acima
+     2. o "?v=7" no final do endereco deste arquivo, dentro de cada .html
    Sem isso, quem ja visitou o site continua vendo a aparencia antiga.
    =========================================================================
 
@@ -1105,6 +1105,70 @@ summary:focus-visible {
 }
 .cartao--contorno-azul .cartao__icone {
   color: var(--azul-vivo);
+}
+
+/* --- Cartao de produto ---
+   Fundo azul escuro cheio, icone grande em cima de um circulo aceso.
+   Ao passar o mouse o fundo clareia para o azul vivo e o icone sobe.
+   Fica abaixo do painel de acao na hierarquia: o painel e azul vivo
+   desde o inicio, o cartao so chega la no hover. */
+.cartao--produto {
+  overflow: hidden;
+  padding: 2rem 1.5rem;
+  border-color: rgba(30, 91, 255, 0.5);
+  background:
+    linear-gradient(170deg, rgba(30, 91, 255, 0.22), rgba(255, 255, 255, 0) 55%),
+    var(--azul-noite);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+.cartao--produto:hover {
+  transform: translateY(-6px);
+  border-color: var(--azul-vivo);
+  background: linear-gradient(170deg, var(--azul), var(--azul-escuro));
+  box-shadow: 0 28px 54px -26px rgba(30, 91, 255, 0.95);
+}
+
+/* O disco aceso atras do icone */
+.cartao--produto .cartao__icone {
+  width: 30px;
+  height: 30px;
+  margin: 0.35rem;
+  color: #fff;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cartao--produto:hover .cartao__icone {
+  transform: scale(1.12);
+  color: #fff;
+}
+.cartao__disco {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: linear-gradient(150deg, var(--azul), var(--azul-escuro));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 0 0 6px rgba(30, 91, 255, 0.14);
+  transition: box-shadow 0.4s ease;
+}
+.cartao--produto:hover .cartao__disco {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 0 0 8px rgba(255, 255, 255, 0.16),
+    0 0 26px rgba(77, 135, 255, 0.8);
+}
+.cartao--produto .cartao__titulo {
+  margin-top: 1.35rem;
+  font-size: 19px;
+}
+.cartao--produto .cartao__texto {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Cartao pontilhado, para conteudo que ainda sera preenchido */
