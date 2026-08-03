@@ -1,13 +1,13 @@
 /* =========================================================================
    ELETROGAMES - FOLHA DE ESTILO UNICA
-   VERSAO 5
+   VERSAO 6
    =========================================================================
 
    IMPORTANTE AO ALTERAR ESTE ARQUIVO
    O navegador guarda o CSS em cache por horas. Para que a alteracao apareca
    na hora para todo mundo, suba o numero da versao em dois lugares:
-     1. o "VERSAO 5" da linha acima
-     2. o "?v=5" no final do endereco deste arquivo, dentro de cada .html
+     1. o "VERSAO 6" da linha acima
+     2. o "?v=6" no final do endereco deste arquivo, dentro de cada .html
    Sem isso, quem ja visitou o site continua vendo a aparencia antiga.
    =========================================================================
 
@@ -810,6 +810,13 @@ summary:focus-visible {
 .secao__cabecalho {
   max-width: 48rem;
 }
+/* Cabecalho centralizado. Usado nas duvidas frequentes. */
+.secao__cabecalho--centro {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 .secao__titulo {
   margin-top: 1.25rem;
   font-size: clamp(1.95rem, 3.5vw, 2.85rem);
@@ -1058,6 +1065,17 @@ summary:focus-visible {
   display: none;   /* o fio de luz nao aparece sobre fundo cheio */
 }
 
+/* Um botao azul dentro de um cartao azul sumiria: dentro do cartao solido
+   ele vira branco, do mesmo jeito que acontece no painel final. */
+.cartao--solido .botao--loja {
+  background: #fff;
+  color: var(--azul-escuro);
+  box-shadow: 0 16px 34px -16px rgba(0, 0, 0, 0.7);
+}
+.cartao--solido .botao--loja:hover {
+  background: var(--gelo-claro);
+}
+
 /* Icone grande e apagado no canto, como marca d'agua do cartao */
 .cartao__marca-agua {
   position: absolute;
@@ -1071,6 +1089,22 @@ summary:focus-visible {
 }
 .cartao:hover .cartao__marca-agua {
   transform: translate(-4px, -4px) rotate(-6deg);
+}
+
+/* Cartao com contorno azul aceso desde o inicio. Serve para as grades que,
+   so com a borda branca fraca, sumiam no fundo preto. */
+.cartao--contorno-azul {
+  border-color: rgba(30, 91, 255, 0.42);
+  background:
+    linear-gradient(180deg, rgba(30, 91, 255, 0.12), rgba(255, 255, 255, 0) 45%),
+    var(--painel);
+}
+.cartao--contorno-azul:hover {
+  border-color: var(--azul);
+  box-shadow: 0 22px 46px -28px rgba(30, 91, 255, 0.85);
+}
+.cartao--contorno-azul .cartao__icone {
+  color: var(--azul-vivo);
 }
 
 /* Cartao pontilhado, para conteudo que ainda sera preenchido */
@@ -1295,147 +1329,6 @@ summary:focus-visible {
   display: block;
   margin-top: 0.35rem;
   font-size: 14px;
-  color: var(--texto-suave);
-}
-
-
-/* =========================================================================
-   11B. MAPA DO CONTROLE
-
-   O desenho do controle com quatro pontos marcados. Cada sintoma da lista
-   e um link que abre o WhatsApp ja dizendo qual e o problema.
-
-   Como funciona a ligacao entre a lista e o desenho: quando o mouse (ou o
-   teclado) chega em um item da lista, o ponto correspondente acende. Isso
-   e feito com :has() no CSS, sem JavaScript. Em navegador antigo, que nao
-   entende :has(), os pontos apenas ficam parados e os links continuam
-   funcionando normalmente.
-
-   Para trocar um sintoma: altere o texto do <a> e o final do endereco do
-   WhatsApp, que e o que aparece escrito na conversa.
-   ========================================================================= */
-.mapa {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  align-items: center;
-  gap: 3rem;
-  margin-top: 3.5rem;
-  padding: 2.5rem;
-  border: 1px solid rgba(30, 91, 255, 0.28);
-  border-radius: var(--arredondamento);
-  background:
-    radial-gradient(120% 90% at 30% 0%, rgba(30, 91, 255, 0.14), transparent 60%),
-    var(--painel);
-}
-
-/* --- O desenho --- */
-.mapa__desenho {
-  position: relative;
-  margin: 0;
-}
-.mapa__desenho svg {
-  width: 100%;
-  height: auto;
-  color: rgba(255, 255, 255, 0.22);
-}
-/* A linha azul que contorna o controle, por cima do desenho cinza */
-.mapa__contorno {
-  stroke: var(--azul);
-  opacity: 0.9;
-  filter: drop-shadow(0 0 6px rgba(30, 91, 255, 0.55));
-}
-
-/* --- Os pontos marcados no desenho --- */
-.mapa__ponto {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  margin: -7px 0 0 -7px;
-  border-radius: 50%;
-  background: var(--azul);
-  box-shadow: 0 0 0 4px rgba(30, 91, 255, 0.22);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-}
-.mapa__ponto::before {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border: 1px solid var(--azul);
-  border-radius: 50%;
-  opacity: 0;
-  animation: pulsar 2.8s ease-out infinite;
-}
-.mapa__ponto--2::before { animation-delay: 0.7s; }
-.mapa__ponto--3::before { animation-delay: 1.4s; }
-.mapa__ponto--4::before { animation-delay: 2.1s; }
-
-@keyframes pulsar {
-  0%   { opacity: 0.8; transform: scale(0.7); }
-  70%  { opacity: 0;   transform: scale(1.9); }
-  100% { opacity: 0; }
-}
-
-/* Posicao de cada ponto sobre o desenho, em porcentagem:
-   assim eles acompanham o tamanho da tela sem sair do lugar. */
-.mapa__ponto--1 { left: 38%;   top: 73%; }   /* analogico esquerdo */
-.mapa__ponto--2 { left: 71.5%; top: 53%; }   /* botoes             */
-.mapa__ponto--3 { left: 50%;   top: 23%; }   /* entrada de carga   */
-.mapa__ponto--4 { left: 31%;   top: 20%; }   /* gatilho            */
-
-/* --- A lista de sintomas --- */
-.mapa__lista {
-  display: grid;
-  gap: 0.5rem;
-}
-.mapa__link {
-  display: flex;
-  align-items: baseline;
-  gap: 0.9rem;
-  min-height: 44px;
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--linha);
-  border-radius: 10px;
-  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
-}
-.mapa__link:hover,
-.mapa__link:focus-visible {
-  border-color: rgba(30, 91, 255, 0.55);
-  background: var(--azul-fundo);
-  transform: translateX(3px);
-}
-.mapa__link strong {
-  font-size: 15px;
-  font-weight: 700;
-}
-.mapa__link span {
-  font-size: 13px;
-  color: var(--texto-suave);
-}
-.mapa__marca {
-  flex-shrink: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--azul);
-  transform: translateY(-2px);
-}
-
-/* A ligacao entre a lista e o desenho */
-.mapa:has(.mapa__link--1:hover) .mapa__ponto--1,
-.mapa:has(.mapa__link--1:focus-visible) .mapa__ponto--1,
-.mapa:has(.mapa__link--2:hover) .mapa__ponto--2,
-.mapa:has(.mapa__link--2:focus-visible) .mapa__ponto--2,
-.mapa:has(.mapa__link--3:hover) .mapa__ponto--3,
-.mapa:has(.mapa__link--3:focus-visible) .mapa__ponto--3,
-.mapa:has(.mapa__link--4:hover) .mapa__ponto--4,
-.mapa:has(.mapa__link--4:focus-visible) .mapa__ponto--4 {
-  transform: scale(1.6);
-  box-shadow: 0 0 0 8px rgba(30, 91, 255, 0.28), 0 0 26px rgba(30, 91, 255, 0.9);
-}
-
-.mapa__nota {
-  margin-top: 1.25rem;
-  font-size: 13px;
   color: var(--texto-suave);
 }
 
@@ -1838,16 +1731,6 @@ summary:focus-visible {
   .etapas {
     grid-template-columns: repeat(2, 1fr);
   }
-  /* O mapa do controle empilha: desenho em cima, sintomas embaixo */
-  .mapa {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem;
-  }
-  .mapa__desenho {
-    max-width: 420px;
-    margin: 0 auto;
-  }
   .etapa:nth-child(2) {
     border-right: 0;
   }
@@ -1906,9 +1789,6 @@ summary:focus-visible {
   }
   .faixa-fatos__item:last-child {
     border-bottom: 0;
-  }
-  .mapa {
-    padding: 1.5rem;
   }
   .sintomas__item {
     padding: 1rem 1.5rem;
