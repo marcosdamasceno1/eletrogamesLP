@@ -1,13 +1,13 @@
 /* =========================================================================
    ELETROGAMES - FOLHA DE ESTILO UNICA
-   VERSAO 8
+   VERSAO 9
    =========================================================================
 
    IMPORTANTE AO ALTERAR ESTE ARQUIVO
    O navegador guarda o CSS em cache por horas. Para que a alteracao apareca
    na hora para todo mundo, suba o numero da versao em dois lugares:
-     1. o "VERSAO 8" da linha acima
-     2. o "?v=8" no final do endereco deste arquivo, dentro de cada .html
+     1. o "VERSAO 9" da linha acima
+     2. o "?v=9" no final do endereco deste arquivo, dentro de cada .html
    Sem isso, quem ja visitou o site continua vendo a aparencia antiga.
    =========================================================================
 
@@ -190,6 +190,31 @@ summary:focus-visible {
 
 .secao--fundo-alt {
   background: var(--fundo-alt);
+}
+
+/* Fundo da secao de assistencia tecnica. E o azul mais escuro da paleta,
+   com a malha por cima, para a secao mais importante da pagina ter um
+   ambiente proprio em vez de mais um retangulo preto. */
+.secao--bancada {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(90% 70% at 15% 0%, rgba(30, 91, 255, 0.20), transparent 60%),
+    linear-gradient(180deg, var(--azul-noite), #0A1330 60%, var(--fundo));
+}
+.secao--bancada::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right,  rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(180deg, #000, transparent 85%);
+}
+.secao--bancada > .container {
+  position: relative;
 }
 
 .grade {
@@ -1246,6 +1271,69 @@ summary:focus-visible {
   color: var(--azul-claro);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* --- Cartao tecnico ---
+   Mesma forma do cartao de produto, com o disco branco no lugar do azul.
+   E o que separa o lado que conserta do lado que vende sem inventar uma
+   terceira cor. */
+.cartao--tecnico {
+  padding: 2rem 1.5rem;
+  border-color: rgba(255, 255, 255, 0.16);
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(4px);
+}
+.cartao--tecnico:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 26px 50px -30px rgba(0, 0, 0, 0.9);
+}
+.cartao--tecnico .cartao__disco {
+  background: linear-gradient(150deg, #fff, #C9D8F5);
+  box-shadow: inset 0 1px 0 #fff, 0 0 0 6px rgba(255, 255, 255, 0.08);
+}
+.cartao--tecnico .cartao__icone {
+  width: 28px;
+  height: 28px;
+  color: var(--azul-noite);
+}
+.cartao--tecnico:hover .cartao__disco {
+  box-shadow: inset 0 1px 0 #fff, 0 0 0 9px rgba(255, 255, 255, 0.14), 0 0 24px rgba(255, 255, 255, 0.5);
+}
+.cartao--tecnico .cartao__titulo {
+  margin-top: 1.35rem;
+  font-size: 18px;
+}
+
+/* --- Bloco de conversao ao lado do texto da assistencia --- */
+.aviso-tecnico {
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--arredondamento);
+  background: rgba(255, 255, 255, 0.05);
+}
+.aviso-tecnico__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.aviso-tecnico__lista {
+  display: grid;
+  gap: 0.85rem;
+  margin: 1.5rem 0;
+}
+.aviso-tecnico__lista li {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 15px;
+  color: var(--texto-suave);
+}
+.aviso-tecnico__lista svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  color: #fff;
 }
 
 /* Cartao pontilhado, para conteudo que ainda sera preenchido */

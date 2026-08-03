@@ -20,9 +20,9 @@
 
   <!-- Fontes -->
   <!-- Fontes hospedadas junto com o site, sem depender do Google -->
-  <link rel="stylesheet" href="assets/fontes/fontes.css?v=8">
+  <link rel="stylesheet" href="assets/fontes/fontes.css?v=9">
 
-  <link rel="stylesheet" href="assets/css/estilo.css?v=8">
+  <link rel="stylesheet" href="assets/css/estilo.css?v=9">
 
   <!-- Ficha da empresa para o Google. Preencha telefone e endereço abaixo. -->
   <script type="application/ld+json">
@@ -408,13 +408,13 @@
     <!-- ===================================================================
          SEÇÃO 6 - ASSISTÊNCIA TÉCNICA
          =================================================================== -->
-    <section class="secao secao--com-linha" id="assistencia" aria-labelledby="titulo-assistencia">
+    <section class="secao secao--bancada" id="assistencia" aria-labelledby="titulo-assistencia">
       <div class="container">
 
         <div class="secao__cabecalho">
           <span class="rotulo rotulo--gelo" data-revelar>Assistência técnica</span>
           <h2 class="secao__titulo" id="titulo-assistencia" data-revelar style="--atraso:60ms">
-            Assistência técnica especializada em videogames.
+            Antes de trocar, <em class="destaque">vale abrir</em>
           </h2>
           <p class="secao__texto" data-revelar style="--atraso:120ms">
             Seu console ou controle apresentou problema? Conte com quem trabalha com videogames
@@ -422,57 +422,85 @@
           </p>
         </div>
 
-        <div class="texto-corrido" style="max-width:42rem; margin-top:2.25rem">
-          <p data-revelar>
-            Parou de ligar no meio da partida, desliga sozinho ou o analógico anda por conta
-            própria. A primeira reação costuma ser abrir o site de uma loja e ver quanto custa
-            um aparelho novo.
-          </p>
-          <p data-revelar style="--atraso:80ms">
-            O equipamento chega, passa por avaliação técnica e identificamos a possível origem do
-            problema. Só depois falamos de serviço, e só com a sua aprovação. Trabalhar com
-            videogame há mais de 28 anos ajuda exatamente aqui: dificilmente é o primeiro
-            aparelho desse tipo que abrimos.
-          </p>
+        <!-- Texto à esquerda, bloco de contato à direita.
+             O bloco da direita é o que converte: ele existe para a seção não
+             terminar sem um caminho para falar com a assistência. -->
+        <div class="grade grade--2" style="margin-top:3rem; gap:3rem; align-items:start">
+
+          <div class="texto-corrido">
+            <p data-revelar>
+              Parou de ligar no meio da partida, desliga sozinho ou o analógico anda por conta
+              própria. A primeira reação costuma ser abrir o site de uma loja e ver quanto custa
+              um aparelho novo.
+            </p>
+            <p data-revelar style="--atraso:80ms">
+              O equipamento chega, passa por avaliação técnica e identificamos a possível origem do
+              problema. Só depois falamos de serviço, e só com a sua aprovação. Trabalhar com
+              videogame há mais de 28 anos ajuda exatamente aqui: dificilmente é o primeiro
+              aparelho desse tipo que abrimos.
+            </p>
+          </div>
+
+          <div class="aviso-tecnico" data-revelar style="--atraso:120ms">
+            <p class="aviso-tecnico__titulo">Descreva o problema pelo WhatsApp</p>
+            <ul class="aviso-tecnico__lista">
+              <li>
+                <svg aria-hidden="true"><use href="#icone-check"></use></svg>
+                <span>A avaliação técnica vem antes de qualquer serviço</span>
+              </li>
+              <li>
+                <svg aria-hidden="true"><use href="#icone-check"></use></svg>
+                <span>Nada é executado sem a sua aprovação</span>
+              </li>
+              <li>
+                <svg aria-hidden="true"><use href="#icone-check"></use></svg>
+                <span>Consoles e controles, de várias gerações</span>
+              </li>
+            </ul>
+            <a class="botao botao--servico botao--largura-total" data-ima="0.2"
+               href="https://wa.me/NUMERO_DO_WHATSAPP?text=Ol%C3%A1!%20Acessei%20o%20site%20da%20Eletrogames%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20assist%C3%AAncia%20t%C3%A9cnica." target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
+              Falar com a assistência
+            </a>
+          </div>
+
         </div>
 
         <div class="grade grade--4" style="margin-top:3.5rem">
 
-          <article class="cartao cartao--contorno-azul" data-inclinar data-holofote data-revelar>
-            <span class="cartao__icone-caixa">
-              <svg width="20" height="20" aria-hidden="true"><use href="#icone-chave"></use></svg>
+          <article class="cartao cartao--tecnico" data-revelar>
+            <span class="cartao__disco" aria-hidden="true">
+              <svg class="cartao__icone"><use href="#icone-chave"></use></svg>
             </span>
             <h3 class="cartao__titulo">Manutenção de consoles</h3>
-            <p class="cartao__texto">Diagnóstico e manutenção especializada para diferentes tipos de problemas apresentados por consoles.</p>
+            <p class="cartao__texto">Diagnóstico e manutenção para os problemas que o console apresenta.</p>
           </article>
 
-          <article class="cartao cartao--contorno-azul" data-inclinar data-holofote data-revelar style="--atraso:80ms">
-            <span class="cartao__icone-caixa">
-              <svg width="20" height="20" aria-hidden="true"><use href="#icone-controle"></use></svg>
+          <article class="cartao cartao--tecnico" data-revelar style="--atraso:80ms">
+            <span class="cartao__disco" aria-hidden="true">
+              <svg class="cartao__icone"><use href="#icone-controle"></use></svg>
             </span>
             <h3 class="cartao__titulo">Manutenção de controles</h3>
             <p class="cartao__texto">Avaliação e reparo de controles e manetes.</p>
           </article>
 
-          <article class="cartao cartao--contorno-azul" data-inclinar data-holofote data-revelar style="--atraso:160ms">
-            <span class="cartao__icone-caixa">
-              <svg width="20" height="20" aria-hidden="true"><use href="#icone-diagnostico"></use></svg>
+          <article class="cartao cartao--tecnico" data-revelar style="--atraso:160ms">
+            <span class="cartao__disco" aria-hidden="true">
+              <svg class="cartao__icone"><use href="#icone-diagnostico"></use></svg>
             </span>
             <h3 class="cartao__titulo">Diagnóstico técnico</h3>
-            <p class="cartao__texto">Identificação da possível origem do problema antes da realização do serviço.</p>
+            <p class="cartao__texto">Identificação da possível origem do problema antes do serviço.</p>
           </article>
 
-          <article class="cartao cartao--contorno-azul" data-inclinar data-holofote data-revelar style="--atraso:240ms">
-            <span class="cartao__icone-caixa">
-              <svg width="20" height="20" aria-hidden="true"><use href="#icone-equipe"></use></svg>
+          <article class="cartao cartao--tecnico" data-revelar style="--atraso:240ms">
+            <span class="cartao__disco" aria-hidden="true">
+              <svg class="cartao__icone"><use href="#icone-equipe"></use></svg>
             </span>
             <h3 class="cartao__titulo">Atendimento especializado</h3>
             <p class="cartao__texto">Equipe com ampla experiência no segmento de videogames.</p>
           </article>
 
         </div>
-
-
 
       </div>
     </section>
@@ -985,7 +1013,7 @@
     </symbol>
   </svg>
 
-  <script src="assets/js/script.js?v=8" defer></script>
+  <script src="assets/js/script.js?v=9" defer></script>
 
 </body>
 </html>
