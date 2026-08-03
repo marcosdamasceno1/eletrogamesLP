@@ -1,13 +1,13 @@
 /* =========================================================================
    ELETROGAMES - FOLHA DE ESTILO UNICA
-   VERSAO 10
+   VERSAO 11
    =========================================================================
 
    IMPORTANTE AO ALTERAR ESTE ARQUIVO
    O navegador guarda o CSS em cache por horas. Para que a alteracao apareca
    na hora para todo mundo, suba o numero da versao em dois lugares:
-     1. o "VERSAO 10" da linha acima
-     2. o "?v=10" no final do endereco deste arquivo, dentro de cada .html
+     1. o "VERSAO 11" da linha acima
+     2. o "?v=11" no final do endereco deste arquivo, dentro de cada .html
    Sem isso, quem ja visitou o site continua vendo a aparencia antiga.
    =========================================================================
 
@@ -1567,50 +1567,74 @@ summary:focus-visible {
    A numeracao existe aqui porque a ordem importa de verdade.
    ========================================================================= */
 .etapas {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  overflow: hidden;
-  border: 1px solid var(--linha);
-  border-radius: var(--arredondamento);
+  gap: 1.25rem;
 }
+
 .etapa {
-  padding: 1.75rem;
-  border-right: 1px solid var(--linha);
-  background: var(--fundo);
-  transition: background 0.3s ease;
+  position: relative;
+  padding-top: 4.25rem;
 }
-.etapa:last-child {
-  border-right: 0;
-}
-.etapa:hover {
-  background: var(--painel);
-}
-.etapa__numero {
-  font-family: var(--fonte-codigo);
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  color: var(--azul-claro);
-}
-.etapa__risco {
-  width: 40px;
-  height: 1px;
-  margin-top: 1rem;
-  background: var(--linha);
-  transition: width 0.3s ease, background 0.3s ease;
-}
-.etapa:hover .etapa__risco {
-  width: 64px;
+
+/* O traco que liga uma etapa a proxima. E ele que faz a sequencia parecer
+   um caminho, e nao quatro caixas soltas lado a lado. A ultima etapa nao
+   tem traco, senao a linha continuaria para o vazio. */
+.etapa:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 70px;
+  right: -1.4rem;
+  top: 30px;
+  height: 2px;
   background: var(--azul);
+  opacity: 0.55;
 }
+
+/* A bolinha numerada, que fica sobre a linha */
+.etapa__numero {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border: 2px solid var(--azul);
+  border-radius: 50%;
+  background: var(--fundo);
+  font-family: var(--fonte-titulo);
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+.etapa:hover .etapa__numero {
+  transform: translateY(-3px);
+  box-shadow: 0 0 26px -4px rgba(30, 91, 255, 0.9);
+}
+
 .etapa__titulo {
-  margin-top: 1.25rem;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 700;
 }
 .etapa__texto {
   margin-top: 0.5rem;
   font-size: 14px;
   color: var(--texto-suave);
+}
+
+/* A etapa em que o cliente decide. E a que responde o medo de deixar o
+   aparelho e receber uma conta que ninguem combinou, entao ela e a unica
+   pintada de azul. */
+.etapa--sua .etapa__numero {
+  background: var(--azul);
+  border-color: var(--azul);
+  box-shadow: 0 0 30px -6px rgba(30, 91, 255, 0.95);
+}
+.etapa--sua .etapa__titulo {
+  color: var(--azul-claro);
 }
 
 
@@ -1960,12 +1984,12 @@ summary:focus-visible {
   .etapas {
     grid-template-columns: repeat(2, 1fr);
   }
-  .etapa:nth-child(2) {
-    border-right: 0;
+  /* Em duas colunas, o traco da segunda etapa apontaria para fora */
+  .etapa:nth-child(2)::after {
+    display: none;
   }
-  .etapa:nth-child(1),
-  .etapa:nth-child(2) {
-    border-bottom: 1px solid var(--linha);
+  .etapas {
+    row-gap: 2.5rem;
   }
   .rodape__interno {
     grid-template-columns: 1fr 1fr;
@@ -2003,7 +2027,9 @@ summary:focus-visible {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  .etapa,
+  .etapa:not(:last-child)::after {
+    display: none;
+  }
   .faixa-fatos__item {
     border-right: 0;
     border-bottom: 1px solid var(--linha);
