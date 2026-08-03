@@ -37,31 +37,62 @@ Copie para dentro de `assets/img/`, com o nome `logo.svg`.
 
 ## Passo 3. Troque no HTML
 
-Em **cada** arquivo `.html`, procure por este bloco (ele aparece duas vezes por
-página: uma no cabeçalho e outra no rodapé):
+Em **cada** arquivo `.html`, procure por `class="logo"`. Ele aparece **duas
+vezes por página**: uma no cabeçalho e outra no rodapé.
+
+Você vai encontrar isto:
 
 ```html
-<span class="logo__simbolo" aria-hidden="true">
-  <svg width="19" height="19" ...>
-    ...
-  </svg>
-</span>
-<span>
-  <span class="logo__nome">Eletro<span>games</span></span>
-  <span class="logo__assinatura">28 anos · videogames</span>
-</span>
+<a class="logo" href="index.html" aria-label="Eletrogames, ir para a página inicial">
+  <span class="logo__simbolo" aria-hidden="true">
+    <svg width="19" height="19" ...>
+      ...
+    </svg>
+  </span>
+  <span>
+    <span class="logo__nome">Eletro<span>games</span></span>
+    <span class="logo__assinatura">28 anos · videogames</span>
+  </span>
+</a>
 ```
 
-Troque tudo isso por uma linha só:
+Troque **tudo que está entre `<a class="logo" ...>` e `</a>`** por uma linha:
 
 ```html
-<img src="assets/img/logo.svg" alt="Eletrogames" style="height:40px; width:auto">
+<a class="logo" href="index.html" aria-label="Eletrogames, ir para a página inicial">
+  <img class="logo__imagem" src="assets/img/logo.svg" alt="Eletrogames">
+</a>
 ```
 
-Ajuste o `40px` até o tamanho ficar bom. O `alt` precisa continuar lá: é o que
-leitores de tela e o Google leem no lugar da imagem.
+> **Apague também o `logo__simbolo`.** Ele é o quadradinho azul com o símbolo
+> de liga/desliga. Se você trocar só o texto e deixar o quadradinho, a marca
+> nova aparece com um símbolo antigo grudado do lado.
+
+A classe `logo__imagem` já cuida do tamanho: 40 pixels de altura no cabeçalho,
+44 no rodapé, encolhendo sozinha quando a página rola. Não coloque altura na
+mão, senão a marca pode esticar.
 
 ---
+
+## Se aparecer o ícone de imagem quebrada
+
+Quer dizer que o navegador procurou o arquivo e não achou. O endereço no HTML
+e o arquivo no servidor não estão batendo.
+
+**Para descobrir onde está a diferença**, digite o endereço do arquivo direto
+no navegador:
+
+`https://SEU-DOMINIO.com.br/assets/img/logo.svg`
+
+- **Apareceu a logomarca:** o arquivo está certo. O erro está no `src` do HTML.
+- **Deu erro 404:** o arquivo não está nesse lugar com esse nome. Veja a tabela.
+
+| Causa provável | Como conferir |
+| --- | --- |
+| O arquivo foi enviado para a pasta errada | Ele precisa estar em `public_html/assets/img/`, não solto na raiz |
+| O nome tem outra extensão | Se o arquivo é `logo.png`, o HTML precisa dizer `logo.png`, não `logo.svg` |
+| Maiúscula e minúscula | No servidor, `Logo.svg` e `logo.svg` são arquivos diferentes. No seu computador, não. É o erro mais comum |
+| Espaço ou acento no nome | `logo eletro.svg` ou `logomarca.svg` não são `logo.svg`. Renomeie sem espaços e sem acentos |
 
 ## Passo 4. Troque o ícone da aba
 

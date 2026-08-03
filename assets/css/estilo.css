@@ -1,13 +1,13 @@
 /* =========================================================================
    ELETROGAMES - FOLHA DE ESTILO UNICA
-   VERSAO 12
+   VERSAO 13
    =========================================================================
 
    IMPORTANTE AO ALTERAR ESTE ARQUIVO
    O navegador guarda o CSS em cache por horas. Para que a alteracao apareca
    na hora para todo mundo, suba o numero da versao em dois lugares:
-     1. o "VERSAO 12" da linha acima
-     2. o "?v=12" no final do endereco deste arquivo, dentro de cada .html
+     1. o "VERSAO 13" da linha acima
+     2. o "?v=13" no final do endereco deste arquivo, dentro de cada .html
    Sem isso, quem ja visitou o site continua vendo a aparencia antiga.
    =========================================================================
 
@@ -291,6 +291,23 @@ summary:focus-visible {
   background: linear-gradient(135deg, var(--azul), var(--azul-vivo));
   box-shadow: 0 0 32px -6px rgba(77, 135, 255, 0.7);
 }
+/* Logotipo em imagem. Use quando trocar a marca provisoria em texto pelo
+   arquivo oficial: <img class="logo__imagem" src="assets/img/logo.svg" ...>
+   A altura manda; a largura se ajusta sozinha para nao deformar a marca. */
+.logo__imagem {
+  height: 40px;
+  width: auto;
+  max-width: 190px;
+  object-fit: contain;
+  transition: height 0.3s ease;
+}
+.cabecalho.rolou .logo__imagem {
+  height: 34px;
+}
+.rodape .logo__imagem {
+  height: 44px;
+}
+
 .logo__nome {
   font-family: var(--fonte-titulo);
   font-size: 19px;
