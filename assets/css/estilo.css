@@ -1,13 +1,13 @@
 /* =========================================================================
    ELETROGAMES - FOLHA DE ESTILO UNICA
-   VERSAO 4
+   VERSAO 5
    =========================================================================
 
    IMPORTANTE AO ALTERAR ESTE ARQUIVO
    O navegador guarda o CSS em cache por horas. Para que a alteracao apareca
    na hora para todo mundo, suba o numero da versao em dois lugares:
-     1. o "VERSAO 4" da linha acima
-     2. o "?v=4" no final do endereco deste arquivo, dentro de cada .html
+     1. o "VERSAO 5" da linha acima
+     2. o "?v=5" no final do endereco deste arquivo, dentro de cada .html
    Sem isso, quem ja visitou o site continua vendo a aparencia antiga.
    =========================================================================
 
@@ -532,6 +532,42 @@ summary:focus-visible {
   width: 680px;
   height: 520px;
   background: rgba(77, 135, 255, 0.13);
+}
+
+/* --- Hero das paginas internas ---
+   Sobre, Contato, Assistencia e Politica usam esta versao: conteudo
+   centralizado e um brilho azul atras. Sem isso a pagina abre com o
+   texto encostado na esquerda e um vazio preto do lado direito. */
+.hero--interno {
+  padding: 9.5rem 0 5rem;
+  border-bottom: 1px solid var(--linha);
+  text-align: center;
+}
+.hero--interno::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -20%;
+  z-index: -1;
+  width: 900px;
+  height: 620px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(30, 91, 255, 0.28);
+  filter: blur(150px);
+  pointer-events: none;
+}
+.hero--interno .hero__titulo {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+}
+.hero--interno .hero__subtitulo {
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero--interno .hero__botoes,
+.hero--interno .selos {
+  justify-content: center;
 }
 
 .hero__interno {
@@ -1200,13 +1236,16 @@ summary:focus-visible {
    ========================================================================= */
 .sintomas {
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(30, 91, 255, 0.35);
   border-radius: var(--arredondamento);
-  background: var(--painel);
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgba(30, 91, 255, 0.16), transparent 60%),
+    var(--painel);
 }
 .sintomas__cabecalho {
-  padding: 1.25rem 2rem;
+  padding: 1.5rem 2rem;
   border-bottom: 1px solid var(--linha);
+  background: var(--azul-fundo);
 }
 .sintomas__cabecalho h3 {
   font-size: clamp(1.2rem, 2.5vw, 1.5rem);
@@ -1232,7 +1271,14 @@ summary:focus-visible {
   flex-shrink: 0;
   width: 16px;
   height: 16px;
-  color: var(--gelo);
+  color: var(--azul-claro);
+}
+/* O rodape do bloco fecha em azul: e onde esta o botao */
+.sintomas__rodape {
+  background: linear-gradient(120deg, var(--azul-noite), var(--azul-escuro));
+}
+.sintomas__rodape span {
+  color: rgba(255, 255, 255, 0.85);
 }
 .sintomas__rodape {
   display: flex;

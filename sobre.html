@@ -13,8 +13,8 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <meta name="theme-color" content="#05080F">
   <!-- Fontes hospedadas junto com o site, sem depender do Google -->
-  <link rel="stylesheet" href="assets/fontes/fontes.css?v=4">
-  <link rel="stylesheet" href="assets/css/estilo.css?v=4">
+  <link rel="stylesheet" href="assets/fontes/fontes.css?v=5">
+  <link rel="stylesheet" href="assets/css/estilo.css?v=5">
 </head>
 
 <body>
@@ -83,7 +83,7 @@
 
   <main id="conteudo">
 
-    <section class="hero" aria-labelledby="titulo-hero">
+    <section class="hero hero--interno" aria-labelledby="titulo-hero">
       <div class="malha" style="position:absolute; inset:0; z-index:-1;" aria-hidden="true"></div>
       <div class="container">
         <span class="rotulo" data-revelar>Nossa história</span>
@@ -101,13 +101,52 @@
       </div>
     </section>
 
-    <section class="secao secao--com-linha" aria-labelledby="titulo-historia">
+    <!-- ===================================================================
+         FAIXA DE FATOS
+         O painel azul. Para trocar um dado, altere o texto do
+         faixa-fatos__valor e o do faixa-fatos__nota logo abaixo dele.
+         =================================================================== -->
+    <section class="faixa-fatos" aria-label="Ficha da Eletrogames">
       <div class="container">
-        <h2 class="apenas-leitor-de-tela" id="titulo-historia">A história da Eletrogames</h2>
+        <div class="faixa-fatos__lista">
+          <div class="faixa-fatos__item" data-revelar>
+            <svg aria-hidden="true"><use href="#icone-relogio"></use></svg>
+            <div>
+              <p class="faixa-fatos__valor">+28 anos</p>
+              <p class="faixa-fatos__nota">de mercado</p>
+            </div>
+          </div>
+          <div class="faixa-fatos__item" data-revelar style="--atraso:70ms">
+            <svg aria-hidden="true"><use href="#icone-controle"></use></svg>
+            <div>
+              <p class="faixa-fatos__valor">Consoles e controles</p>
+              <p class="faixa-fatos__nota">venda e conserto</p>
+            </div>
+          </div>
+          <div class="faixa-fatos__item" data-revelar style="--atraso:140ms">
+            <svg aria-hidden="true"><use href="#icone-loja"></use></svg>
+            <div>
+              <p class="faixa-fatos__valor">Loja em Ipatinga</p>
+              <p class="faixa-fatos__nota">de segunda a sábado</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="grade grade--2" style="gap:3.5rem">
+
+    <section class="secao secao--fundo-alt" aria-labelledby="titulo-historia">
+      <div class="container">
+        <div class="secao__cabecalho">
+          <span class="rotulo" data-revelar>A loja por dentro</span>
+          <h2 class="secao__titulo" id="titulo-historia" data-revelar style="--atraso:60ms">
+            Uma coisa só, <em class="destaque">há 28 anos</em>
+          </h2>
+        </div>
+
+
+        <div class="grade grade--2" style="gap:3.5rem; align-items:start; margin-top:3.5rem">
           <div class="texto-corrido">
-            <p data-revelar>A Eletrogames faz uma coisa só há mais de 28 anos: videogame.</p>
             <p data-revelar style="--atraso:80ms">
               Nesse tempo o setor virou do avesso várias vezes. Mudou a mídia, mudou o controle,
               mudou o jeito de conectar. Cada geração chegou com uma tecnologia nova e uma curva
@@ -128,15 +167,15 @@
           </div>
 
           <div class="grade" style="gap:1rem">
-            <article class="cartao" data-revelar>
+            <article class="cartao cartao--solido" data-revelar>
               <h3 class="cartao__titulo" style="margin-top:0">Tempo de bancada</h3>
               <p class="cartao__texto">Mais de 28 anos no mesmo segmento, atravessando cada troca de geração.</p>
             </article>
-            <article class="cartao" data-revelar style="--atraso:80ms">
+            <article class="cartao cartao--solido cartao--solido-noite" data-revelar style="--atraso:80ms">
               <h3 class="cartao__titulo" style="margin-top:0">Conhecimento técnico</h3>
               <p class="cartao__texto">Quem abre console há décadas aprende a olhar cada aparelho com critério.</p>
             </article>
-            <article class="cartao" data-revelar style="--atraso:160ms">
+            <article class="cartao cartao--solido cartao--solido-noite" data-revelar style="--atraso:160ms">
               <h3 class="cartao__titulo" style="margin-top:0">Relacionamento</h3>
               <p class="cartao__texto">Clientes que voltam e indicam. É o que sustenta uma loja por tanto tempo.</p>
             </article>
@@ -222,24 +261,20 @@
         <ul class="rodape__contato">
           <li>
             <svg aria-hidden="true"><use href="#icone-local"></use></svg>
-            <span>[ENDEREÇO]<br>[CIDADE] / [ESTADO]</span>
-          </li>
-          <li>
-            <svg aria-hidden="true"><use href="#icone-telefone"></use></svg>
-            <span>[TELEFONE]</span>
+            <span>Avenida João Valentim Pascoal 1170 bloco c loja 12 Camelodromo<br>Ipatinga / Minas Gerais</span>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
             <a href="https://wa.me/NUMERO_DO_WHATSAPP?text=Ol%C3%A1!%20Acessei%20o%20site%20da%20Eletrogames%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
-               target="_blank" rel="noopener">[WHATSAPP]</a>
+               target="_blank" rel="noopener">(31) 3821-1606</a>
           </li>
           <li>
             <svg aria-hidden="true"><use href="#icone-instagram"></use></svg>
-            <span>[INSTAGRAM]</span>
+            <span>@eletrogamesipatinga</span>
           </li>
           <li>
             <svg aria-hidden="true"><use href="#icone-relogio"></use></svg>
-            <span>[HORÁRIO DE FUNCIONAMENTO]</span>
+            <span>Seg a Sexta: 08:30 as 18:30 | Sab. 08:30 as 13:30</span>
           </li>
         </ul>
       </div>
@@ -378,7 +413,7 @@
     </symbol>
   </svg>
 
-  <script src="assets/js/script.js?v=4" defer></script>
+  <script src="assets/js/script.js?v=5" defer></script>
 
 </body>
 </html>

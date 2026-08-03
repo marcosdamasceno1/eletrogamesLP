@@ -16,8 +16,8 @@
   <meta name="theme-color" content="#05080F">
 
   <!-- Fontes hospedadas junto com o site, sem depender do Google -->
-  <link rel="stylesheet" href="assets/fontes/fontes.css?v=4">
-  <link rel="stylesheet" href="assets/css/estilo.css?v=4">
+  <link rel="stylesheet" href="assets/fontes/fontes.css?v=5">
+  <link rel="stylesheet" href="assets/css/estilo.css?v=5">
 
   <!-- Ficha do serviço para o Google -->
   <script type="application/ld+json">
@@ -31,7 +31,7 @@
       "@type": "Store",
       "name": "Eletrogames",
       "url": "https://SEU-DOMINIO.com.br/",
-      "telephone": "[TELEFONE]"
+      "telephone": "+553138211606"
     },
     "areaServed": "[CIDADE]"
   }
@@ -107,7 +107,7 @@
     <!-- ===================================================================
          PRIMEIRA DOBRA
          =================================================================== -->
-    <section class="hero" aria-labelledby="titulo-hero">
+    <section class="hero hero--interno" aria-labelledby="titulo-hero">
       <div class="malha" style="position:absolute; inset:0; z-index:-1;" aria-hidden="true"></div>
       <div class="container">
         <span class="rotulo rotulo--gelo" data-revelar>Assistência técnica</span>
@@ -140,6 +140,40 @@
         </ul>
       </div>
     </section>
+
+    <!-- ===================================================================
+         FAIXA DE FATOS
+         O painel azul. Para trocar um dado, altere o texto do
+         faixa-fatos__valor e o do faixa-fatos__nota logo abaixo dele.
+         =================================================================== -->
+    <section class="faixa-fatos" aria-label="Ficha da Eletrogames">
+      <div class="container">
+        <div class="faixa-fatos__lista">
+          <div class="faixa-fatos__item" data-revelar>
+            <svg aria-hidden="true"><use href="#icone-relogio"></use></svg>
+            <div>
+              <p class="faixa-fatos__valor">+28 anos</p>
+              <p class="faixa-fatos__nota">de mercado</p>
+            </div>
+          </div>
+          <div class="faixa-fatos__item" data-revelar style="--atraso:70ms">
+            <svg aria-hidden="true"><use href="#icone-controle"></use></svg>
+            <div>
+              <p class="faixa-fatos__valor">Consoles e controles</p>
+              <p class="faixa-fatos__nota">venda e conserto</p>
+            </div>
+          </div>
+          <div class="faixa-fatos__item" data-revelar style="--atraso:140ms">
+            <svg aria-hidden="true"><use href="#icone-loja"></use></svg>
+            <div>
+              <p class="faixa-fatos__valor">Loja em Ipatinga</p>
+              <p class="faixa-fatos__nota">de segunda a sábado</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
 
     <!-- ===================================================================
@@ -256,7 +290,7 @@
 
         <div class="grade grade--2" style="margin-top:3.5rem">
 
-          <article class="cartao" style="padding:2rem" data-revelar>
+          <article class="cartao cartao--solido" style="padding:2rem" data-revelar>
             <span class="cartao__icone-caixa"><svg width="20" height="20" aria-hidden="true"><use href="#icone-chave"></use></svg></span>
             <h3 style="margin-top:1.5rem; font-size:24px; font-weight:700">Manutenção de consoles</h3>
             <p class="cartao__texto" style="font-size:15px">
@@ -279,7 +313,7 @@
             </p>
           </article>
 
-          <article class="cartao" style="padding:2rem" data-revelar>
+          <article class="cartao cartao--solido cartao--solido-noite" style="padding:2rem" data-revelar>
             <span class="cartao__icone-caixa"><svg width="20" height="20" aria-hidden="true"><use href="#icone-controle"></use></svg></span>
             <h3 style="margin-top:1.5rem; font-size:24px; font-weight:700">Manutenção de controles</h3>
             <p class="cartao__texto" style="font-size:15px">
@@ -481,24 +515,20 @@
         <ul class="rodape__contato">
           <li>
             <svg aria-hidden="true"><use href="#icone-local"></use></svg>
-            <span>[ENDEREÇO]<br>[CIDADE] / [ESTADO]</span>
-          </li>
-          <li>
-            <svg aria-hidden="true"><use href="#icone-telefone"></use></svg>
-            <span>[TELEFONE]</span>
+            <span>Avenida João Valentim Pascoal 1170 bloco c loja 12 Camelodromo<br>Ipatinga / Minas Gerais</span>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
             <a href="https://wa.me/NUMERO_DO_WHATSAPP?text=Ol%C3%A1!%20Acessei%20o%20site%20da%20Eletrogames%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
-               target="_blank" rel="noopener">[WHATSAPP]</a>
+               target="_blank" rel="noopener">(31) 3821-1606</a>
           </li>
           <li>
             <svg aria-hidden="true"><use href="#icone-instagram"></use></svg>
-            <span>[INSTAGRAM]</span>
+            <span>@eletrogamesipatinga</span>
           </li>
           <li>
             <svg aria-hidden="true"><use href="#icone-relogio"></use></svg>
-            <span>[HORÁRIO DE FUNCIONAMENTO]</span>
+            <span>Seg a Sexta: 08:30 as 18:30 | Sab. 08:30 as 13:30</span>
           </li>
         </ul>
       </div>
@@ -637,7 +667,7 @@
     </symbol>
   </svg>
 
-  <script src="assets/js/script.js?v=4" defer></script>
+  <script src="assets/js/script.js?v=5" defer></script>
 
 </body>
 </html>

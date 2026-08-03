@@ -13,8 +13,8 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <meta name="theme-color" content="#05080F">
   <!-- Fontes hospedadas junto com o site, sem depender do Google -->
-  <link rel="stylesheet" href="assets/fontes/fontes.css?v=4">
-  <link rel="stylesheet" href="assets/css/estilo.css?v=4">
+  <link rel="stylesheet" href="assets/fontes/fontes.css?v=5">
+  <link rel="stylesheet" href="assets/css/estilo.css?v=5">
 </head>
 
 <body>
@@ -83,7 +83,7 @@
 
   <main id="conteudo">
 
-    <section class="hero" aria-labelledby="titulo-hero">
+    <section class="hero hero--interno" aria-labelledby="titulo-hero">
       <div class="malha" style="position:absolute; inset:0; z-index:-1;" aria-hidden="true"></div>
       <div class="container">
         <span class="rotulo" data-revelar>Contato</span>
@@ -104,6 +104,40 @@
       </div>
     </section>
 
+    <!-- ===================================================================
+         FAIXA DE FATOS
+         O painel azul. Para trocar um dado, altere o texto do
+         faixa-fatos__valor e o do faixa-fatos__nota logo abaixo dele.
+         =================================================================== -->
+    <section class="faixa-fatos" aria-label="Onde e quando encontrar a Eletrogames">
+      <div class="container">
+        <div class="faixa-fatos__lista">
+          <div class="faixa-fatos__item" data-revelar>
+            <svg aria-hidden="true"><use href="#icone-local"></use></svg>
+            <div>
+              <p class="faixa-fatos__valor">Ipatinga / MG</p>
+              <p class="faixa-fatos__nota">Av. João Valentim Pascoal 1170</p>
+            </div>
+          </div>
+          <div class="faixa-fatos__item" data-revelar style="--atraso:70ms">
+            <svg aria-hidden="true"><use href="#icone-telefone"></use></svg>
+            <div>
+              <p class="faixa-fatos__valor">(31) 3821-1606</p>
+              <p class="faixa-fatos__nota">telefone da loja</p>
+            </div>
+          </div>
+          <div class="faixa-fatos__item" data-revelar style="--atraso:140ms">
+            <svg aria-hidden="true"><use href="#icone-relogio"></use></svg>
+            <div>
+              <p class="faixa-fatos__valor">Seg a Sex, 8:30 às 18:30</p>
+              <p class="faixa-fatos__nota">sábado até 13:30</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
     <section class="secao secao--fundo-alt" id="contato" aria-labelledby="titulo-contato">
       <div class="container">
         <div class="secao__cabecalho">
@@ -122,33 +156,33 @@
           <ul class="cartao" style="padding:0">
             <li class="sintomas__item" style="padding:1.25rem 1.5rem; border-right:0">
               <svg aria-hidden="true"><use href="#icone-local"></use></svg>
-              <span><strong style="color:var(--texto)">Endereço</strong><br>[ENDEREÇO] — [CIDADE]/[ESTADO]</span>
+              <span><strong style="color:var(--texto)">Endereço</strong><br>Avenida João Valentim Pascoal 1170 bloco c loja 12<br>Camelodromo — Ipatinga / Minas Gerais</span>
             </li>
             <li class="sintomas__item" style="padding:1.25rem 1.5rem; border-right:0">
               <svg aria-hidden="true"><use href="#icone-telefone"></use></svg>
-              <span><strong style="color:var(--texto)">Telefone</strong><br>[TELEFONE]</span>
+              <span><strong style="color:var(--texto)">Telefone</strong><br>(31) 3821-1606</span>
             </li>
             <li class="sintomas__item" style="padding:1.25rem 1.5rem; border-right:0">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
-              <span><strong style="color:var(--texto)">WhatsApp</strong><br>[WHATSAPP]</span>
+              <span><strong style="color:var(--texto)">WhatsApp</strong><br>Toque no botão ao lado para abrir a conversa</span>
             </li>
             <li class="sintomas__item" style="padding:1.25rem 1.5rem; border-right:0">
               <svg aria-hidden="true"><use href="#icone-instagram"></use></svg>
-              <span><strong style="color:var(--texto)">Instagram</strong><br>[INSTAGRAM]</span>
+              <span><strong style="color:var(--texto)">Instagram</strong><br>@eletrogamesipatinga</span>
             </li>
             <li class="sintomas__item" style="padding:1.25rem 1.5rem; border-right:0; border-bottom:0">
               <svg aria-hidden="true"><use href="#icone-relogio"></use></svg>
-              <span><strong style="color:var(--texto)">Horário de funcionamento</strong><br>[HORÁRIO DE FUNCIONAMENTO]</span>
+              <span><strong style="color:var(--texto)">Horário de funcionamento</strong><br>Seg a Sexta: 08:30 as 18:30<br>Sáb. 08:30 as 13:30</span>
             </li>
           </ul>
 
-          <div class="grade" style="gap:1.25rem; align-content:start">
+          <div class="grade" style="gap:1.25rem; align-content:stretch; grid-template-rows:1fr auto">
             <!--
               MAPA: quando tiver o endereço no Google Maps, clique em
               Compartilhar > Incorporar um mapa, copie o código e troque
               o bloco abaixo por ele.
             -->
-            <div class="cartao cartao--reservado" style="display:grid; place-items:center; min-height:240px">
+            <div class="cartao cartao--reservado" style="display:grid; place-items:center; min-height:240px; height:100%">
               <div>
                 <svg width="28" height="28" style="margin:0 auto; color:var(--texto-fraco)" aria-hidden="true"><use href="#icone-local"></use></svg>
                 <p class="cartao__texto" style="font-family:var(--fonte-codigo); text-transform:uppercase; letter-spacing:0.2em">[GOOGLE MAPS]</p>
@@ -222,24 +256,20 @@
         <ul class="rodape__contato">
           <li>
             <svg aria-hidden="true"><use href="#icone-local"></use></svg>
-            <span>[ENDEREÇO]<br>[CIDADE] / [ESTADO]</span>
-          </li>
-          <li>
-            <svg aria-hidden="true"><use href="#icone-telefone"></use></svg>
-            <span>[TELEFONE]</span>
+            <span>Avenida João Valentim Pascoal 1170 bloco c loja 12 Camelodromo<br>Ipatinga / Minas Gerais</span>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
             <a href="https://wa.me/NUMERO_DO_WHATSAPP?text=Ol%C3%A1!%20Acessei%20o%20site%20da%20Eletrogames%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
-               target="_blank" rel="noopener">[WHATSAPP]</a>
+               target="_blank" rel="noopener">(31) 3821-1606</a>
           </li>
           <li>
             <svg aria-hidden="true"><use href="#icone-instagram"></use></svg>
-            <span>[INSTAGRAM]</span>
+            <span>@eletrogamesipatinga</span>
           </li>
           <li>
             <svg aria-hidden="true"><use href="#icone-relogio"></use></svg>
-            <span>[HORÁRIO DE FUNCIONAMENTO]</span>
+            <span>Seg a Sexta: 08:30 as 18:30 | Sab. 08:30 as 13:30</span>
           </li>
         </ul>
       </div>
@@ -378,7 +408,7 @@
     </symbol>
   </svg>
 
-  <script src="assets/js/script.js?v=4" defer></script>
+  <script src="assets/js/script.js?v=5" defer></script>
 
 </body>
 </html>
