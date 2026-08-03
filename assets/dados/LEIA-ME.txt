@@ -1,0 +1,7 @@
+Esta pasta guarda o resultado da consulta ao Google.
+
+O arquivo avaliacoes.json e criado sozinho pelo avaliacoes.php e refeito de
+12 em 12 horas. Nao precisa criar nem editar nada aqui na mao.
+
+Se quiser forcar a atualizacao, apague o avaliacoes.json. Ele se refaz na
+proxima visita ao site.

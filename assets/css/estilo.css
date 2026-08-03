@@ -1,13 +1,13 @@
 /* =========================================================================
    ELETROGAMES - FOLHA DE ESTILO UNICA
-   VERSAO 7
+   VERSAO 8
    =========================================================================
 
    IMPORTANTE AO ALTERAR ESTE ARQUIVO
    O navegador guarda o CSS em cache por horas. Para que a alteracao apareca
    na hora para todo mundo, suba o numero da versao em dois lugares:
-     1. o "VERSAO 7" da linha acima
-     2. o "?v=7" no final do endereco deste arquivo, dentro de cada .html
+     1. o "VERSAO 8" da linha acima
+     2. o "?v=8" no final do endereco deste arquivo, dentro de cada .html
    Sem isso, quem ja visitou o site continua vendo a aparencia antiga.
    =========================================================================
 
@@ -1169,6 +1169,83 @@ summary:focus-visible {
 }
 .cartao--produto .cartao__texto {
   color: rgba(255, 255, 255, 0.9);
+}
+
+/* --- Cartao de avaliacao ---
+   Serve tanto para as avaliacoes escritas no HTML quanto para as que o
+   arquivo avaliacoes.php traz do Google. As duas usam as mesmas classes,
+   entao trocar de uma para a outra nao muda a aparencia. */
+.avaliacao {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.avaliacao__estrelas {
+  display: flex;
+  gap: 3px;
+  color: var(--azul-vivo);
+}
+.avaliacao__estrelas svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+.avaliacao__texto {
+  margin-top: 1.1rem;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--texto-suave);
+}
+.avaliacao__rodape {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--linha);
+}
+/* O filete precisa nascer colado nas bordas do cartao, e o cartao tem
+   1.5rem de recuo interno. Por isso as margens negativas. */
+.avaliacao__rodape {
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.avaliacao__rodape > span {
+  line-height: 1.35;
+}
+.avaliacao__foto {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--azul-escuro);
+}
+.avaliacao__autor {
+  font-size: 14px;
+  font-weight: 700;
+}
+.avaliacao__quando {
+  font-size: 12px;
+  color: var(--texto-fraco);
+}
+
+/* Selo do Google embaixo da grade. As regras do Google pedem que a origem
+   da avaliacao fique visivel, entao esta linha nao deve ser removida. */
+.selo-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  font-size: 13px;
+  color: var(--texto-fraco);
+}
+.selo-google a {
+  color: var(--azul-claro);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* Cartao pontilhado, para conteudo que ainda sera preenchido */

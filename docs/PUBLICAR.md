@@ -117,8 +117,8 @@ Para conferir se é isso, recarregue sem cache: **Ctrl + F5** no Windows,
 
 Para corrigir para todo mundo, e não só para você, use o número de versão:
 
-1. Abra `assets/css/estilo.css` e some 1 no `VERSAO 7` da terceira linha.
-2. Em **cada** arquivo `.html`, procure por `estilo.css?v=7` e some 1 também.
+1. Abra `assets/css/estilo.css` e some 1 no `VERSAO 8` da terceira linha.
+2. Em **cada** arquivo `.html`, procure por `estilo.css?v=8` e some 1 também.
 
 O `?v=` não muda nada no arquivo: serve só para o navegador entender que é um
 endereço novo e buscar do zero. É por isso que ele existe.
@@ -136,3 +136,16 @@ descrito acima.
 
 Se o navegador continuar mostrando a versão antiga, recarregue sem cache:
 Ctrl + F5 no Windows, Cmd + Shift + R no Mac.
+
+
+## Sobre o avaliacoes.php
+
+Esse arquivo é o único do site que precisa de PHP no servidor. Ele é opcional:
+se a hospedagem não tiver PHP, ou se o arquivo não for enviado, o site
+funciona igual e mostra as avaliações escritas no `index.html`.
+
+Envie junto a pasta `assets/dados/`, que é onde ele guarda o resultado da
+consulta. Se essa pasta não puder ser gravada, peça ao suporte da hospedagem
+para liberar a escrita nela.
+
+A configuração está em [AVALIACOES-DO-GOOGLE.md](AVALIACOES-DO-GOOGLE.md).

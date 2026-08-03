@@ -13,6 +13,7 @@
    05. Contador do numero 28
    06. Efeitos de ponteiro (ima, inclinacao, holofote)
    07. Ano do rodape
+   08. Avaliacoes do Google
    ========================================================================= */
 
 (function () {
@@ -206,5 +207,85 @@
   var ano = document.querySelector('[data-ano]');
   if (ano) {
     ano.textContent = String(new Date().getFullYear());
+  }
+
+
+  /* =======================================================================
+     08. AVALIACOES DO GOOGLE
+
+     Pergunta ao arquivo avaliacoes.php se ha avaliacoes novas. Se houver,
+     troca as que estao escritas no HTML pelas do Google.
+
+     Se o PHP nao existir, nao estiver configurado ou o Google nao
+     responder, nada acontece: as avaliacoes escritas no HTML continuam
+     na tela. E de proposito. A secao nunca fica vazia.
+
+     A configuracao fica em avaliacoes.php, nao aqui.
+     ======================================================================= */
+  var listaAvaliacoes = document.querySelector('[data-avaliacoes]');
+
+  if (listaAvaliacoes && window.fetch) {
+    fetch('avaliacoes.php', { headers: { Accept: 'application/json' } })
+      .then(function (resposta) {
+        return resposta.ok ? resposta.json() : null;
+      })
+      .then(function (dados) {
+        if (!dados || !dados.avaliacoes || !dados.avaliacoes.length) return;
+        desenharAvaliacoes(dados);
+      })
+      .catch(function () {
+        /* Sem internet ou sem PHP: fica como esta */
+      });
+  }
+
+  function estrelas(nota) {
+    var desenho = '';
+    for (var i = 0; i < 5; i++) {
+      desenho += '<svg viewBox="0 0 24 24"' + (i < nota ? '' : ' opacity="0.25"') +
+        '><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg>';
+    }
+    return '<span class="avaliacao__estrelas" aria-hidden="true">' + desenho + '</span>';
+  }
+
+  /* Escreve o texto como texto, nunca como HTML: o conteudo vem de fora,
+     entao nao pode chegar na pagina como codigo. */
+  function comoTexto(valor) {
+    var caixa = document.createElement('div');
+    caixa.textContent = valor == null ? '' : String(valor);
+    return caixa.innerHTML;
+  }
+
+  function desenharAvaliacoes(dados) {
+    var itens = dados.avaliacoes.map(function (a) {
+      var foto = a.foto
+        ? '<img class="avaliacao__foto" src="' + comoTexto(a.foto) +
+          '" alt="" loading="lazy" width="34" height="34">'
+        : '';
+      var quando = a.quando
+        ? '<span class="avaliacao__quando">' + comoTexto(a.quando) + '</span>'
+        : '';
+
+      return '<li class="cartao avaliacao visivel">' +
+               '<span class="apenas-leitor-de-tela">Nota ' + a.nota + ' de 5</span>' +
+               estrelas(a.nota) +
+               '<p class="avaliacao__texto">' + comoTexto(a.texto) + '</p>' +
+               '<div class="avaliacao__rodape">' + foto +
+                 '<span>' +
+                   '<span class="avaliacao__autor">' + comoTexto(a.autor) + '</span><br>' +
+                   quando +
+                 '</span>' +
+               '</div>' +
+             '</li>';
+    }).join('');
+
+    listaAvaliacoes.innerHTML = itens;
+
+    /* Mostra o credito ao Google, que as regras da API exigem */
+    var credito = document.querySelector('[data-credito-google]');
+    if (credito) {
+      credito.hidden = false;
+      var link = credito.querySelector('[data-link-google]');
+      if (link && dados.link) link.href = dados.link;
+    }
   }
 })();

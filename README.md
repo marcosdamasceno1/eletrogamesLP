@@ -14,6 +14,8 @@ para instalar. Para abrir, dê dois cliques no `index.html`.
 - **[docs/PUBLICAR.md](docs/PUBLICAR.md)** — enviar os arquivos para o servidor.
 - **[docs/ESTRUTURA.md](docs/ESTRUTURA.md)** — como os arquivos se conectam.
 - **[docs/LOGOMARCA.md](docs/LOGOMARCA.md)** — colocar a logomarca oficial.
+- **[docs/AVALIACOES-DO-GOOGLE.md](docs/AVALIACOES-DO-GOOGLE.md)** — puxar as
+  avaliações do Google automaticamente.
 
 ## Páginas
 
@@ -25,6 +27,7 @@ para instalar. Para abrir, dê dois cliques no `index.html`.
 | `contato.html` | `/contato.html` | Contato e localização |
 | `politica-de-privacidade.html` | | Documento legal (modelo, revisar) |
 | `404.html` | | Página de erro |
+| `avaliacoes.php` | | Busca as avaliações no Google. Opcional |
 
 ## Antes de publicar
 
@@ -36,8 +39,12 @@ arquivos:
 `[ENDEREÇO]` · `[CIDADE]` · `[ESTADO]` · `[WHATSAPP]` · `[INSTAGRAM]` ·
 `[HORÁRIO DE FUNCIONAMENTO]` · `[PRAZO DA GARANTIA]`
 
-Também aguardam conteúdo real: os três depoimentos, os quatro marcos da linha do
-tempo, as fotos antigas da loja e o mapa. Nada disso foi inventado.
+Também aguardam conteúdo real: os quatro marcos da linha do tempo, as fotos
+antigas da loja e o mapa. Nada disso foi inventado.
+
+As três avaliações da página inicial são reais. Elas podem ser trocadas pelas
+avaliações do Google, automaticamente — veja
+[docs/AVALIACOES-DO-GOOGLE.md](docs/AVALIACOES-DO-GOOGLE.md).
 
 ## Identidade visual
 

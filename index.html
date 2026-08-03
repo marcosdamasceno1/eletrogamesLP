@@ -20,9 +20,9 @@
 
   <!-- Fontes -->
   <!-- Fontes hospedadas junto com o site, sem depender do Google -->
-  <link rel="stylesheet" href="assets/fontes/fontes.css?v=7">
+  <link rel="stylesheet" href="assets/fontes/fontes.css?v=8">
 
-  <link rel="stylesheet" href="assets/css/estilo.css?v=7">
+  <link rel="stylesheet" href="assets/css/estilo.css?v=8">
 
   <!-- Ficha da empresa para o Google. Preencha telefone e endereço abaixo. -->
   <script type="application/ld+json">
@@ -620,25 +620,52 @@
             Quem conhece, recomenda.
           </h2>
           <p class="secao__texto" data-revelar style="--atraso:120ms">
-            Espaço reservado para as avaliações reais de clientes da Eletrogames.
+            O que os clientes escrevem sobre a loja e sobre a assistência técnica.
           </p>
         </div>
 
-        <ul class="grade grade--3" style="margin-top:3.5rem">
-          <li class="cartao cartao--reservado" style="text-align:left" data-revelar>
-            <p class="cartao__texto" style="font-family:var(--fonte-codigo); margin-top:0">Uma das melhores lojas do Vale do Aço para comprar jogos e video games. A loja é completa e ainda tem assistência técnica. Recomendo!</p>
-            <p class="cartao__texto" style="margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--linha); font-family:var(--fonte-codigo); text-transform:uppercase; letter-spacing:0.16em; font-size:12px">Hariston</p>
+        <!--
+          AS AVALIAÇÕES
+
+          As três abaixo estão escritas na mão e aparecem sempre. Se o
+          arquivo avaliacoes.php estiver configurado, o site troca elas
+          pelas avaliações mais recentes do Google assim que a página abre.
+          Se o Google não responder, estas continuam no ar.
+
+          Para configurar, veja docs/AVALIACOES-DO-GOOGLE.md
+        -->
+        <ul class="grade grade--3" style="margin-top:3.5rem" data-avaliacoes>
+          <li class="cartao avaliacao" data-revelar>
+            <span class="apenas-leitor-de-tela">Nota 5 de 5</span>
+            <span class="avaliacao__estrelas" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg></span>
+            <p class="avaliacao__texto">Uma das melhores lojas do Vale do Aço para comprar jogos e video games. A loja é completa e ainda tem assistência técnica. Recomendo!</p>
+            <div class="avaliacao__rodape">
+              <span class="avaliacao__autor">Hariston</span>
+            </div>
           </li>
-          <li class="cartao cartao--reservado" style="text-align:left" data-revelar>
-            <p class="cartao__texto" style="font-family:var(--fonte-codigo); margin-top:0">O atendimento é incrível, são super simpáticos, adoro ir lá, recomendo super!!</p>
-            <p class="cartao__texto" style="margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--linha); font-family:var(--fonte-codigo); text-transform:uppercase; letter-spacing:0.16em; font-size:12px">Alice Couto</p>
+          <li class="cartao avaliacao" data-revelar>
+            <span class="apenas-leitor-de-tela">Nota 5 de 5</span>
+            <span class="avaliacao__estrelas" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg></span>
+            <p class="avaliacao__texto">O atendimento é incrível, são super simpáticos, adoro ir lá, recomendo super!!</p>
+            <div class="avaliacao__rodape">
+              <span class="avaliacao__autor">Alice Couto</span>
+            </div>
           </li>
-          <li class="cartao cartao--reservado" style="text-align:left" data-revelar>
-            <p class="cartao__texto" style="font-family:var(--fonte-codigo); margin-top:0">Fui atendido pelo Técnico Mateus, o serviço foi excelente, meu Xbox que achei que nem teria mais conserto, ficou como novo
-</p>
-            <p class="cartao__texto" style="margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--linha); font-family:var(--fonte-codigo); text-transform:uppercase; letter-spacing:0.16em; font-size:12px">Kelson P S </p>
+          <li class="cartao avaliacao" data-revelar>
+            <span class="apenas-leitor-de-tela">Nota 5 de 5</span>
+            <span class="avaliacao__estrelas" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.6 1.6-7-5.4-4.7 7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7z"/></svg></span>
+            <p class="avaliacao__texto">Fui atendido pelo Técnico Mateus, o serviço foi excelente, meu Xbox que achei que nem teria mais conserto, ficou como novo.</p>
+            <div class="avaliacao__rodape">
+              <span class="avaliacao__autor">Kelson P S</span>
+            </div>
           </li>
         </ul>
+
+        <!-- Crédito ao Google. As regras da API pedem que ele fique visível. -->
+        <p class="selo-google" data-credito-google hidden>
+          Avaliações publicadas no
+          <a href="#" target="_blank" rel="noopener" data-link-google>Google</a>
+        </p>
 
       </div>
     </section>
@@ -958,7 +985,7 @@
     </symbol>
   </svg>
 
-  <script src="assets/js/script.js?v=7" defer></script>
+  <script src="assets/js/script.js?v=8" defer></script>
 
 </body>
 </html>
