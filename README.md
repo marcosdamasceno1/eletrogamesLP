@@ -41,13 +41,24 @@ tempo, as fotos antigas da loja e o mapa. Nada disso foi inventado.
 
 ## Identidade visual
 
-Fundo quase preto com fundo violeta, neon violeta/magenta nos destaques e ciano
-no lado técnico, seguindo a loja online da própria marca.
+Azul, azul escuro e pouco branco, sobre um preto azulado. São as cores da
+loja, e o site não usa nenhuma outra.
 
-As duas cores de ação têm função fixa e nunca trocam de lado:
+Cada cor tem uma função fixa:
 
-- **violeta → magenta** = comprar (loja, produtos)
-- **ciano** = consertar (assistência, avaliação)
+| Cor | Onde aparece | Significa |
+| --- | --- | --- |
+| **Azul** `#1E5BFF` | botão da loja, painéis, caixa de destaque nos títulos | comprar |
+| **Azul escuro** `#0B2A8C` | painéis sólidos e cartões alternados | base, estrutura |
+| **Branco** | botão da assistência, ícones técnicos | consertar |
+
+O branco é usado pouco de propósito. É o que faz o botão da assistência
+técnica saltar no meio de uma página azul, sem precisar inventar uma quarta
+cor.
+
+**A caixa de destaque** (`<em class="destaque">palavra</em>`) marca uma ou
+duas palavras por título. Se virar hábito e aparecer em toda frase, para de
+funcionar: o destaque só existe enquanto for exceção.
 
 Tipografia: Archivo nos títulos, IBM Plex Sans nos textos, IBM Plex Mono nos
 rótulos. As três ficam hospedadas em `assets/fontes/`, então o site não depende
@@ -55,7 +66,7 @@ de nenhum servidor externo para carregar.
 
 ## Cuidados que valem manter
 
-- **Contraste dos botões.** O violeta de fundo é escurecido de propósito para o
+- **Contraste dos botões.** O azul de fundo tem esse tom de propósito para o
   texto branco ser legível. Clarear essa cor quebra a legibilidade.
 - **Nada de conteúdo escondido esperando animação.** Se o JavaScript falhar, o
   site continua legível e navegável.

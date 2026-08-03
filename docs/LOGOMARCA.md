@@ -8,7 +8,7 @@ chegar, siga os passos abaixo.
 
 > **Sobre a marca real:** na fachada da loja, o logotipo é o mascote azul com
 > as letras "WG" ao lado de "ELETRO GAMES" em branco, sobre azul forte. O site
-> está usando o violeta e o magenta da loja online, que é uma expressão
+> está usando o azul da loja, que é uma expressão
 > diferente da mesma marca. Vale decidir qual das duas o site deve seguir. Se a
 > escolha for o azul da fachada, é uma troca de três valores no CSS.
 
@@ -76,18 +76,18 @@ navegador. Substitua por uma versão simplificada da marca, com apenas o símbol
 Todo o site sai de três cores, definidas no começo de `assets/css/estilo.css`:
 
 ```css
---violeta:  #7526E0;   /* botões da loja, ícones */
---magenta:  #FF3DCB;   /* brilhos e destaques */
---ciano:    #22E3F0;   /* assistência técnica */
+--azul:        #1E5BFF;   /* botões da loja, ícones */
+--azul-escuro: #0B2A8C;   /* painéis sólidos */
+--gelo:        #FFFFFF;   /* assistência técnica */
 ```
 
 Peça ao designer os códigos das cores oficiais em hexadecimal (o formato
 `#RRGGBB`) e troque.
 
-**Um cuidado com legibilidade:** o `--violeta` é a cor de fundo dos botões, que
+**Um cuidado com legibilidade:** o `--azul` é a cor de fundo dos botões, que
 têm texto branco em cima. Ele precisa ser escuro o suficiente para o texto ser
-lido com facilidade. Se a cor oficial da marca for um violeta claro, use-a em
-`--magenta` (nos brilhos) e mantenha um tom mais escuro nos botões.
+lido com facilidade. Se a cor oficial da marca for um azul claro, use-a em
+`--azul escuro` (nos brilhos) e mantenha um tom mais escuro nos botões.
 
 ---
 

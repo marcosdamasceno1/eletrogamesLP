@@ -96,9 +96,9 @@ Abra `assets/css/estilo.css`. Logo no começo do arquivo está o bloco de cores:
 ```css
 :root {
   --fundo:          #08060F;   /* fundo principal, quase preto */
-  --violeta:        #7526E0;   /* botões da loja */
-  --magenta:        #FF3DCB;   /* brilhos e destaques */
-  --ciano:          #22E3F0;   /* assistência técnica */
+  --azul:           #1E5BFF;   /* botões da loja e destaques */
+  --azul-escuro:    #0B2A8C;   /* painéis sólidos */
+  --gelo:           #FFFFFF;   /* assistência técnica */
   --texto:          #F4F1FF;   /* títulos */
   ...
 }
@@ -106,12 +106,12 @@ Abra `assets/css/estilo.css`. Logo no começo do arquivo está o bloco de cores:
 
 Trocar um valor aqui muda esse elemento no site inteiro, em todas as páginas.
 
-**Depois de alterar o CSS**, some 1 no número de versão: no `VERSAO 3` da
-terceira linha do arquivo, e no `estilo.css?v=3` de cada `.html`. Sem isso, quem
+**Depois de alterar o CSS**, some 1 no número de versão: no `VERSAO 4` da
+terceira linha do arquivo, e no `estilo.css?v=4` de cada `.html`. Sem isso, quem
 já visitou o site continua vendo as cores antigas por algumas horas, porque o
 navegador guarda o arquivo em cache.
 
-**Um cuidado:** o violeta dos botões é escuro de propósito. O texto branco em
+**Um cuidado:** o azul dos botões tem esse tom de propósito. O texto branco em
 cima dele precisa de contraste para ser legível. Se clarear demais essa cor, o
 texto dos botões fica difícil de ler.
 
