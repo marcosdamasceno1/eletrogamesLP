@@ -20,9 +20,9 @@
 
   <!-- Fontes -->
   <!-- Fontes hospedadas junto com o site, sem depender do Google -->
-  <link rel="stylesheet" href="assets/fontes/fontes.css?v=11">
+  <link rel="stylesheet" href="assets/fontes/fontes.css?v=12">
 
-  <link rel="stylesheet" href="assets/css/estilo.css?v=11">
+  <link rel="stylesheet" href="assets/css/estilo.css?v=12">
 
   <!-- Ficha da empresa para o Google. Preencha telefone e endereço abaixo. -->
   <script type="application/ld+json">
@@ -516,66 +516,60 @@
           </p>
         </div>
 
-        <div class="grade grade--4" style="margin-top:3.5rem">
+        <!-- Cada opção abre o WhatsApp já dizendo qual é o console.
+             Para trocar o texto que chega na conversa, altere o final do
+             endereço, depois de "?text=". -->
+        <div class="seletor" style="margin-top:3.5rem">
 
-          <a class="cartao cartao--contorno-azul" data-inclinar data-holofote data-revelar
-             href="https://wa.me/NUMERO_DO_WHATSAPP?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20manuten%C3%A7%C3%A3o%20de%20PlayStation."
+          <a class="seletor__opcao" data-revelar
+             href="https://wa.me/NUMERO_DO_WHATSAPP?text=Ol%C3%A1%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20manuten%C3%A7%C3%A3o%20de%20PlayStation."
              target="_blank" rel="noopener">
-            <span class="cartao__icone-caixa cartao__icone-caixa--azul">
-              <svg width="20" height="20" aria-hidden="true"><use href="#icone-disco"></use></svg>
-            </span>
-            <h3 class="cartao__titulo">PlayStation</h3>
-            <p class="cartao__texto">PS5, PS4 e as gerações anteriores.</p>
-            <span class="cartao__acao">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
-              Falar sobre este console
+            <svg class="seletor__icone" aria-hidden="true"><use href="#icone-disco"></use></svg>
+            <span class="seletor__nome">PlayStation</span>
+            <span class="seletor__modelos">PS5 · PS4 · e anteriores</span>
+            <span class="seletor__acao">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
+              Falar sobre o meu
             </span>
           </a>
 
-          <a class="cartao cartao--contorno-azul" data-inclinar data-holofote data-revelar style="--atraso:80ms"
-             href="https://wa.me/NUMERO_DO_WHATSAPP?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20manuten%C3%A7%C3%A3o%20de%20Xbox."
+          <a class="seletor__opcao" data-revelar style="--atraso:80ms"
+             href="https://wa.me/NUMERO_DO_WHATSAPP?text=Ol%C3%A1%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20manuten%C3%A7%C3%A3o%20de%20Xbox."
              target="_blank" rel="noopener">
-            <span class="cartao__icone-caixa cartao__icone-caixa--azul">
-              <svg width="20" height="20" aria-hidden="true"><use href="#icone-console"></use></svg>
-            </span>
-            <h3 class="cartao__titulo">Xbox</h3>
-            <p class="cartao__texto">Xbox Series X/S, Xbox One e anteriores.</p>
-            <span class="cartao__acao">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
-              Falar sobre este console
+            <svg class="seletor__icone" aria-hidden="true"><use href="#icone-console"></use></svg>
+            <span class="seletor__nome">Xbox</span>
+            <span class="seletor__modelos">Series X/S · One · e anteriores</span>
+            <span class="seletor__acao">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
+              Falar sobre o meu
             </span>
           </a>
 
-          <a class="cartao cartao--contorno-azul" data-inclinar data-holofote data-revelar style="--atraso:160ms"
-             href="https://wa.me/NUMERO_DO_WHATSAPP?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20manuten%C3%A7%C3%A3o%20de%20Nintendo."
+          <a class="seletor__opcao" data-revelar style="--atraso:160ms"
+             href="https://wa.me/NUMERO_DO_WHATSAPP?text=Ol%C3%A1%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20manuten%C3%A7%C3%A3o%20de%20Nintendo."
              target="_blank" rel="noopener">
-            <span class="cartao__icone-caixa cartao__icone-caixa--azul">
-              <svg width="20" height="20" aria-hidden="true"><use href="#icone-portatil"></use></svg>
-            </span>
-            <h3 class="cartao__titulo">Nintendo</h3>
-            <p class="cartao__texto">Switch e consoles Nintendo de outras gerações.</p>
-            <span class="cartao__acao">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
-              Falar sobre este console
+            <svg class="seletor__icone" aria-hidden="true"><use href="#icone-portatil"></use></svg>
+            <span class="seletor__nome">Nintendo</span>
+            <span class="seletor__modelos">Switch · e outras gerações</span>
+            <span class="seletor__acao">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
+              Falar sobre o meu
             </span>
           </a>
 
-          <a class="cartao cartao--contorno-azul" data-inclinar data-holofote data-revelar style="--atraso:240ms"
-             href="https://wa.me/NUMERO_DO_WHATSAPP?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20manuten%C3%A7%C3%A3o%20de%20console%20antigo."
+          <a class="seletor__opcao" data-revelar style="--atraso:240ms"
+             href="https://wa.me/NUMERO_DO_WHATSAPP?text=Ol%C3%A1%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20manuten%C3%A7%C3%A3o%20de%20um%20console%20antigo."
              target="_blank" rel="noopener">
-            <span class="cartao__icone-caixa cartao__icone-caixa--azul">
-              <svg width="20" height="20" aria-hidden="true"><use href="#icone-cartucho"></use></svg>
-            </span>
-            <h3 class="cartao__titulo">Consoles antigos</h3>
-            <p class="cartao__texto">As gerações que acompanhamos desde o começo.</p>
-            <span class="cartao__acao">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
-              Falar sobre este console
+            <svg class="seletor__icone" aria-hidden="true"><use href="#icone-cartucho"></use></svg>
+            <span class="seletor__nome">Consoles antigos</span>
+            <span class="seletor__modelos">as gerações que a gente vê desde o começo</span>
+            <span class="seletor__acao">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
+              Falar sobre o meu
             </span>
           </a>
 
         </div>
-      </div>
     </section>
 
 
@@ -1009,7 +1003,7 @@
     </symbol>
   </svg>
 
-  <script src="assets/js/script.js?v=11" defer></script>
+  <script src="assets/js/script.js?v=12" defer></script>
 
 </body>
 </html>

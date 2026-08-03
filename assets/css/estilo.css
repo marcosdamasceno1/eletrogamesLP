@@ -1,13 +1,13 @@
 /* =========================================================================
    ELETROGAMES - FOLHA DE ESTILO UNICA
-   VERSAO 11
+   VERSAO 12
    =========================================================================
 
    IMPORTANTE AO ALTERAR ESTE ARQUIVO
    O navegador guarda o CSS em cache por horas. Para que a alteracao apareca
    na hora para todo mundo, suba o numero da versao em dois lugares:
-     1. o "VERSAO 11" da linha acima
-     2. o "?v=11" no final do endereco deste arquivo, dentro de cada .html
+     1. o "VERSAO 12" da linha acima
+     2. o "?v=12" no final do endereco deste arquivo, dentro de cada .html
    Sem isso, quem ja visitou o site continua vendo a aparencia antiga.
    =========================================================================
 
@@ -1639,6 +1639,102 @@ summary:focus-visible {
 
 
 /* =========================================================================
+   12B. SELETOR DE PLATAFORMA
+
+   As quatro plataformas dentro de um painel unico, divididas por filete.
+   E de proposito que nao sejam quatro cartoes soltos: aqui o visitante
+   escolhe o aparelho dele, entao o bloco tem que parecer uma lista de
+   opcoes, e nao mais uma grade de cartoes como as outras secoes.
+   ========================================================================= */
+.seletor {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+  border: 1px solid rgba(30, 91, 255, 0.4);
+  border-radius: var(--arredondamento);
+  background: var(--painel);
+}
+
+.seletor__opcao {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 2rem 1.75rem 1.75rem;
+  border-left: 1px solid var(--linha);
+  transition: background 0.3s ease;
+}
+.seletor__opcao:first-child {
+  border-left: 0;
+}
+.seletor__opcao:hover,
+.seletor__opcao:focus-visible {
+  background: linear-gradient(180deg, rgba(30, 91, 255, 0.22), transparent);
+}
+
+/* Faixa azul que acende no topo da opcao escolhida */
+.seletor__opcao::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: var(--azul);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.seletor__opcao:hover::before,
+.seletor__opcao:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.seletor__icone {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 0.75rem;
+  color: var(--azul-vivo);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.seletor__opcao:hover .seletor__icone {
+  transform: translateY(-3px) scale(1.08);
+}
+
+.seletor__nome {
+  font-family: var(--fonte-titulo);
+  font-size: 20px;
+  font-weight: 800;
+}
+.seletor__modelos {
+  font-family: var(--fonte-codigo);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--texto-suave);
+}
+.seletor__acao {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  /* Empurra a acao para o pe da celula, para as quatro alinharem mesmo
+     quando a linha de modelos quebra em duas. */
+  margin-top: auto;
+  padding-top: 1.1rem;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--azul-claro);
+}
+.seletor__acao svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.seletor__opcao:hover .seletor__acao svg {
+  transform: translateX(4px);
+}
+
+
+/* =========================================================================
    13. PERGUNTAS FREQUENTES
    Usa <details> e <summary> do proprio HTML: abre e fecha sem JavaScript.
    ========================================================================= */
@@ -1978,8 +2074,15 @@ summary:focus-visible {
   }
   .grade--5,
   .grade--4,
-  .grade--3 {
+  .grade--3,
+  .seletor {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .seletor__opcao:nth-child(3) {
+    border-left: 0;
+  }
+  .seletor__opcao:nth-child(n+3) {
+    border-top: 1px solid var(--linha);
   }
   .etapas {
     grid-template-columns: repeat(2, 1fr);
@@ -2017,6 +2120,7 @@ summary:focus-visible {
   .grade--3,
   .grade--4,
   .grade--5,
+  .seletor,
   .etapas,
   .faixa-fatos__lista,
   .sintomas__lista,
@@ -2029,6 +2133,13 @@ summary:focus-visible {
   }
   .etapa:not(:last-child)::after {
     display: none;
+  }
+  .seletor__opcao {
+    border-left: 0;
+    border-top: 1px solid var(--linha);
+  }
+  .seletor__opcao:first-child {
+    border-top: 0;
   }
   .faixa-fatos__item {
     border-right: 0;
